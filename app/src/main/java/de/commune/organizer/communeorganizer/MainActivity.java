@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     public void init(){
         createBtn = (Button) findViewById(R.id.createBtn);
         registerBtn = (Button) findViewById(R.id.registerBtn);
-        loginBtn = (Button) findViewById(R.id.loginBtn);
+
         homeBtn = (Button) findViewById(R.id.homeBtn);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
