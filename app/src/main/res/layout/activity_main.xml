@@ -1,54 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="de.commune.organizer.communeorganizer.MainActivity">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/signInBtn"
-        style="@style/Widget.AppCompat.Button"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_height="192dp"
+        android:layout_width="match_parent">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+            <TextView
+                android:id="@+id/headerText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="WILLKOMMEN"
+                android:textColor="#FFFF"
+                android:textSize="25sp" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="105dp"
-        android:elevation="1dp"
-        android:text="ANMELDEN"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="231dp" />
+        android:layout_height="match_parent"
+        tools:context="de.commune.organizer.communeorganizer.MainActivity">
 
-    <Button
-        android:id="@+id/registerBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_green_dark"
-        android:text="WG-BEITRETEN"
-        android:layout_marginTop="57dp"
-        android:layout_below="@+id/signInBtn"
-        android:layout_alignParentStart="true" />
+        <Button
+            android:id="@+id/signInBtn"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="222dp"
+            android:elevation="1dp"
+            android:text="ANMELDEN"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="231dp" />
 
-    <Button
-        android:id="@+id/createBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_dark"
-        android:text="WG-ERSTELLEN"
-        android:layout_below="@+id/registerBtn"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="68dp" />
+        <Button
+            android:id="@+id/registerBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/signInBtn"
+            android:layout_marginTop="14dp"
+            android:background="@android:color/holo_green_dark"
+            android:text="WG-BEITRETEN" />
 
-    <Button
-        android:id="@+id/homeBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_dark"
-        android:text="Startseite test"
-        android:layout_below="@+id/createBtn"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/createBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/registerBtn"
+            android:layout_marginTop="28dp"
+            android:background="@android:color/holo_orange_dark"
+            android:text="WG-ERSTELLEN" />
+
+        <Button
+            android:id="@+id/homeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/createBtn"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/holo_orange_dark"
+            android:text="Startseite test" />
 
 
+    </RelativeLayout>
 
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

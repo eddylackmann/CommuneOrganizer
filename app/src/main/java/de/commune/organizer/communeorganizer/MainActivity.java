@@ -11,13 +11,9 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button createBtn, homeBtn,registerBtn,loginBtn;
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
@@ -25,10 +21,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void init(){
-        createBtn = (Button) findViewById(R.id.createBtn);
-        registerBtn = (Button) findViewById(R.id.registerBtn);
 
-        homeBtn = (Button) findViewById(R.id.homeBtn);
+        Button createBtn = (Button) findViewById(R.id.createBtn);
+       Button registerBtn = (Button) findViewById(R.id.registerBtn);
+        Button loginBtn = (Button) findViewById(R.id.signInBtn);
+        Button homeBtn = (Button) findViewById(R.id.homeBtn);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
