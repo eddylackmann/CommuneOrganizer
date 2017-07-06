@@ -7,17 +7,19 @@
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
+        android:layout_width="match_parent"
         android:layout_height="144dp"
-        android:layout_width="match_parent">
+        android:background="@drawable/Main">
+
 
         <TextView
             android:id="@+id/anmldText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical|center_horizontal"
-            android:textSize="25sp"
+            android:text="LOGIN"
             android:textColor="#FFFF"
-            android:text="LOGIN" />
+            android:textSize="25sp" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
