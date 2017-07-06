@@ -15,7 +15,7 @@ import android.view.MenuItem;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+        //ich bin tom und bin doof
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
