@@ -24,14 +24,14 @@ public class login extends AppCompatActivity {
 
     public void init(){
          //= new AlertDialog.Builder(this)
-        final TextView userEmail = (TextView)findViewById(R.id.uEmailText);
-        final TextView userPassword = (TextView)findViewById(R.id.uPasswordText);
+        TextView userEmail = (TextView)findViewById(R.id.uEmailText);
+        TextView userPassword = (TextView)findViewById(R.id.uPasswordText);
         loginBtn = (Button) findViewById(R.id.signInBtn);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CharSequence uEmail =  userEmail.getText();
-                CharSequence uPw = userPassword.getText();
+
+
                 Intent intent = new Intent(login.this, Home.class);
                 startActivity(intent);
 
