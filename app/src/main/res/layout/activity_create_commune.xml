@@ -1,189 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="de.commune.organizer.communeorganizer.create_commune">
-
-
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
-        android:layout_height="163dp"
-        android:layout_width="match_parent">
-
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="141dp"
-            app:toolbarId="@+id/toolbar"
-            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-            app:contentScrim="?attr/colorPrimary">
-
-            <TextView
-                android:id="@+id/anmldText"
-                android:layout_width="match_parent"
-                android:layout_height="181dp"
-                android:gravity="center_vertical|center_horizontal"
-                android:textSize="25sp"
-                android:textColor="#FFFF"
-                android:text="WG - GRÜNDEN" />
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+        android:layout_height="144dp"
+        >
 
-        <RelativeLayout
+
+        <TextView
+            android:id="@+id/anmldText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="WG-GRÜNDEN"
+            android:textColor="#FFFF"
+            android:textSize="25sp" />
+    </android.support.design.widget.AppBarLayout>
 
-            tools:context="de.commune.organizer.communeorganizer.registration">
+    <EditText
+        android:id="@+id/comAdressText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appbar"
+        android:hint="WG-Adresse"
+        android:layout_marginTop="12dp"
 
+        android:ems="10"
+        android:inputType="textPersonName"
+        />
 
-            <EditText
-                android:id="@+id/regCommuneStreet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="WG-Straße"
-                android:inputType="textPersonName"
-                android:layout_marginTop="16dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
+    <EditText
+        android:id="@+id/comZipText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="PLZ"
+        android:layout_below="@+id/comAdressText"
+        android:ems="10"
+        android:inputType="number" />
 
-            <EditText
-                android:id="@+id/regzipText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="WG-PLZ"
-                android:ems="10"
-                android:inputType="number"
-                android:layout_marginTop="21dp"
-                android:layout_below="@+id/regCommuneStreet"
-                android:layout_alignParentStart="true" />
+    <EditText
+        android:id="@+id/comCityText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ort"
+        android:layout_below="@+id/comZipText"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        />
 
-            <EditText
-                android:id="@+id/regCityText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="WG-Ort"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:layout_marginTop="26dp"
-                android:layout_below="@+id/regzipText"
-                android:layout_alignParentStart="true" />
+    <EditText
+        android:id="@+id/comPW1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="WG-Passwort"
+        android:layout_below="@+id/comCityText"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPassword" />
 
-            <EditText
-                android:id="@+id/regCommunePw"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="31dp"
-                android:ems="10"
-                android:hint="WG-Passwort"
-                android:inputType="textPassword"
-                android:layout_below="@+id/regCityText"
-                android:layout_alignParentStart="true" />
+    <EditText
+        android:id="@+id/comPW2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:ems="10"
+        android:hint="WG-Passwort wiederholen"
+        android:inputType="numberPassword"
+        android:layout_below="@+id/comPW1"
+         />
 
-            <EditText
-                android:id="@+id/regCommuneRepeatPw"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="WG-Passwort wiederholen"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:layout_marginTop="36dp"
-                android:layout_below="@+id/regCommunePw"
-                android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="@color/colorAccent"
+        android:layout_height="30dp"
+        android:textColor="#FFFF"
+        android:layout_below="@+id/comPW2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:text="Benutzer Informationen" />
 
-            <EditText
-                android:id="@+id/regUserFirstName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Vorname"
-                android:inputType="textPersonName"
-                android:layout_below="@+id/regCommuneRepeatPw"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="41dp" />
+    <EditText
+        android:id="@+id/uFirstName"
+        android:layout_width="match_parent"
+        android:hint="Vorname"
+        android:layout_height="wrap_content"
 
-            <EditText
-                android:id="@+id/regUserLastName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Nachname"
-                android:inputType="textPassword"
-                android:layout_marginTop="46dp"
-                android:layout_below="@+id/regUserFirstName"
-                android:layout_alignParentStart="true" />
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="27dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        />
 
-            <EditText
-                android:id="@+id/regEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:hint="Email"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:layout_below="@+id/regFirstName"
-                android:layout_alignParentStart="true" />
+    <EditText
+        android:id="@+id/uLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Nachname"
+        android:layout_below="@+id/uFirstName"
+        />
 
-            <EditText
-                android:id="@+id/regUserPw1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Passwort"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:layout_marginTop="16dp"
-                android:layout_below="@+id/regEmail"
-                android:layout_alignParentStart="true" />
+    <EditText
+        android:id="@+id/uEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
 
+        android:layout_below="@+id/uLastName"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
 
+    <EditText
+        android:id="@+id/uPW1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:hint="Passwort"
+        android:layout_below="@+id/uEmail"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPassword" />
 
-            <EditText
-                android:id="@+id/regUserPw2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Passwort wiederholen"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:layout_marginTop="18dp"
-                android:layout_below="@+id/regUserPw1"
-                android:layout_alignParentStart="true" />
+    <EditText
+        android:id="@+id/uPW2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Passwort wiederholen"
+        android:layout_below="@+id/uPW1"
+        android:layout_marginTop="17dp"
+        android:ems="10"
+        android:inputType="textPassword" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginTop="62dp"
-                android:background="@android:color/darker_gray"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="BENUTZER INFORMATIONEN"
-                android:layout_below="@+id/regCommunePw"
-                android:layout_alignParentStart="true" />
-
-
-            <Button
-                android:id="@+id/regRegisterBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/regUserPw2"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorAccent"
-                android:text="GRÜNDEN"
-                android:textColor="@color/common_google_signin_btn_text_dark_default"
-                android:textColorLink="@android:color/holo_orange_dark" />
+    <Button
+        android:id="@+id/createBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="GRÜNDEN" />
 
 
-        </RelativeLayout>
-    </android.support.v4.widget.NestedScrollView>
-
-
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>
 
 
