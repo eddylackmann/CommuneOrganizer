@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         Button createBtn = (Button) findViewById(R.id.createBtn);
        Button registerBtn = (Button) findViewById(R.id.registerBtn);
         Button loginBtn = (Button) findViewById(R.id.signInBtn);
-        Button homeBtn = (Button) findViewById(R.id.homeBtn);
+
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,14 +47,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, create_commune.class);
-                startActivity(intent);
-            }
-        });
-
-        homeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Home.class);
                 startActivity(intent);
             }
         });

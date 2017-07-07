@@ -43,6 +43,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="222dp"
+            android:background="@android:color/holo_green_light"
             android:elevation="1dp"
             android:text="ANMELDEN"
             tools:layout_editor_absoluteX="8dp"
@@ -54,8 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/signInBtn"
-            android:layout_marginTop="14dp"
-            android:background="@android:color/holo_green_dark"
+            android:layout_marginTop="37dp"
+            android:background="@android:color/holo_green_light"
             android:text="WG-BEITRETEN" />
 
         <Button
@@ -64,19 +65,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/registerBtn"
-            android:layout_marginTop="28dp"
-            android:background="@android:color/holo_orange_dark"
-            android:text="WG-ERSTELLEN" />
-
-        <Button
-            android:id="@+id/homeBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/createBtn"
-            android:layout_marginTop="20dp"
-            android:background="@android:color/holo_orange_dark"
-            android:text="Startseite test" />
+            android:layout_marginTop="34dp"
+            android:background="@android:color/holo_green_light"
+            android:text="WG-GRÜNDEN" />
 
 
     </RelativeLayout>
