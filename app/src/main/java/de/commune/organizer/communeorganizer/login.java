@@ -1,6 +1,5 @@
 package de.commune.organizer.communeorganizer;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,24 +11,20 @@ import com.kosalgeek.asynctask.PostResponseAsyncTask;
 import com.kosalgeek.asynctask.AsyncResponse;
 
 public class login extends AppCompatActivity implements AsyncResponse {
-    private AlertDialog.Builder AlertBox;
     public PostResponseAsyncTask task;
     public my_Library Lib;
     public AppCompatActivity controller;
-    public boolean loggedIn = false;
-    public  AppCompatActivity c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        c = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        controller = this;
         init();
     }
 
     public void init(){
         Lib = new my_Library();
-        controller = this;
 
         final TextView userEmail = (TextView)findViewById(R.id.uEmailText);
         final TextView userPassword = (TextView)findViewById(R.id.uPasswordText);
@@ -64,7 +59,6 @@ public class login extends AppCompatActivity implements AsyncResponse {
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
                 break;
             case "loginWithoutCommune":
-                loggedIn = true;
                 Intent intent2 = new Intent(login.this, createOrJoinCommune.class);
                 startActivity(intent2);
 
@@ -73,18 +67,14 @@ public class login extends AppCompatActivity implements AsyncResponse {
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
                 break;
             case "wrongPassword":
-                loggedIn = false;
                 Lib.showMessage("Falsches Passwort!",controller);
                 task = new PostResponseAsyncTask(this);
                 break;
             case "userDoesNotExist":
-                loggedIn = false;
                 Lib.showMessage("Benutzer existiert nicht!",controller);
                 task = new PostResponseAsyncTask(this);
                 break;
         }
-
-
     }
 
     @Override

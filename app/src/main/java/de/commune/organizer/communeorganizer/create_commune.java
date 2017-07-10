@@ -59,7 +59,7 @@ public class create_commune extends AppCompatActivity implements AsyncResponse {
     public void processFinish(String s){
         switch (s)
         {
-            case "communeCreationSuccessfull":
+            case "communeCreationSuccessful":
                 Intent intent = new Intent(create_commune.this, Home.class);
                 startActivity(intent);
                 Lib.showMessage("Erstellen der WG erfolgreich.",controller);
