@@ -43,7 +43,7 @@
                 android:ems="10"
                 android:fontFamily="serif"
                 android:hint="Email"
-                android:inputType="textPersonName" />
+                android:inputType="textEmailAddress" />
 
             <EditText
                 android:id="@+id/uPasswordText"

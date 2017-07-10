@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class createOrJoinCommune extends AppCompatActivity {
     public AppCompatActivity controller;
+    public my_Library my_lib = new my_Library();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +21,6 @@ public class createOrJoinCommune extends AppCompatActivity {
         controller = this;
         Button enterComBtn = (Button) findViewById(R.id.enterComBtn);
         Button createBtn = (Button) findViewById(R.id.createBtn);
-
 
         enterComBtn.setOnClickListener(new View.OnClickListener() {
             @Override

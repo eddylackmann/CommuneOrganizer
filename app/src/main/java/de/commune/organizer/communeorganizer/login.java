@@ -56,6 +56,12 @@ public class login extends AppCompatActivity implements AsyncResponse {
                 loggedIn = true;
                 Intent intent2 = new Intent(login.this, createOrJoinCommune.class);
                 startActivity(intent2);
+
+                final TextView userEmail = (TextView)findViewById(R.id.uEmailText);
+                ((MyApplication) this.getApplication()).setUserEmail(userEmail.getText().toString());
+                final TextView userPassword = (TextView)findViewById(R.id.uPasswordText);
+                ((MyApplication) this.getApplication()).setUserPassword(userPassword.getText().toString());
+                ((MyApplication) this.getApplication()).setUserLoggedIn(true);
                 break;
             case "wrongPassword":
                 loggedIn = false;
