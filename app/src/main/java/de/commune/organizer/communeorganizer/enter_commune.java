@@ -47,7 +47,6 @@ public class enter_commune extends AppCompatActivity implements AsyncResponse {
     public void processFinish(String s){
         switch (s)
         {
-
         }
     }
 }

@@ -68,13 +68,12 @@ public class login extends AppCompatActivity implements AsyncResponse {
                 break;
             case "wrongPassword":
                 Lib.showMessage("Falsches Passwort!",controller);
-                task = new PostResponseAsyncTask(this);
                 break;
             case "userDoesNotExist":
                 Lib.showMessage("Benutzer existiert nicht!",controller);
-                task = new PostResponseAsyncTask(this);
                 break;
         }
+        task = new PostResponseAsyncTask(this);
     }
 
     @Override

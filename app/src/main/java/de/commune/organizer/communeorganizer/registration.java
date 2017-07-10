@@ -27,36 +27,37 @@ public class registration extends AppCompatActivity implements AsyncResponse {
         Lib = new my_Library();
         task = new PostResponseAsyncTask(this);
 
-        final TextView uEmailText = (TextView) findViewById(R.id.uEmailText);
-        final TextView uPasswordText = (TextView) findViewById(R.id.uPasswordText);
+        final TextView uEmailText = (TextView) findViewById(R.id.MailText);
+        final TextView uPasswordText = (TextView) findViewById(R.id.uPwText);
         final TextView uFirstname = (TextView) findViewById(R.id.uFirstname);
         final TextView uLastname = (TextView) findViewById(R.id.uLastname);
 
-        Button registerBtn = (Button)findViewById(R.id.registerBtn);
-        registerBtn.setOnClickListener(new View.OnClickListener() {
+        Button regBtn = (Button)findViewById(R.id.regBtn);
+        regBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                //fetch data from url
-                try {
-                    task.execute("http://eddy-home.ddns.net/wg-app/Temp_user.php?Method=registerUser&Email=" + uEmailText.getText() + "&Password=" + uPasswordText.getText() + "&Firstname=" + uFirstname.getText() + "&Lastname=" + uLastname.getText());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                public void onClick(View v) {
+                    //fetch data from url
+                    try {
+                        task.execute("http://eddy-home.ddns.net/wg-app/Temp_user.php?Method=registerUser&Email=" + uEmailText.getText() + "&Password=" + uPasswordText.getText() + "&Firstname=" + uFirstname.getText() + "&Lastname=" + uLastname.getText());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
             }
         });
     }
 
     @Override
     public void processFinish(String s){
-        final TextView uEmailText = (TextView) findViewById(R.id.uEmailText);
-        final TextView uPasswordText = (TextView) findViewById(R.id.uPasswordText);
+        final TextView uEmailText = (TextView) findViewById(R.id.MailText);
+        final TextView uPasswordText = (TextView) findViewById(R.id.uPwText);
         final TextView uFirstname = (TextView) findViewById(R.id.uFirstname);
         final TextView uLastname = (TextView) findViewById(R.id.uLastname);
 
         switch (s)
         {
             case "registrationSuccessful":
-                Intent intent = new Intent(registration.this, Home.class);
+                Intent intent = new Intent(registration.this, createOrJoinCommune.class);
                 startActivity(intent);
 
                 ((MyApplication) this.getApplication()).setUserEmail(uEmailText.getText().toString());
