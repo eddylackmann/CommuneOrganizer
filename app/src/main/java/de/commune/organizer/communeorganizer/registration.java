@@ -27,20 +27,31 @@ public class registration extends AppCompatActivity implements AsyncResponse {
         Lib = new my_Library();
         task = new PostResponseAsyncTask(this);
 
-        final TextView uEmailText = (TextView) findViewById(R.id.uEmailText);
-        final TextView uPasswordText = (TextView) findViewById(R.id.uPasswordText);
+        final TextView MailText = (TextView) findViewById(R.id.MailText);
+        final TextView uPwText = (TextView) findViewById(R.id.uPwText);
+        final TextView uPwRepeatText = (TextView) findViewById(R.id.uPwRepeatText);
         final TextView uFirstname = (TextView) findViewById(R.id.uFirstname);
         final TextView uLastname = (TextView) findViewById(R.id.uLastname);
 
-        Button registerBtn = (Button)findViewById(R.id.registerBtn);
-        registerBtn.setOnClickListener(new View.OnClickListener() {
+        Button regBtn = (Button)findViewById(R.id.regBtn);
+        regBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //fetch data from url
-                try {
-                    task.execute("http://eddy-home.ddns.net/wg-app/Temp_user.php?Method=registerUser&Email=" + uEmailText.getText() + "&Password=" + uPasswordText.getText() + "&Firstname=" + uFirstname.getText() + "&Lastname=" + uLastname.getText());
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if(uPwText.getText().toString().equals(uPwRepeatText.getText().toString()))
+                {
+                    try
+                    {
+                        task.execute("http://eddy-home.ddns.net/wg-app/Temp_user.php?Method=registerUser&Email=" + MailText.getText() + "&Password=" + uPwText.getText() + "&Firstname=" + uFirstname.getText() + "&Lastname=" + uLastname.getText());
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+                else
+                {
+                    Lib.showMessage("Passwörter stimmen nicht überein!",controller);
                 }
             }
         });
@@ -48,19 +59,19 @@ public class registration extends AppCompatActivity implements AsyncResponse {
 
     @Override
     public void processFinish(String s){
-        final TextView uEmailText = (TextView) findViewById(R.id.uEmailText);
-        final TextView uPasswordText = (TextView) findViewById(R.id.uPasswordText);
+        final TextView MailText = (TextView) findViewById(R.id.MailText);
+        final TextView uPwText = (TextView) findViewById(R.id.uPwText);
         final TextView uFirstname = (TextView) findViewById(R.id.uFirstname);
         final TextView uLastname = (TextView) findViewById(R.id.uLastname);
 
         switch (s)
         {
             case "registrationSuccessful":
-                Intent intent = new Intent(registration.this, Home.class);
+                Intent intent = new Intent(registration.this, createOrJoinCommune.class);
                 startActivity(intent);
 
-                ((MyApplication) this.getApplication()).setUserEmail(uEmailText.getText().toString());
-                ((MyApplication) this.getApplication()).setUserPassword(uPasswordText.getText().toString());
+                ((MyApplication) this.getApplication()).setUserEmail(MailText.getText().toString());
+                ((MyApplication) this.getApplication()).setUserPassword(uPwText.getText().toString());
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
                 break;
             case "userAlreadyExists":
