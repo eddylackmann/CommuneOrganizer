@@ -2,16 +2,16 @@ package de.commune.organizer.communeorganizer;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.kosalgeek.asynctask.PostResponseAsyncTask;
 import com.kosalgeek.asynctask.AsyncResponse;
+import com.kosalgeek.asynctask.PostResponseAsyncTask;
 
-public class login extends AppCompatActivity implements AsyncResponse {
+public class enter_commune extends AppCompatActivity implements AsyncResponse {
     private AlertDialog.Builder AlertBox;
     public PostResponseAsyncTask task;
     public my_Library Lib;
@@ -21,7 +21,7 @@ public class login extends AppCompatActivity implements AsyncResponse {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_enter_commune);
         init();
     }
 
@@ -32,9 +32,9 @@ public class login extends AppCompatActivity implements AsyncResponse {
 
         final TextView userEmail = (TextView)findViewById(R.id.uEmailText);
         final TextView userPassword = (TextView)findViewById(R.id.uPasswordText);
-        Button loginBtn = (Button) findViewById(R.id.signInBtn);
+        Button createBtn = (Button) findViewById(R.id.createBtn);
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
+        createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //fetch data from url
@@ -47,29 +47,7 @@ public class login extends AppCompatActivity implements AsyncResponse {
     public void processFinish(String s){
         switch (s)
         {
-            case "loginSuccessfull":
-                Intent intent = new Intent(login.this, Home.class);
-                startActivity(intent);
-                loggedIn = true;
-                break;
-            case "loginWithoutCommune":
-                loggedIn = true;
-                Intent intent2 = new Intent(login.this, createOrJoinCommune.class);
-                startActivity(intent2);
-                break;
-            case "wrongPassword":
-                loggedIn = false;
-                Lib.showMessage("Falsches Passwort!",controller);
-                break;
-            case "userDoesNotExist":
-                loggedIn = false;
-                Lib.showMessage("Benutzer existiert nicht!",controller);
-                break;
+
         }
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
     }
 }

@@ -20,4 +20,12 @@ public class my_Library {
         AlertBox.show();
      }
 
+
+     public void check_connection (String Link){
+
+
+
+     }
+
+
 }

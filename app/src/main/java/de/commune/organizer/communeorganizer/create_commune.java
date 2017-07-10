@@ -1,14 +1,78 @@
 package de.commune.organizer.communeorganizer;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-public class create_commune extends AppCompatActivity {
+import com.kosalgeek.asynctask.PostResponseAsyncTask;
+import com.kosalgeek.asynctask.AsyncResponse;
+
+public class create_commune extends AppCompatActivity implements AsyncResponse {
+    private AlertDialog.Builder AlertBox;
+    public PostResponseAsyncTask task;
+    public my_Library Lib;
+    public AppCompatActivity controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_commune);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        init();
+    }
+    public void init(){
+        Lib = new my_Library();
+        task = new PostResponseAsyncTask(this);
+        controller = this;
+
+        final TextView comAddressText = (TextView)findViewById(R.id.comAddressText);
+        final TextView comZipText = (TextView)findViewById(R.id.comZipText);
+        final TextView comCityText = (TextView)findViewById(R.id.comCityText);
+        final TextView comPW1 = (TextView)findViewById(R.id.comPW1);
+        final TextView comPW2 = (TextView)findViewById(R.id.comPW2);
+        //final TextView uEmailText = (TextView)findViewById(R.id.uEmailText);
+        Button createBtn = (Button) findViewById(R.id.createBtn);
+
+        createBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (comPW1.getText().toString().equals(comPW2.getText().toString()))
+                {
+                    //fetch data from url
+                    task.execute("http://eddy-home.ddns.net/wg-app/Temp_user.php?Method=registerCommune&communePassword="
+                            + comPW1.getText() + "&address=" + comAddressText.getText() + "&postCode=" + comZipText.getText()
+                            + "&city=" + comCityText.getText());
+                    // Hier fehlt die Email Adresse der Benutzers der sich eingeloggt hat.
+                }
+                else
+                {
+                    Lib.showMessage("Die Passwörter stimmen nicht überein!",controller);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void processFinish(String s){
+        switch (s)
+        {
+            case "communeCreationSuccessfull":
+                Intent intent = new Intent(create_commune.this, Home.class);
+                startActivity(intent);
+                Lib.showMessage("Erstellen der WG erfolgreich.",controller);
+                break;
+            case "communeCreationFailed":
+                Lib.showMessage("Erstellen der WG fehlgeschlagen! Bitte versuchen Sie es erneut.",controller);
+                break;
+        }
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }
