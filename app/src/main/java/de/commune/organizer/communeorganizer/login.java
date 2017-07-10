@@ -17,9 +17,11 @@ public class login extends AppCompatActivity implements AsyncResponse {
     public my_Library Lib;
     public AppCompatActivity controller;
     public boolean loggedIn = false;
+    public  AppCompatActivity c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        c = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         init();
@@ -27,51 +29,62 @@ public class login extends AppCompatActivity implements AsyncResponse {
 
     public void init(){
         Lib = new my_Library();
-        task = new PostResponseAsyncTask(this);
         controller = this;
 
         final TextView userEmail = (TextView)findViewById(R.id.uEmailText);
         final TextView userPassword = (TextView)findViewById(R.id.uPasswordText);
         Button loginBtn = (Button) findViewById(R.id.signInBtn);
-
+        task = new PostResponseAsyncTask(this);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //fetch data from url
-                task.execute("http://eddy-home.ddns.net/wg-app/Temp_user.php?Method=loginUser&Email=" + userEmail.getText() + "&Password=" + userPassword.getText());
+                try {
+                    task.execute("http://eddy-home.ddns.net/wg-app/Temp_user.php?Method=loginUser&Email=" + userEmail.getText() + "&Password=" + userPassword.getText());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
         });
     }
 
     @Override
     public void processFinish(String s){
+        final TextView userEmail = (TextView)findViewById(R.id.uEmailText);
+        final TextView userPassword = (TextView)findViewById(R.id.uPasswordText);
         switch (s)
         {
             case "loginSuccessfull":
                 Intent intent = new Intent(login.this, Home.class);
                 startActivity(intent);
-                loggedIn = true;
+
+                ((MyApplication) this.getApplication()).setUserEmail(userEmail.getText().toString());
+                ((MyApplication) this.getApplication()).setUserPassword(userPassword.getText().toString());
+                ((MyApplication) this.getApplication()).setUserLoggedIn(true);
                 break;
             case "loginWithoutCommune":
                 loggedIn = true;
                 Intent intent2 = new Intent(login.this, createOrJoinCommune.class);
                 startActivity(intent2);
 
-                final TextView userEmail = (TextView)findViewById(R.id.uEmailText);
                 ((MyApplication) this.getApplication()).setUserEmail(userEmail.getText().toString());
-                final TextView userPassword = (TextView)findViewById(R.id.uPasswordText);
                 ((MyApplication) this.getApplication()).setUserPassword(userPassword.getText().toString());
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
                 break;
             case "wrongPassword":
                 loggedIn = false;
                 Lib.showMessage("Falsches Passwort!",controller);
+                task = new PostResponseAsyncTask(this);
                 break;
             case "userDoesNotExist":
                 loggedIn = false;
                 Lib.showMessage("Benutzer existiert nicht!",controller);
+                task = new PostResponseAsyncTask(this);
                 break;
         }
+
+
     }
 
     @Override
