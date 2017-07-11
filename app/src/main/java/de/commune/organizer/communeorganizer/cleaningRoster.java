@@ -2,12 +2,7 @@ package de.commune.organizer.communeorganizer;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.GridView;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
@@ -63,7 +58,7 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
             JSONArray array = new JSONArray(s);
             for (int i = 0; i < array.length(); i++) {
                 JSONObject row = array.getJSONObject(i);
-                animalList.add(new Item(row.getString("Description"),row.getString("UserEmail")));
+                animalList.add(new Item(row.getString("FromDate") +" - " + row.getString("ToDate"),row.getString("Description")));
             }
             MyAdapter myAdapter=new MyAdapter(this,R.layout.grid_view_items,animalList);
             simpleList.setAdapter(myAdapter);
