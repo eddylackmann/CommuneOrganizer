@@ -1,6 +1,7 @@
 package de.commune.organizer.communeorganizer;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,11 +19,20 @@ public class login extends AppCompatActivity implements AsyncResponse {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
         controller = this;
+        setLayout();
         init();
+
     }
 
+    public void setLayout(){
+        TextView emailHint = (TextView) findViewById(R.id.uEmailText);
+        emailHint.setHintTextColor(Color.WHITE);
+        TextView passHint = (TextView) findViewById(R.id.uPasswordText);
+        passHint.setHintTextColor(Color.WHITE);
+    }
     public void init(){
         Lib = new my_Library();
 
