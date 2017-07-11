@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="144dp"
+                app:contentScrim="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+                app:toolbarId="@+id/toolbar">
+
+                <TextView
+                    android:id="@+id/anmldText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="USER INFO"
+                    android:textColor="#FFFF"
+                    android:textSize="25sp" />
+            </android.support.design.widget.AppBarLayout>
+
+            <LinearLayout
+                android:id="@+id/linInfoLayout1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/appbar"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/infoemailText"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="Email:" />
+
+                <TextView
+                    android:id="@+id/infoEmailTextInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:hint="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linInfoLayout2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linInfoLayout1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/infoPWText"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="Passwort:" />
+
+                <TextView
+                    android:id="@+id/infoPWTextInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linInfoLayout3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linInfoLayout2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/infoFirstnameText"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="Vorname:" />
+
+                <TextView
+                    android:id="@+id/infoFirstnameTextInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linInfoLayout4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linInfoLayout3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/infolastnameText"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="Nachname:" />
+
+                <TextView
+                    android:id="@+id/infoLastnameTextInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linInfoLayout5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linInfoLayout4"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/infobirthdayText"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="Geburtsdatum:" />
+
+                <TextView
+                    android:id="@+id/infoBirthdayTextInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linInfoLayout8"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linInfoLayout5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/infocommuneFeeText"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:hint="WG-Kasse:" />
+
+                <TextView
+                    android:id="@+id/infocommuneFeeTextInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:fontFamily="serif"
+                    android:hint=""
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/changeInfoBtn"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/linInfoLayout8"
+                android:layout_marginTop="15dp"
+                android:background="@android:color/holo_green_dark"
+                android:gravity="center_vertical|center_horizontal"
+                android:hint="INFORMATIONEN BEARBEITEN"
+                android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/changeInfoBtn"
+                android:layout_marginTop="15dp"
+                android:background="@android:color/holo_red_dark"
+                android:gravity="center_vertical|center_horizontal"
+                android:hint="WG VERLASSEN"
+                android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
