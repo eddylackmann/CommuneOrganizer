@@ -65,6 +65,7 @@ public class login extends AppCompatActivity implements AsyncResponse {
                 ((MyApplication) this.getApplication()).setUserEmail(userEmail.getText().toString());
                 ((MyApplication) this.getApplication()).setUserPassword(userPassword.getText().toString());
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
+
                 break;
             case "wrongPassword":
                 Lib.showMessage("Falsches Passwort!",controller);
