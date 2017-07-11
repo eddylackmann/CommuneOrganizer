@@ -44,7 +44,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     public void init(){
-        TextView displayName = (TextView)findViewById(R.id.UserHomeNameText);
+
 
 
 
