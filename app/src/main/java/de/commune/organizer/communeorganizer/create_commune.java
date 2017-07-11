@@ -33,8 +33,8 @@ public class create_commune extends AppCompatActivity implements AsyncResponse {
         final TextView comCityText = (TextView)findViewById(R.id.comCityText);
         final TextView comPW1 = (TextView)findViewById(R.id.comPW1);
         final TextView comPW2 = (TextView)findViewById(R.id.comPW2);
-        //final TextView uEmailText = (TextView)findViewById(R.id.uEmailText);
         Button createBtn = (Button) findViewById(R.id.createBtn);
+        final String globalUserEmail = ((MyApplication) this.getApplication()).getUserEmail();
 
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,10 +43,9 @@ public class create_commune extends AppCompatActivity implements AsyncResponse {
                 if (comPW1.getText().toString().equals(comPW2.getText().toString()))
                 {
                     //fetch data from url
-                    task.execute("http://eddy-home.ddns.net/wg-app/Temp_user.php?Method=registerCommune&communePassword="
+                    task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=registerCommune&communePassword="
                             + comPW1.getText() + "&address=" + comAddressText.getText() + "&postCode=" + comZipText.getText()
-                            + "&city=" + comCityText.getText());
-                    // Hier fehlt die Email Adresse der Benutzers der sich eingeloggt hat.
+                            + "&city=" + comCityText.getText() + "&Email=" + globalUserEmail);
                 }
                 else
                 {
@@ -60,7 +59,7 @@ public class create_commune extends AppCompatActivity implements AsyncResponse {
     public void processFinish(String s){
         switch (s)
         {
-            case "communeCreationSuccessfull":
+            case "communeCreationSuccessful":
                 Intent intent = new Intent(create_commune.this, Home.class);
                 startActivity(intent);
                 Lib.showMessage("Erstellen der WG erfolgreich.",controller);

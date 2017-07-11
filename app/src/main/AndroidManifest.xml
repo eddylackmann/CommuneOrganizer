@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -27,7 +28,8 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".createOrJoinCommune" />
-        <activity android:name=".enter_commune"></activity>
+        <activity android:name=".enter_commune"/>
+        <activity android:name=".cleaningRoster" />
     </application>
 
 </manifest>

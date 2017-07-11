@@ -21,11 +21,6 @@ public class my_Library {
      }
 
 
-     public void check_connection (String Link){
-
-
-
-     }
 
 
 }
