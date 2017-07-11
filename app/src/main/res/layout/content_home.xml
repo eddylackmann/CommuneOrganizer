@@ -5,56 +5,87 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_height="192dp"
-        android:layout_width="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical"
+        android:id="@+id/fixedlayout" >
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/wg_e"
+            android:scaleType="centerCrop" />
 
-        <TextView
-            android:id="@+id/appbaTitle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="HOME"
-            android:textColor="#FFFF"
-            android:textSize="25sp" />
+    </LinearLayout>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_below="@+id/fixedlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBlack"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
-    </android.support.design.widget.AppBarLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_below="@+id/fixedlayout"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:id="@+id/fluidlayout"
+    >
 
 
-        <Button
-            android:id="@+id/button2"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/homebtn1"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="KASSE: 350 €"
+            android:textColor="@android:color/holo_green_dark"
+            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:text="Verwaltung" />
-
+            android:layout_marginTop="29dp" />
         <Button
-            android:id="@+id/button3"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/button2"
-            android:layout_alignBottom="@+id/button2"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="28dp"
-            android:background="@android:color/holo_green_dark"
-            android:text="Einstellung"
-            android:textColor="@color/common_google_signin_btn_text_dark_default" />
-
-
-
-
+            android:id="@+id/homeTask"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Meine Aufgaben"
+            android:textColor="#000"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/homebtn1"
+            android:layout_alignParentStart="true" />
+        <Button
+            android:id="@+id/homeShoopingList"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Einkaufliste"
+            android:textColor="#000"
+            android:layout_marginTop="18dp"
+            android:layout_below="@+id/homeTask"
+            android:layout_alignParentStart="true" />
+        <Button
+            android:id="@+id/homeAct"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Nächste Aktivitäten"
+            android:textColor="#000"
+            android:layout_marginTop="17dp"
+            android:layout_below="@+id/homeShoopingList"
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
-
-
+</android.support.v4.widget.NestedScrollView>
 
 </RelativeLayout>

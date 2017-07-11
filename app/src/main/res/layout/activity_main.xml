@@ -30,7 +30,7 @@
             android:id="@+id/signInBtn"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_marginTop="49dp"
             android:background="@android:color/white"
             android:elevation="1dp"
@@ -43,7 +43,7 @@
         <Button
             android:id="@+id/registerBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_marginTop="25dp"
             android:background="@android:color/black"
             android:text="REGISTRIEREN"
