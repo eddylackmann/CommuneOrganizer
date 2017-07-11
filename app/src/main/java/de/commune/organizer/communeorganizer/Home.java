@@ -116,8 +116,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         }
         task = new PostResponseAsyncTask(this);
 
-        String titleText = "Willkommen, " + ((MyApplication) this.getApplication()).getInformation("Firstname") + " " + ((MyApplication) this.getApplication()).getInformation("Lastname");
-        final Toolbar homeUserEmailText = (Toolbar)findViewById(R.id.homeUserEmailText);
-        homeUserEmailText.setTitle(titleText);
+        //String titleText = "Willkommen, " + ((MyApplication) this.getApplication()).getInformation("Firstname") + " " + ((MyApplication) this.getApplication()).getInformation("Lastname");
+
     }
 }
