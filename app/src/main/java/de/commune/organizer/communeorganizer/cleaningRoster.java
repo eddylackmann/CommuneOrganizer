@@ -53,8 +53,6 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
 
         try
         {
-            int id;
-            String name;
             JSONArray array = new JSONArray(s);
             for (int i = 0; i < array.length(); i++) {
                 JSONObject row = array.getJSONObject(i);

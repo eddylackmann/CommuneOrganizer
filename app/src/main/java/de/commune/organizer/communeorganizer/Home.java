@@ -1,6 +1,7 @@
 package de.commune.organizer.communeorganizer;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,7 +23,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
-public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AsyncResponse {
+
+    private PostResponseAsyncTask task;
+    private my_Library Lib = new my_Library();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +43,16 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         init();
-       // final TextView appbaTitle = (TextView)findViewById(R.id.appbaTitle);
-
     }
 
     public void init(){
-
-
-
-
+        task = new PostResponseAsyncTask(this);
+        try {
+            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=getUserInformation&Email=" + ((MyApplication) this.getApplication()).getUserEmail());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -106,5 +111,20 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void processFinish(String s){
+        try{
+            ((MyApplication) this.getApplication()).setUserArray(new JSONArray(s));
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        task = new PostResponseAsyncTask(this);
+
+        String titleText = "Willkommen, " + ((MyApplication) this.getApplication()).getUserInformation("Firstname") + " " + ((MyApplication) this.getApplication()).getUserInformation("Lastname");
+        final Toolbar homeUserEmailText = (Toolbar)findViewById(R.id.homeUserEmailText);
+        homeUserEmailText.setTitle(titleText);
     }
 }

@@ -66,10 +66,10 @@ public class login extends AppCompatActivity implements AsyncResponse {
             case "loginSuccessfull":
                 Intent intent = new Intent(login.this, Home.class);
                 startActivity(intent);
-
                 ((MyApplication) this.getApplication()).setUserEmail(userEmail.getText().toString());
                 ((MyApplication) this.getApplication()).setUserPassword(userPassword.getText().toString());
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
+                //((MyApplication) this.getApplication()).getUserArray();
                 break;
             case "loginWithoutCommune":
                 Intent intent2 = new Intent(login.this, createOrJoinCommune.class);
@@ -78,7 +78,7 @@ public class login extends AppCompatActivity implements AsyncResponse {
                 ((MyApplication) this.getApplication()).setUserEmail(userEmail.getText().toString());
                 ((MyApplication) this.getApplication()).setUserPassword(userPassword.getText().toString());
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
-
+               // ((MyApplication) this.getApplication()).getUserArray();
                 break;
             case "wrongPassword":
 
@@ -90,9 +90,6 @@ public class login extends AppCompatActivity implements AsyncResponse {
         }
         task = new PostResponseAsyncTask(this);
     }
-
-
-
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
