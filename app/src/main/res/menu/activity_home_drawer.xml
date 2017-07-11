@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_camera"
@@ -23,13 +24,28 @@
     <item android:title="Einstellung">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_edit_users"
                 android:icon="@drawable/ic_menu_manage"
                 android:title="Benutzer Verwaltung" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_commune_setting"
                 android:icon="@drawable/ic_menu_manage"
                 android:title="WG Einstellung" />
+        </menu>
+    </item>
+
+    <item android:title="Weitere">
+        <menu>
+            <item
+                android:id="@+id/app_information"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Infos" />
+            <item
+                android:id="@+id/nav_Logout"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Abmelden"
+
+                />
         </menu>
     </item>
 
