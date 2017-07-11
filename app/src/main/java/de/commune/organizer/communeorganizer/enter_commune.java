@@ -12,11 +12,9 @@ import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
 
 public class enter_commune extends AppCompatActivity implements AsyncResponse {
-    private AlertDialog.Builder AlertBox;
     public PostResponseAsyncTask task;
     public my_Library Lib;
     public AppCompatActivity controller;
-    public boolean loggedIn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

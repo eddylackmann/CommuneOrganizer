@@ -29,6 +29,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".createOrJoinCommune" />
         <activity android:name=".enter_commune"/>
+        <activity android:name=".cleaningRoster" />
     </application>
 
 </manifest>

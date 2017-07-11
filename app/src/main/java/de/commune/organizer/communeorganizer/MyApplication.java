@@ -1,5 +1,4 @@
 package de.commune.organizer.communeorganizer;
-
 import android.app.Application;
 
 /**
@@ -14,23 +13,18 @@ public class MyApplication extends Application {
     public String getUserEmail() {
         return userEmail;
     }
-
     public void setUserEmail(String newUserEmail){
         userEmail = newUserEmail;
     }
-
     public String getUserPassword(){
         return userPassword;
     }
-
     public void setUserPassword (String newUserPassword){
         userPassword = newUserPassword;
     }
-
     public Boolean getUserLoggedIn(){
         return userLoggedIn;
     }
-
     public void setUserLoggedIn (Boolean newUserLoggedIn){
         userLoggedIn = newUserLoggedIn;
     }
