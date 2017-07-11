@@ -38,8 +38,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        init();
        // final TextView appbaTitle = (TextView)findViewById(R.id.appbaTitle);
+
+    }
+
+    public void init(){
+        TextView displayName = (TextView)findViewById(R.id.UserHomeNameText);
+
+
 
     }
 

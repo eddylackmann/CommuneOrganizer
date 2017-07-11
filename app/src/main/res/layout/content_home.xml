@@ -11,12 +11,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:orientation="vertical"
-        android:id="@+id/fixedlayout" >
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:src="@drawable/wg_e"
-            android:scaleType="centerCrop" />
+        android:background="@drawable/wg_e"
+        android:id="@+id/fixedlayout"
+        android:scaleType="centerCrop">
+
+
 
     </LinearLayout>
     <android.support.v4.widget.NestedScrollView
