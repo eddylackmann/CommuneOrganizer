@@ -35,7 +35,7 @@ public class login extends AppCompatActivity implements AsyncResponse {
             public void onClick(View v) {
                 //fetch data from url
                 try {
-                    task.execute("http://eddy-home.ddns.net/wg-app/Temp_user.php?Method=loginUser&Email=" + userEmail.getText() + "&Password=" + userPassword.getText());
+                    task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=loginUser&Email=" + userEmail.getText() + "&Password=" + userPassword.getText());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

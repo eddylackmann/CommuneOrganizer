@@ -42,7 +42,7 @@ public class registration extends AppCompatActivity implements AsyncResponse {
                 {
                     try
                     {
-                        task.execute("http://eddy-home.ddns.net/wg-app/Temp_user.php?Method=registerUser&Email=" + MailText.getText() + "&Password=" + uPwText.getText() + "&Firstname=" + uFirstname.getText() + "&Lastname=" + uLastname.getText());
+                        task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=registerUser&Email=" + MailText.getText() + "&Password=" + uPwText.getText() + "&Firstname=" + uFirstname.getText() + "&Lastname=" + uLastname.getText());
                     }
                     catch (Exception e)
                     {

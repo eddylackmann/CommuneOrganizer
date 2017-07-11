@@ -43,7 +43,7 @@ public class create_commune extends AppCompatActivity implements AsyncResponse {
                 if (comPW1.getText().toString().equals(comPW2.getText().toString()))
                 {
                     //fetch data from url
-                    task.execute("http://eddy-home.ddns.net/wg-app/Temp_user.php?Method=registerCommune&communePassword="
+                    task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=registerCommune&communePassword="
                             + comPW1.getText() + "&address=" + comAddressText.getText() + "&postCode=" + comZipText.getText()
                             + "&city=" + comCityText.getText() + "&Email=" + globalUserEmail);
                 }
