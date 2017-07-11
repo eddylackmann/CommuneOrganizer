@@ -38,20 +38,26 @@ public class registration extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View v) {
                 //fetch data from url
-                if(uPwText.getText().toString().equals(uPwRepeatText.getText().toString()))
-                {
-                    try
-                    {
-                        task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=registerUser&Email=" + MailText.getText() + "&Password=" + uPwText.getText() + "&Firstname=" + uFirstname.getText() + "&Lastname=" + uLastname.getText());
+
+                if(MailText.getText().toString().trim().equals("")| uPwText.getText().toString().trim().equals("")
+                   | uFirstname.getText().toString().trim().equals("") | uLastname.getText().toString().trim().equals("")
+                        ){
+                    MailText.setError("Erforderlich !");
+                    uPwText.setError("Erforderlich !");
+                    uFirstname.setError("Erforderlich !");
+                    uLastname.setError("Erforderlich !");
+                }else {
+                    if (uPwText.getText().toString().equals(uPwRepeatText.getText().toString())) {
+
+                        try {
+                            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=registerUser&Email=" + MailText.getText() + "&Password=" + uPwText.getText() + "&Firstname=" + uFirstname.getText() + "&Lastname=" + uLastname.getText());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        uPwText.setError("Passwörter stimmen nicht überein!");
+                        uPwRepeatText.setError("Passwörter stimmen nicht überein!");
                     }
-                    catch (Exception e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-                else
-                {
-                    Lib.showMessage("Passwörter stimmen nicht überein!",controller);
                 }
             }
         });
@@ -79,6 +85,7 @@ public class registration extends AppCompatActivity implements AsyncResponse {
                 task = new PostResponseAsyncTask(this);
                 break;
         }
+        task = new PostResponseAsyncTask(this);
     }
 
     @Override

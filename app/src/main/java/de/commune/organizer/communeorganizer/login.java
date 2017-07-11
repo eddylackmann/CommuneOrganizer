@@ -42,13 +42,17 @@ public class login extends AppCompatActivity implements AsyncResponse {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //fetch data from url
-                try {
-                    task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=loginUser&Email=" + userEmail.getText() + "&Password=" + userPassword.getText());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
 
+                if(userEmail.getText().toString().trim().equals("")| userPassword.getText().toString().trim().equals("")){
+                    userEmail.setError("Bitte tragen Sie Ihre Email ein!");
+                }else {
+                    //fetch data from url
+                    try {
+                        task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=loginUser&Email=" + userEmail.getText() + "&Password=" + userPassword.getText());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
     }
@@ -86,6 +90,9 @@ public class login extends AppCompatActivity implements AsyncResponse {
         }
         task = new PostResponseAsyncTask(this);
     }
+
+
+
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
