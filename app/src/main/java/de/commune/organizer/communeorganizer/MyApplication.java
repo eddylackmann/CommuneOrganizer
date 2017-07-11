@@ -1,10 +1,5 @@
 package de.commune.organizer.communeorganizer;
 import android.app.Application;
-import android.os.AsyncTask;
-
-import com.kosalgeek.asynctask.AsyncResponse;
-import com.kosalgeek.asynctask.PostResponseAsyncTask;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -14,44 +9,48 @@ import org.json.JSONObject;
 
 public class MyApplication extends Application {
     private String userEmail;
-    private String userPassword;
-    private Boolean userLoggedIn;
-    private JSONArray userArray;
+    private int communeID;
+    private boolean userLoggedIn;
+    private JSONArray informationArray;
 
     public String getUserEmail() {
         return userEmail;
     }
-    public void setUserEmail(String newUserEmail){
+
+    public void setUserEmail(String newUserEmail) {
         userEmail = newUserEmail;
     }
-    public String getUserPassword(){
-        return userPassword;
+
+    public int getCommuneID() {
+        return communeID;
     }
-    public void setUserPassword (String newUserPassword){
-        userPassword = newUserPassword;
+
+    public void setCommuneID(int newCommuneID) {
+        communeID = newCommuneID;
     }
-    public Boolean getUserLoggedIn(){
+
+    public boolean getUserLoggedIn() {
         return userLoggedIn;
     }
-    public void setUserLoggedIn (Boolean newUserLoggedIn){
+
+    public void setUserLoggedIn(boolean newUserLoggedIn) {
         userLoggedIn = newUserLoggedIn;
     }
 
-    public String getUserInformation(String field){
+    public String getInformation(String field) {
         String result = "";
         try {
-            for (int i = 0; i < this.userArray.length(); i++) {
-                JSONObject row = this.userArray.getJSONObject(i);
+            for (int i = 0; i < this.informationArray.length(); i++) {
+                JSONObject row = this.informationArray.getJSONObject(i);
                 result = row.getString(field);
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
     }
 
-    public void setUserArray(JSONArray newUserArray){
-        userArray = newUserArray;
+    public void setInformationArray(JSONArray newInformationArray) {
+        informationArray = newInformationArray;
     }
 }

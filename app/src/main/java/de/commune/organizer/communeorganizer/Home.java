@@ -48,7 +48,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public void init(){
         task = new PostResponseAsyncTask(this);
         try {
-            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=getUserInformation&Email=" + ((MyApplication) this.getApplication()).getUserEmail());
+            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=getInformation&Email=" + ((MyApplication) this.getApplication()).getUserEmail());
         }
         catch (Exception e){
             e.printStackTrace();
@@ -116,14 +116,14 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void processFinish(String s){
         try{
-            ((MyApplication) this.getApplication()).setUserArray(new JSONArray(s));
+            ((MyApplication) this.getApplication()).setInformationArray(new JSONArray(s));
         }
         catch (Exception e){
             e.printStackTrace();
         }
         task = new PostResponseAsyncTask(this);
 
-        String titleText = "Willkommen, " + ((MyApplication) this.getApplication()).getUserInformation("Firstname") + " " + ((MyApplication) this.getApplication()).getUserInformation("Lastname");
+        String titleText = "Willkommen, " + ((MyApplication) this.getApplication()).getInformation("Firstname") + " " + ((MyApplication) this.getApplication()).getInformation("Lastname");
         final Toolbar homeUserEmailText = (Toolbar)findViewById(R.id.homeUserEmailText);
         homeUserEmailText.setTitle(titleText);
     }

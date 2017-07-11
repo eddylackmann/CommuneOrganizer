@@ -67,18 +67,14 @@ public class login extends AppCompatActivity implements AsyncResponse {
                 Intent intent = new Intent(login.this, Home.class);
                 startActivity(intent);
                 ((MyApplication) this.getApplication()).setUserEmail(userEmail.getText().toString());
-                ((MyApplication) this.getApplication()).setUserPassword(userPassword.getText().toString());
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
-                //((MyApplication) this.getApplication()).getUserArray();
                 break;
             case "loginWithoutCommune":
                 Intent intent2 = new Intent(login.this, createOrJoinCommune.class);
                 startActivity(intent2);
 
                 ((MyApplication) this.getApplication()).setUserEmail(userEmail.getText().toString());
-                ((MyApplication) this.getApplication()).setUserPassword(userPassword.getText().toString());
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
-               // ((MyApplication) this.getApplication()).getUserArray();
                 break;
             case "wrongPassword":
 

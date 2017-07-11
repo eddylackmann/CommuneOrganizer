@@ -77,9 +77,7 @@ public class registration extends AppCompatActivity implements AsyncResponse {
                 startActivity(intent);
 
                 ((MyApplication) this.getApplication()).setUserEmail(MailText.getText().toString());
-                ((MyApplication) this.getApplication()).setUserPassword(uPwText.getText().toString());
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
-                //((MyApplication) this.getApplication()).getUserArray();
                 break;
             case "userAlreadyExists":
                 Lib.showMessage("Benutzer existiert bereits!",this);
