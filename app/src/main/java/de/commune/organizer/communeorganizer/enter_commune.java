@@ -30,15 +30,15 @@ public class enter_commune extends AppCompatActivity implements AsyncResponse {
         task = new PostResponseAsyncTask(this);
         controller = this;
 
-        final TextView userEmail = (TextView)findViewById(R.id.uEmailText);
-        final TextView userPassword = (TextView)findViewById(R.id.uPasswordText);
-        Button createBtn = (Button) findViewById(R.id.createBtn);
-
-        createBtn.setOnClickListener(new View.OnClickListener() {
+        final TextView communeID = (TextView)findViewById(R.id.communeID);
+        final TextView communePwText = (TextView)findViewById(R.id.communePwText);
+        final String globalUserEmail = ((MyApplication) this.getApplication()).getUserEmail();
+        Button joinBtn = (Button) findViewById(R.id.joinBtn);
+        joinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //fetch data from url
-                task.execute("http://eddy-home.ddns.net/wg-app/Temp_user.php?Method=loginUser&Email=" + userEmail.getText() + "&Password=" + userPassword.getText());
+                task.execute("http://eddy-home.ddns.net/wg-app/Temp_user.php?Method=enterCommune&communeID=" + communeID.getText() + "&communePassword=" + communePwText.getText() + "&Email=" + globalUserEmail);
             }
         });
     }
@@ -47,6 +47,17 @@ public class enter_commune extends AppCompatActivity implements AsyncResponse {
     public void processFinish(String s){
         switch (s)
         {
+            case "successfulEnter":
+                Intent intent = new Intent(enter_commune.this, Home.class);
+                startActivity(intent);
+                Lib.showMessage("Beitreten der WG erfolgreich.",this);
+                break;
+            case "noPlaceInCommune":
+                Lib.showMessage("Keine freien Plätze in der WG verfügbar!", this);
+                break;
+            case "communeDoesNotExist":
+                Lib.showMessage("WG existiert nicht!",this);
+                break;
         }
     }
 }
