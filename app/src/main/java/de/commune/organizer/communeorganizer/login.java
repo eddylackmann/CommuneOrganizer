@@ -19,7 +19,6 @@ public class login extends AppCompatActivity implements AsyncResponse {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_login);
         controller = this;
         setLayout();
