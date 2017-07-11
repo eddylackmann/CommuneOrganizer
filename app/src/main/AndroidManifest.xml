@@ -30,6 +30,7 @@
         <activity android:name=".createOrJoinCommune" />
         <activity android:name=".enter_commune"/>
         <activity android:name=".cleaningRoster" />
+        <activity android:name=".activity_userInfo"/>
     </application>
 
 </manifest>
