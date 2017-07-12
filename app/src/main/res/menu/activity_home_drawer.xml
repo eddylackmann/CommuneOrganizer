@@ -4,21 +4,21 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_shoppingTask"
             android:icon="@drawable/ic_add_shopping_cart"
             android:title="Einkaufsplan" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_cleaningTask"
             android:icon="@drawable/ic_pets"
             android:title="Putzplan" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_activityTask"
             android:icon="@drawable/ic_extension"
             android:title="Aktivitäten" />
 
     </group>
 
-    <item android:title="Einstellung">
+    <item android:title="Einstellungen">
         <menu>
             <item
                 android:id="@+id/nav_edit_users"
@@ -40,7 +40,7 @@
             <item
                 android:id="@+id/app_information"
                 android:icon="@drawable/ic_perm_device_information"
-                android:title="Apps Infos" />
+                android:title="App Infos" />
             <item
                 android:id="@+id/nav_Logout"
                 android:icon="@drawable/ic_power_settings_new"

@@ -68,11 +68,11 @@ public class login extends AppCompatActivity implements AsyncResponse {
                 startActivity(intent);
                 ((MyApplication) this.getApplication()).setUserEmail(userEmail.getText().toString());
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
+                finish();
                 break;
             case "loginWithoutCommune":
                 Intent intent2 = new Intent(login.this, createOrJoinCommune.class);
                 startActivity(intent2);
-
                 ((MyApplication) this.getApplication()).setUserEmail(userEmail.getText().toString());
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
                 break;
@@ -86,6 +86,7 @@ public class login extends AppCompatActivity implements AsyncResponse {
         }
         task = new PostResponseAsyncTask(this);
     }
+
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
