@@ -44,9 +44,10 @@
                     android:id="@+id/infoemailText"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorBlack"
+                    android:background="#fff"
+                    android:textColor="#000"
                     android:layout_marginTop="15dp"
-                    android:textColor="#fff"
+
                     android:ems="10"
                     android:text="Email:" />
 
@@ -72,10 +73,11 @@
                 <TextView
                     android:id="@+id/infoPWText"
                     android:layout_width="100dp"
-                    android:background="@color/colorBlack"
+
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:textColor="#fff"
+                    android:background="#fff"
+                    android:textColor="#000"
                     android:ems="10"
                     android:text="Passwort:" />
 
@@ -103,9 +105,9 @@
                 <TextView
                     android:id="@+id/infoFirstnameText"
                     android:layout_width="100dp"
-                    android:background="@color/colorBlack"
+                    android:background="#fff"
+                    android:textColor="#000"
                     android:layout_height="wrap_content"
-                    android:textColor="#fff"
                     android:layout_marginTop="15dp"
                     android:ems="10"
                     android:text="Vorname:" />
@@ -131,10 +133,11 @@
                 <TextView
                     android:id="@+id/infolastnameText"
                     android:layout_width="100dp"
-                    android:background="@color/colorBlack"
+                    android:background="#fff"
+                    android:textColor="#000"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:textColor="#fff"
+
                     android:ems="10"
                     android:text="Nachname:" />
 
@@ -161,9 +164,9 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:background="@color/colorBlack"
+                    android:background="#fff"
+                    android:textColor="#000"
                     android:ems="10"
-                    android:textColor="#fff"
                     android:text="Geburtsdatum:" />
 
                 <TextView
@@ -216,7 +219,7 @@
                 android:layout_height="match_parent"
                 android:layout_below="@+id/changeInfoBtn"
                 android:layout_marginTop="15dp"
-                android:background="@android:color/holo_red_dark"
+                android:background="#B00000"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="WG VERLASSEN"
                 android:textColor="#fff" />
