@@ -26,66 +26,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="AUFGABEN ANLEGEN"
+                    android:text="PUTZPLAN ANLEGEN"
                     android:textColor="#FFFF"
                     android:textSize="25sp" />
             </android.support.design.widget.AppBarLayout>
-
-            <TextView
-                android:id="@+id/purchPlan"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/appbar"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="Einkaufsplan"
-                android:textSize="25sp" />
-
-            <EditText
-                android:id="@+id/respPurchPlan"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/purchPlan"
-                android:layout_marginTop="15dp"
-                android:hint="Verantwortlicher" />
-
-            <EditText
-                android:id="@+id/date"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/respPurchPlan"
-                android:hint="Datum" />
-
-            <Button
-                android:id="@+id/addPurchPlan"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/date"
-                android:background="@android:color/holo_green_dark"
-                android:text="Einkaufsplan hinzufügen"
-                android:textColor="#FFFF" />
-
-            <TextView
-                android:id="@+id/borderline"
-                android:layout_width="fill_parent"
-                android:layout_height="2dip"
-                android:layout_below="@+id/addPurchPlan"
-                android:layout_marginTop="25dp"
-                android:background="@color/colorBlack" />
-
-            <TextView
-                android:id="@+id/cleanPlan"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/borderline"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="Putzplan"
-                android:textSize="25sp" />
 
             <EditText
                 android:id="@+id/respCleanPlan"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/cleanPlan"
+                android:layout_below="@+id/appbar"
                 android:layout_marginTop="15dp"
                 android:hint="Verantwortlicher" />
 
