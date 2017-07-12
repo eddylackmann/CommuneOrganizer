@@ -38,21 +38,19 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.commune.organizer.communeorganizer.Home" />
-        <activity
-            android:name=".createOrJoinCommune"
-            android:theme="@style/SplashTheme" />
+        <activity android:name=".createOrJoinCommune" android:theme="@style/SplashTheme" />
         <activity
             android:name=".enter_commune"
             android:theme="@style/SplashTheme" />
-        <activity android:name=".cleaningRoster" />
-        <activity android:name=".activity_userInfo" />
-        <activity android:name=".commune_info" />
+        <activity android:name=".cleaningRoster" android:label="Putzplan" />
+        <activity android:name=".activity_userInfo"  android:label="Benutzer Infos"/>
+        <activity android:name=".commune_info" android:label="WG Infos" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/SplashTheme"></activity>
-        <activity android:name=".app_info"  android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".commune_info"/>
-        <activity android:name=".purchasePlan"/>
+        <activity android:name=".app_info"  android:label="App Info"></activity>
+
+        <activity android:name=".purchasePlan" android:label="Einkaufsliste"/>
     </application>
 
 </manifest>
