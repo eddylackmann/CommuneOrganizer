@@ -14,7 +14,7 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:src="@drawable/wg_a"
+        android:src="@drawable/wg_i"
         android:scaleType="centerCrop" />
 
 </LinearLayout>

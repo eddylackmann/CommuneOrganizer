@@ -29,7 +29,7 @@ public class activity_userInfo extends AppCompatActivity {
 
     private void setLayout(){
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     private  void  init(){
