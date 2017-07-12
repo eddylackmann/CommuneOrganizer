@@ -6,8 +6,11 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
+import android.content.DialogInterface;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -40,25 +43,24 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
 
-    public void setHomeLayoutInformation(){
+    public void setHomeLayoutInformation() {
 
         TextView userDetailsHome = (TextView) findViewById(R.id.userHomeDescrition);
         TextView homeCommuneCash = (TextView) findViewById(R.id.home_communeCash);
-        TextView addressHome    = (TextView) findViewById(R.id.addressHomeDescrition);
+        TextView addressHome = (TextView) findViewById(R.id.addressHomeDescrition);
 
         userDetailsHome.setText(((MyApplication) this.getApplication()).getInformation("Firstname") + " " + ((MyApplication) this.getApplication()).getInformation("Lastname"));
         homeCommuneCash.setText("Kasse: " + ((MyApplication) this.getApplication()).getInformation("CommuneCashbox") + " €");
         addressHome.setText(((MyApplication) this.getApplication()).getInformation("Address") + ", " +
-                            ((MyApplication) this.getApplication()).getInformation("PostCode") + " " +
-                            ((MyApplication) this.getApplication()).getInformation("City"));
+                ((MyApplication) this.getApplication()).getInformation("PostCode") + " " +
+                ((MyApplication) this.getApplication()).getInformation("City"));
     }
 
-    public void init(){
+    public void init() {
         task = new PostResponseAsyncTask(this);
         try {
             task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=getInformation&Email=" + ((MyApplication) this.getApplication()).getUserEmail());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -69,9 +71,32 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+
+            final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.AlertDialogCustom));
+            builder.setMessage("Wollen Sie die App schliessen")
+                    .setPositiveButton("JA", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            moveTaskToBack(true);
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                        }
+                    })
+                    .setNegativeButton("NEIN", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    });
+            builder.create();
+            builder.show();
         }
+
+
+
+        // Create the AlertDialog object and return it
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -96,9 +121,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_cleaningTask) {
             Intent intent = new Intent(Home.this, cleaningRoster.class);
             startActivity(intent);
         } else if (id == R.id.nav_commune_setting) {
