@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -32,6 +33,10 @@ public class login extends AppCompatActivity implements AsyncResponse {
         TextView passHint = (TextView) findViewById(R.id.uPasswordText);
         passHint.setHintTextColor(Color.WHITE);
     }
+
+
+
+
     public void init(){
         Lib = new my_Library();
 
@@ -91,5 +96,15 @@ public class login extends AppCompatActivity implements AsyncResponse {
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

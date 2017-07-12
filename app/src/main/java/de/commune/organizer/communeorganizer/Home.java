@@ -29,6 +29,13 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        setLayout();
+        init();
+
+    }
+
+
+    public void setLayout(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -39,7 +46,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        init();
+
+        
+
     }
 
 
@@ -127,8 +136,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         } else if (id == R.id.nav_commune_setting) {
             Intent intent = new Intent(Home.this, commune_info.class);
             startActivity(intent);
+        }else if (id == R.id.nav_Logout) {
+                Logout();
+        }else if (id == R.id.nav_app_information) {
+            Intent intent = new Intent(Home.this, app_info.class);
+            startActivity(intent);
+        }else if (id == R.id.nav_edit_users) {
+            Intent intent = new Intent(Home.this, activity_userInfo.class);
+            startActivity(intent);
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -145,5 +161,24 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         task = new PostResponseAsyncTask(this);
         setHomeLayoutInformation();
 
+    }
+
+    private void Logout(){
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.AlertDialogCustom));
+        builder.setMessage("Möchtest Sie sich abmelden? ")
+                .setPositiveButton("JA", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(Home.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("NEIN", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+        builder.create();
+        builder.show();
     }
 }

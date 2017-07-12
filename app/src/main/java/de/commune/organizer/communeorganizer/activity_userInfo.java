@@ -24,6 +24,12 @@ public class activity_userInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
         init();
+        setLayout();
+    }
+
+    private void setLayout(){
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private  void  init(){
