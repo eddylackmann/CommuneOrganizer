@@ -41,7 +41,7 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
 
         try
         {
-            task.execute("http://eddy-home.ddns.net/wg-app/cleaningRoster.php?Email=" + userEmail);
+            task.execute("http://eddy-home.ddns.net/wg-app/cleaningRoster.php?Method=getAllUserCleaningRosters&Email=" + userEmail);
         } catch (Exception e)
         {
             e.printStackTrace();
