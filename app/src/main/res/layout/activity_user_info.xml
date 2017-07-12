@@ -44,6 +44,7 @@
                     android:id="@+id/infoemailText"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/colorBlack"
                     android:layout_marginTop="15dp"
                     android:textColor="#fff"
                     android:ems="10"
@@ -52,6 +53,8 @@
                 <TextView
                     android:id="@+id/infoEmailTextInfo"
                     android:layout_width="match_parent"
+                    android:background="#fff"
+                    android:textColor="#000"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:ems="10"
@@ -69,6 +72,7 @@
                 <TextView
                     android:id="@+id/infoPWText"
                     android:layout_width="100dp"
+                    android:background="@color/colorBlack"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:textColor="#fff"
@@ -78,6 +82,8 @@
                 <TextView
                     android:id="@+id/infoPWTextInfo"
                     android:layout_width="match_parent"
+                    android:background="#fff"
+                    android:textColor="#000"
                     android:inputType="textPassword"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -88,6 +94,7 @@
             <LinearLayout
                 android:id="@+id/linInfoLayout3"
                 android:layout_width="fill_parent"
+
                 android:layout_height="wrap_content"
                 android:textColor="#fff"
                 android:layout_below="@+id/linInfoLayout2"
@@ -96,6 +103,7 @@
                 <TextView
                     android:id="@+id/infoFirstnameText"
                     android:layout_width="100dp"
+                    android:background="@color/colorBlack"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
                     android:layout_marginTop="15dp"
@@ -106,7 +114,8 @@
                     android:id="@+id/infoFirstnameTextInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#fff"
+                    android:background="#fff"
+                    android:textColor="#000"
                     android:layout_marginTop="15dp"
                     android:ems="10"
                     android:hint="" />
@@ -122,6 +131,7 @@
                 <TextView
                     android:id="@+id/infolastnameText"
                     android:layout_width="100dp"
+                    android:background="@color/colorBlack"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:textColor="#fff"
@@ -131,7 +141,8 @@
                 <TextView
                     android:id="@+id/infoLastnameTextInfo"
                     android:layout_width="match_parent"
-                    android:textColor="#fff"
+                    android:background="#fff"
+                    android:textColor="#000"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:ems="10"
@@ -150,6 +161,7 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:background="@color/colorBlack"
                     android:ems="10"
                     android:textColor="#fff"
                     android:text="Geburtsdatum:" />
@@ -158,7 +170,8 @@
                     android:id="@+id/infoBirthdayTextInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#fff"
+                    android:background="#fff"
+                    android:textColor="#000"
                     android:layout_marginTop="15dp"
                     android:ems="10"
                     android:hint="" />
