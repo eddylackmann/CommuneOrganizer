@@ -32,5 +32,14 @@
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:text="Username" />
+    <TextView
+        android:id="@+id/addressHomeDescrition"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="#ffff"
+        android:layout_marginTop="230dp"
+        android:textSize="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:text="Username" />
 
 </android.support.design.widget.CoordinatorLayout>

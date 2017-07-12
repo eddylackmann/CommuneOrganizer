@@ -39,6 +39,20 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         init();
     }
 
+
+    public void setHomeLayoutInformation(){
+
+        TextView userDetailsHome = (TextView) findViewById(R.id.userHomeDescrition);
+        TextView homeCommuneCash = (TextView) findViewById(R.id.home_communeCash);
+        TextView addressHome    = (TextView) findViewById(R.id.addressHomeDescrition);
+
+        userDetailsHome.setText(((MyApplication) this.getApplication()).getInformation("Firstname") + " " + ((MyApplication) this.getApplication()).getInformation("Lastname"));
+        homeCommuneCash.setText("Kasse: " + ((MyApplication) this.getApplication()).getInformation("CommuneCashbox") + " €");
+        addressHome.setText(((MyApplication) this.getApplication()).getInformation("Address") + ", " +
+                            ((MyApplication) this.getApplication()).getInformation("PostCode") + " " +
+                            ((MyApplication) this.getApplication()).getInformation("City"));
+    }
+
     public void init(){
         task = new PostResponseAsyncTask(this);
         try {
@@ -118,11 +132,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             e.printStackTrace();
         }
         task = new PostResponseAsyncTask(this);
+        setHomeLayoutInformation();
 
-        String titleText = ((MyApplication) this.getApplication()).getInformation("Firstname") + " " + ((MyApplication) this.getApplication()).getInformation("Lastname");
-        TextView userDetailsHome = (TextView) findViewById(R.id.userHomeDescrition);
-
-        userDetailsHome.setText(titleText);
 
     }
 }
