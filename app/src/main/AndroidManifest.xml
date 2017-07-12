@@ -33,7 +33,7 @@
             android:theme="@style/SplashTheme" />
         <activity
             android:name=".Home"
-            android:label="Startseite"
+            android:label="DASHBOARD"
             android:theme="@style/AppTheme.NoActionBar" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
