@@ -51,6 +51,8 @@
             android:name=".MainActivity"
             android:theme="@style/SplashTheme"></activity>
         <activity android:name=".app_info"  android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".commune_info"/>
+        <activity android:name=".purchasePlan"/>
     </application>
 
 </manifest>

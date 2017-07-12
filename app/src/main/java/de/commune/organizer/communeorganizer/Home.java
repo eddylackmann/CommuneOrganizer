@@ -130,7 +130,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_cleaningTask) {
+        if (id == R.id.nav_camera) {
+            Intent intent = new Intent(Home.this, purchasePlan.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_gallery) {
             Intent intent = new Intent(Home.this, cleaningRoster.class);
             startActivity(intent);
         } else if (id == R.id.nav_commune_setting) {
