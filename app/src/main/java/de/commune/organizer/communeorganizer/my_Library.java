@@ -17,6 +17,7 @@ public class my_Library {
 
     public void showMessage(String s,  AppCompatActivity a){
         AlertDialog.Builder AlertBox = new AlertDialog.Builder(new ContextThemeWrapper(a,R.style.AlertDialogCustom));
+        AlertBox.setTitle("Commune Organizer");
         AlertBox.setMessage(s);
         AlertBox.create();
         AlertBox.show();
