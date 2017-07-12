@@ -31,7 +31,8 @@
         <activity android:name=".enter_commune" />
         <activity android:name=".cleaningRoster" />
         <activity android:name=".activity_userInfo" />
-        <activity android:name=".commune_info"></activity>
+        <activity android:name=".commune_info"/>
+        <activity android:name=".purchasePlan"/>
     </application>
 
 </manifest>
