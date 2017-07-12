@@ -16,20 +16,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 /**
  * Created by Tom on 11.07.2017.
  */
 
-public class activity_userInfo extends AppCompatActivity {
+public class activity_userInfo extends AppCompatActivity implements AsyncResponse {
 
-    private PostResponseAsyncTask task;
+
     private my_Library Lib = new my_Library();
     private String test = new String();
     private activity_userInfo c = this;
+    public PostResponseAsyncTask task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,7 @@ public class activity_userInfo extends AppCompatActivity {
     }
 
     private  void  init(){
+
         final TextView infoemailText = (TextView) findViewById(R.id.infoEmailTextInfo);
         final TextView infoPWTextInfo = (TextView) findViewById(R.id.infoPWTextInfo);
         final TextView infoFirstnameTextInfo = (TextView) findViewById(R.id.infoFirstnameTextInfo);
@@ -73,28 +78,44 @@ public class activity_userInfo extends AppCompatActivity {
     }
 
     private void LeaveCommune(){
-        AlertDialog.Builder alert = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.AlertDialogCustom));
-        final EditText edittext = new EditText(this);
-        alert.setMessage("Enter Your Messag");
-        alert.setTitle("Enter Your Title");
-        edittext.setTextColor(Color.WHITE);
-        alert.setView(edittext);
 
-        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+        final String CommuneID =((MyApplication) this.getApplication()).getInformation("CommuneID");
+        final String Email =((MyApplication) this.getApplication()).getInformation("Email");
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.AlertDialogCustom));
+        builder.setMessage("Möchtest Sie die WG verlassen? ")
+                .setPositiveButton("JA", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        task = new PostResponseAsyncTask(c);
+                        try {
+                            task.execute("eddy-home.ddns.net/wg-app/loginMgt.php?Method=exitCommune&Email="+Email+"&communeID="+CommuneID);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                String YouEditTextValue = edittext.getText().toString();
-                test = YouEditTextValue;
-                Lib.showMessage(test,c);
-            }
-        });
+                    }
+                })
+                .setNegativeButton("NEIN", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
 
-        alert.setNegativeButton("No Option", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                // what ever you want to do with No option.
-            }
-        });
-
-        alert.show();
+                    }
+                });
+        builder.create();
+        builder.show();
     }
+
+    @Override
+    public void processFinish(String s) {
+        switch (s)
+        {
+            case "exitSuccessfull":
+                Intent intent = new Intent(activity_userInfo.this, createOrJoinCommune.class);
+                startActivity(intent);
+                finish();
+                break;
+
+        }
+        task = new PostResponseAsyncTask(c);
+
+    }
+
 }

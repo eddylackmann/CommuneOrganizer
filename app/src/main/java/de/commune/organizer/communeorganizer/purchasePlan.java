@@ -52,16 +52,28 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
         purchPlanList = (GridView) findViewById(R.id.purchPlan_GridView);
         purchPlanList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                final Item currEntry = (Item) purchPlanList.getItemAtPosition(position);
+            final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(controller,R.style.AlertDialogCustom));
+            builder.setMessage("Eintrag löschen? ")
+                    .setPositiveButton("JA", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            try
+                            {
+                                asyncTaskMethod = "deletePurchasePlanEntry";
+                                task.execute("http://eddy-home.ddns.net/wg-app/purchasePlans.php?Method=" + asyncTaskMethod +"&CommuneID=" + communeID + "&LineNo=" + currEntry.getText1());
+                            } catch (Exception e)
+                            {
+                                e.printStackTrace();
+                            }
+                        }
+                    })
+                    .setNegativeButton("NEIN", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
 
-                Item currEntry = (Item) purchPlanList.getItemAtPosition(position);
-                try
-                {
-                    asyncTaskMethod = "deletePurchasePlanEntry";
-                    task.execute("http://eddy-home.ddns.net/wg-app/purchasePlans.php?Method=" + asyncTaskMethod +"&CommuneID=" + communeID + "&LineNo=" + currEntry.getText1());
-                } catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
+                        }
+                    });
+            builder.create();
+            builder.show();
                 return true;
             }
         });
@@ -115,12 +127,6 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                 });
 
                 alert.show();
-
-
-
-
-
-
 
             }
         });
