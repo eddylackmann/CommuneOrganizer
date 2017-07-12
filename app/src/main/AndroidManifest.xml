@@ -21,14 +21,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".login" android:theme="@style/SplashTheme"/>
-        <activity android:name=".create_commune" />
+        <activity android:name=".create_commune"  android:theme="@style/SplashTheme" />
         <activity android:name=".registration"   android:theme="@style/SplashTheme" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".createOrJoinCommune" />
-        <activity android:name=".enter_commune" />
+        <activity android:name=".createOrJoinCommune"  android:theme="@style/SplashTheme"/>
+        <activity android:name=".enter_commune"  android:theme="@style/SplashTheme" />
         <activity android:name=".cleaningRoster" />
         <activity android:name=".activity_userInfo" />
         <activity android:name=".commune_info" />
