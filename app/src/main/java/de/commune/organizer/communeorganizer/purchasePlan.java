@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -43,8 +44,23 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
         Lib = new my_Library();
         task = new PostResponseAsyncTask(this);
         communeID = ((MyApplication) this.getApplication()).getInformation("CommuneID");
-        purchPlanList = (GridView) findViewById(R.id.purchPlan_GridView);
         purchPlanListEntries.clear();
+        purchPlanList = (GridView) findViewById(R.id.purchPlan_GridView);
+        purchPlanList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+
+                Item currEntry = (Item) purchPlanList.getItemAtPosition(position);
+                try
+                {
+                    asyncTaskMethod = "deletePurchasePlanEntry";
+                    task.execute("http://eddy-home.ddns.net/wg-app/purchasePlans.php?Method=" + asyncTaskMethod +"&CommuneID=" + communeID + "&LineNo=" + currEntry.getText1());
+                } catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+                return true;
+            }
+        });
 
         try
         {
@@ -70,9 +86,6 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                     {
                         e.printStackTrace();
                     }
-                    finish();
-                    Intent intent = new Intent(purchasePlan.this, purchasePlan.class);
-                    startActivity(intent);
                 }
                 else
                 {
@@ -94,9 +107,6 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                 {
                     e.printStackTrace();
                 }
-                finish();
-                Intent intent = new Intent(purchasePlan.this, purchasePlan.class);
-                startActivity(intent);
             }
         });
 
@@ -104,6 +114,7 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
 
     @Override
     public void processFinish(String s) {
+        Intent intent;
         switch (asyncTaskMethod){
             case "getAllPurchasePlanEntries":
                 try
@@ -123,11 +134,39 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                 break;
 
             case "createPurchasePlanEntry":
-                Lib.showMessage("Eintrag angelegt!",controller);
+                if (s.equals("entryCreated")){
+                    finish();
+                    intent = new Intent(purchasePlan.this, purchasePlan.class);
+                    startActivity(intent);
+                    Lib.showMessage("Eintrag angelegt!",controller);
+                }
+                else {
+                    Lib.showMessage("Anlegen fehlgeschlagen!",controller);
+                }
+                break;
+
+            case "deletePurchasePlanEntry":
+                if (s.equals("entryDeleted")){
+                    finish();
+                    intent = new Intent(purchasePlan.this, purchasePlan.class);
+                    startActivity(intent);
+                    Lib.showMessage("Eintrag gelöscht!",controller);
+                }
+                else {
+                    Lib.showMessage("Eintrag löschen fehlgeschlagen!",controller);
+                }
                 break;
 
             case "deleteAllPurchasePlanEntries":
-                Lib.showMessage("Einkauf abgeschlossen!",controller);
+                if (s.equals("allEntriesDeleted")){
+                    finish();
+                    intent = new Intent(purchasePlan.this, purchasePlan.class);
+                    startActivity(intent);
+                    Lib.showMessage("Einkauf abgeschlossen!",controller);
+                }
+                else{
+                    Lib.showMessage("Abschließen fehlgeschlagen!",controller);
+                }
                 break;
         }
         task = new PostResponseAsyncTask(this);
