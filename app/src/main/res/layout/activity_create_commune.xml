@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="fill_parent" android:layout_height="fill_parent"
+        android:src="@drawable/wg_a"
+        android:scaleType="centerCrop" />
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,29 +16,23 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <android.support.design.widget.AppBarLayout
-                android:id="@+id/appbar"
+            <TextView
+                android:id="@+id/title_text"
                 android:layout_width="match_parent"
-                android:layout_height="144dp"
-                app:contentScrim="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-                app:toolbarId="@+id/toolbar">
-
-                <TextView
-                    android:id="@+id/anmldText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="WG-GRÜNDEN"
-                    android:textColor="#FFFF"
-                    android:textSize="25sp" />
-            </android.support.design.widget.AppBarLayout>
+                android:layout_height="150dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@color/common_google_signin_btn_text_light_default"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="WG GRÜNDEN"
+                android:textColor="#FFF"
+                android:textSize="25sp" />
 
             <EditText
                 android:id="@+id/comAddressText"
+                android:layout_below="@id/title_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/appbar"
                 android:hint="WG-Adresse"
                 android:layout_marginTop="12dp"
 
@@ -88,10 +87,11 @@
                 android:id="@+id/createBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="16dp"
-                android:text="GRÜNDEN"
+                android:layout_alignParentStart="true"
+
+                android:layout_marginTop="20dp"
+                android:background="#ffff"
+                android:text="WG GRÜNDEN"
                 android:layout_below="@+id/comPW2"/>
 
         </RelativeLayout>

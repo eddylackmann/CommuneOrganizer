@@ -5,38 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="144dp">
-
-        <TextView
-            android:id="@+id/anmldText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="WG BEITRETEN ODER GRÜNDEN?"
-            android:textColor="#FFFF"
-            android:textSize="25sp" />
-    </android.support.design.widget.AppBarLayout>
+    <ImageView
+        android:layout_width="fill_parent" android:layout_height="fill_parent"
+        android:src="@drawable/wg_h"
+        android:scaleType="centerCrop" />
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
+
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context="de.commune.organizer.communeorganizer.createOrJoinCommune">
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@color/common_google_signin_btn_text_light_default"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="BEITRETEN | GRÜNDEN"
+                android:textColor="#FFF"
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/enterComBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="20dp"
-                android:background="@android:color/holo_green_light"
+                android:textColor="#fff"
+                android:layout_below="@id/title_text"
+                android:layout_marginTop="50dp"
+                android:background="#000"
                 android:text="WG BEITRETEN" />
 
             <Button
@@ -46,7 +51,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/enterComBtn"
                 android:layout_marginTop="20dp"
-                android:background="@android:color/holo_green_light"
+                android:background="#ffff"
                 android:text="WG GRÜNDEN" />
 
         </RelativeLayout>
