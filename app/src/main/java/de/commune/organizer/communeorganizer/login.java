@@ -31,6 +31,8 @@ public class login extends AppCompatActivity implements AsyncResponse {
         emailHint.setHintTextColor(Color.WHITE);
         TextView passHint = (TextView) findViewById(R.id.uPasswordText);
         passHint.setHintTextColor(Color.WHITE);
+
+
     }
     public void init(){
         Lib = new my_Library();

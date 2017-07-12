@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
@@ -99,7 +100,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             Intent intent2 = new Intent(Home.this, activity_userInfo.class);
             startActivity(intent2);
         } else if (id == R.id.nav_commune_setting) {
-
+            Intent intent = new Intent(Home.this, commune_info.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -117,7 +119,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         }
         task = new PostResponseAsyncTask(this);
 
-        //String titleText = "Willkommen, " + ((MyApplication) this.getApplication()).getInformation("Firstname") + " " + ((MyApplication) this.getApplication()).getInformation("Lastname");
+        String titleText = ((MyApplication) this.getApplication()).getInformation("Firstname") + " " + ((MyApplication) this.getApplication()).getInformation("Lastname");
+        TextView userDetailsHome = (TextView) findViewById(R.id.userHomeDescrition);
+
+        userDetailsHome.setText(titleText);
 
     }
 }
