@@ -72,5 +72,7 @@ public class enter_commune extends AppCompatActivity implements AsyncResponse {
                 Lib.showMessage("WG existiert nicht!",this);
                 break;
         }
+
+        task = new PostResponseAsyncTask(this);
     }
 }

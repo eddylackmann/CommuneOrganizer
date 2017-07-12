@@ -5,32 +5,33 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Einkauf" />
+            android:icon="@drawable/ic_add_shopping_cart"
+            android:title="Einkaufsplan" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_pets"
             android:title="Putzplan" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_extension"
             android:title="Aktivitäten" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Mitglieder" />
+
     </group>
 
     <item android:title="Einstellung">
         <menu>
             <item
                 android:id="@+id/nav_edit_users"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="Benutzer Verwaltung" />
+                android:icon="@drawable/ic_assignment_ind"
+                android:title="Benutzer Infos" />
+            <item
+                android:id="@+id/nav_manage_users"
+                android:icon="@drawable/ic_supervisor_account"
+                android:title="Mitglieder" />
             <item
                 android:id="@+id/nav_commune_setting"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="WG Einstellung" />
+                android:icon="@drawable/ic_action_home"
+                android:title="WG Infos" />
         </menu>
     </item>
 
@@ -38,11 +39,11 @@
         <menu>
             <item
                 android:id="@+id/app_information"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="Infos" />
+                android:icon="@drawable/ic_perm_device_information"
+                android:title="Apps Infos" />
             <item
                 android:id="@+id/nav_Logout"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_power_settings_new"
                 android:title="Abmelden"
 
                 />

@@ -82,16 +82,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -106,13 +101,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         } else if (id == R.id.nav_gallery) {
             Intent intent = new Intent(Home.this, cleaningRoster.class);
             startActivity(intent);
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_edit_users) {
-            Intent intent2 = new Intent(Home.this, activity_userInfo.class);
-            startActivity(intent2);
         } else if (id == R.id.nav_commune_setting) {
             Intent intent = new Intent(Home.this, commune_info.class);
             startActivity(intent);
@@ -133,7 +121,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         }
         task = new PostResponseAsyncTask(this);
         setHomeLayoutInformation();
-
 
     }
 }
