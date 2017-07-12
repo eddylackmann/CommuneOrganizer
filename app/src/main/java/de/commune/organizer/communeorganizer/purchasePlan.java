@@ -1,8 +1,12 @@
 package de.commune.organizer.communeorganizer;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -71,26 +75,53 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
             e.printStackTrace();
         }
 
-        final EditText purchPlan_DescriptionText = (EditText)findViewById(R.id.purchPlan_DescriptionText);
+
         Button purchPlan_AddBtn = (Button)findViewById(R.id.purchPlan_AddBtn);
         purchPlan_AddBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!purchPlan_DescriptionText.getText().equals("")){
-                    try
-                    {
-                        asyncTaskMethod = "createPurchasePlanEntry";
-                        task.execute("http://eddy-home.ddns.net/wg-app/purchasePlans.php?Method=" + asyncTaskMethod +"&CommuneID="
-                                + communeID + "&Description=" + purchPlan_DescriptionText.getText());
-                    } catch (Exception e)
-                    {
-                        e.printStackTrace();
+                AlertDialog.Builder alert = new AlertDialog.Builder(new ContextThemeWrapper(controller,R.style.AlertDialogCustom));
+                final EditText edittext = new EditText(controller);
+                alert.setMessage("Neue Eintrag");
+                alert.setTitle("Einkaufliste");
+                edittext.setTextColor(Color.WHITE);
+                alert.setView(edittext);
+                alert.setPositiveButton("Eintragen", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        String PurchaseText = edittext.getText().toString();
+                        if (!PurchaseText.equals("")){
+                            try
+                            {
+                                asyncTaskMethod = "createPurchasePlanEntry";
+                                task.execute("http://eddy-home.ddns.net/wg-app/purchasePlans.php?Method=" + asyncTaskMethod +"&CommuneID="
+                                        + communeID + "&Description=" + PurchaseText);
+                            } catch (Exception e)
+                            {
+                                e.printStackTrace();
+                            }
+                        }
+                        else
+                        {
+                            Lib.showMessage("Bitte geben Sie eine Beschreibung ein!", controller);
+                        }
+
                     }
-                }
-                else
-                {
-                    Lib.showMessage("Bitte geben Sie eine Beschreibung ein!", controller);
-                }
+                });
+
+                alert.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // what ever you want to do with No option.
+                    }
+                });
+
+                alert.show();
+
+
+
+
+
+
+
             }
         });
 
