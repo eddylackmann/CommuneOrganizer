@@ -9,28 +9,48 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:parentActivityName="de.commune.organizer.communeorganizer.MainActivity"
+        android:parentActivityName="de.commune.organizer.communeorganizer.login"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".screenSplash"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login" />
-        <activity android:name=".create_commune" />
-        <activity android:name=".registration" />
+        <activity
+            android:name=".login"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".create_commune"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".registration"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".Home"
-            android:label="@string/title_activity_home"
+            android:label="Startseite"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".createOrJoinCommune" />
-        <activity android:name=".enter_commune" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.commune.organizer.communeorganizer.Home" />
+        <activity
+            android:name=".createOrJoinCommune"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".enter_commune"
+            android:theme="@style/SplashTheme" />
         <activity android:name=".cleaningRoster" />
         <activity android:name=".activity_userInfo" />
+        <activity android:name=".commune_info" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/SplashTheme"></activity>
+        <activity android:name=".app_info"  android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".commune_info"/>
         <activity android:name=".purchasePlan"/>
     </application>

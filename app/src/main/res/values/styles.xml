@@ -22,7 +22,13 @@
         <item name="android:background">#000</item>
     </style>
 
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
 
+    </style>
+
+    <style name="noTitle" parent="Theme.AppCompat.NoActionBar">
+
+    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
