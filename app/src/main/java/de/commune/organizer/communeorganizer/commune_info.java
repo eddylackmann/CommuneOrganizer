@@ -62,8 +62,8 @@ public class commune_info extends AppCompatActivity implements AsyncResponse {
         else{
             infoPetsText.setChecked(false);
         }
-        infoSpaceText.setText(((MyApplication) this.getApplication()).getInformation("LivingSpace_(m²)"));
-        infoRentText.setText(((MyApplication) this.getApplication()).getInformation("ColdRent_(Total)"));
+        infoSpaceText.setText(((MyApplication) this.getApplication()).getInformation("LivingSpace"));
+        infoRentText.setText(((MyApplication) this.getApplication()).getInformation("ColdRent"));
         infoAddCostsText.setText(((MyApplication) this.getApplication()).getInformation("AdditionalCosts"));
         infoOtherCostsText.setText(((MyApplication) this.getApplication()).getInformation("OtherCosts"));
         infoDescText.setText(((MyApplication) this.getApplication()).getInformation("Description"));
@@ -83,7 +83,6 @@ public class commune_info extends AppCompatActivity implements AsyncResponse {
         final TextView infoZIPText = (TextView) findViewById(R.id.infoZIPText);
         final TextView infoCityText = (TextView) findViewById(R.id.infoCityText);
         final TextView infoMaxInhText = (TextView) findViewById(R.id.infoMaxInhText);
-        final TextView infoInhText = (TextView) findViewById(R.id.infoInhText);
         final CheckBox infoPetsText = (CheckBox) findViewById(R.id.infoPetsText);
         final TextView infoSpaceText = (TextView) findViewById(R.id.infoSpaceText);
         final TextView infoRentText = (TextView) findViewById(R.id.infoRentText);
@@ -97,18 +96,17 @@ public class commune_info extends AppCompatActivity implements AsyncResponse {
         builder.setMessage("WG-Informationen speichern? ")
                 .setPositiveButton("JA", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        //fetch data from url
-                        String test = "http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+ asyncTaskMethod +"&communeID=" + CommuneID + "&communePassword=" +
-                        infoPWText.getText() + "&Address=" + infoAddressText.getText() + "&PostCode=" + infoZIPText.getText()+ "&City=" + infoCityText.getText()
-                                + "&NumberOfMaxInhabitants=" + infoMaxInhText.getText() +"&PetsAllowed=" + infoPetsText.isChecked() + "&LivingSpace=" +
-                                infoSpaceText.getText() + "&ColdRent_(Total)=" + infoRentText.getText() + "&AdditionalCosts=" + infoAddCostsText.getText() +
-                                "&OtherCosts=" + infoOtherCostsText.getText() + "&Description=" + infoDescText.getText();
+                        String pedsAllowedValue = "0";
+                        if (infoPetsText.isChecked()){
+                            pedsAllowedValue = "1";
+                        }
+
                         try {
                             asyncTaskMethod = "updateCommune";
-                            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+ asyncTaskMethod +"&communeID=" + CommuneID + "&communePassword=" +
+                            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+ asyncTaskMethod +"&CommuneID=" + CommuneID + "&CommunePassword=" +
                                     infoPWText.getText() + "&Address=" + infoAddressText.getText() + "&PostCode=" + infoZIPText.getText()+ "&City=" + infoCityText.getText()
-                                    + "&NumberOfMaxInhabitants=" + infoMaxInhText.getText() +"&PetsAllowed=" + infoPetsText.getText() + "&LivingSpace=" +
-                                    infoSpaceText.getText() + "&ColdRent_(Total)=" + infoRentText.getText() + "&AdditionalCosts=" + infoAddCostsText.getText() +
+                                    + "&NumberOfMaxInhabitants=" + infoMaxInhText.getText() +"&PetsAllowed=" + pedsAllowedValue + "&LivingSpace=" +
+                                    infoSpaceText.getText() + "&ColdRent=" + infoRentText.getText() + "&AdditionalCosts=" + infoAddCostsText.getText() +
                                     "&OtherCosts=" + infoOtherCostsText.getText() + "&Description=" + infoDescText.getText());
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -134,30 +132,30 @@ public class commune_info extends AppCompatActivity implements AsyncResponse {
     public void processFinish(String s){
         Intent intent;
         switch (asyncTaskMethod){
-            case "getCommuneInformation":
-                switch (s){
-                    case "communeUpdated":
-                        try{
-                            ((MyApplication) this.getApplication()).setInformationArray(new JSONArray(s));
-                        }
-                        catch (Exception e){
-                            e.printStackTrace();
-                        }
-                        finish();
-                        intent = new Intent(commune_info.this, commune_info.class);
-                        startActivity(intent);
-                        break;
+            case "getInformation":
+                try{
+                    ((MyApplication) this.getApplication()).setInformationArray(new JSONArray(s));
                 }
-
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+                finish();
+                intent = new Intent(commune_info.this, commune_info.class);
+                startActivity(intent);
                 break;
             case "updateCommune":
-                task = new PostResponseAsyncTask(this);
-                try {
-                    asyncTaskMethod = "getCommuneInformation";
-                    task.execute("http://eddy-home.ddns.net/wg-app/communes.php?Method="+asyncTaskMethod+
-                            "&CommuneID=" + ((MyApplication) this.getApplication()).getCommuneID());
-                } catch (Exception e) {
-                    e.printStackTrace();
+                switch (s)
+                {
+                    case "communeUpdated":
+                        task = new PostResponseAsyncTask(this);
+                        try {
+                            asyncTaskMethod = "getInformation";
+                            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+asyncTaskMethod+
+                                    "&Email=" + ((MyApplication) this.getApplication()).getUserEmail());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        break;
                 }
                 break;
         }
