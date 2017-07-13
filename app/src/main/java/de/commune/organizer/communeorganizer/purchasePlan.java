@@ -94,7 +94,6 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
             e.printStackTrace();
         }
 
-
         Button purchPlan_AddBtn = (Button)findViewById(R.id.purchPlan_AddBtn);
         purchPlan_AddBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +136,6 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
 
             }
         });
-
 
         Button purchPlan_finishPurch = (Button)findViewById(R.id.purchPlan_finishPurch);
         purchPlan_finishPurch.setOnClickListener(new View.OnClickListener() {
