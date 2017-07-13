@@ -3,368 +3,391 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <android.support.v4.widget.NestedScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <ImageView
+            android:layout_width="fill_parent" android:layout_height="fill_parent"
+            android:src="@drawable/wg_b"
+            android:scaleType="centerCrop" />
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
-            <android.support.design.widget.AppBarLayout
-                android:id="@+id/appbar"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="144dp"
-                app:contentScrim="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-                app:toolbarId="@+id/toolbar">
-
+                android:layout_height="match_parent">
                 <TextView
-                    android:id="@+id/anmldText"
+                    android:id="@+id/comInfo_title_text"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/common_google_signin_btn_text_light_default"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="WG INFO"
-                    android:textColor="#FFFF"
+                    android:text="WG INFOS"
+                    android:textColor="#FFF"
                     android:textSize="25sp" />
-            </android.support.design.widget.AppBarLayout>
 
-            <LinearLayout
-                android:id="@+id/linChangeComLayout1"
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
-                android:orientation="horizontal"
-                android:layout_below="@id/appbar"
-                >
-                <TextView
-                    android:id="@+id/communeID"
-                    android:layout_width="100dp"
+                <LinearLayout
+                    android:id="@+id/linChangeComLayout1"
                     android:layout_height="wrap_content"
-                    android:text="WG-ID:"
-                    android:layout_marginTop="12dp"
-                    android:ems="10"
-                    />
-                <TextView
-                    android:id="@+id/infocommuneID"
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
+                    android:orientation="horizontal"
+                    android:background="#fff"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/comInfo_title_text"
+                    >
+                    <TextView
+                        android:id="@+id/communeID"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="WG-ID:"
+                        android:layout_marginTop="15dp"
+                        android:ems="10"
+                        />
+                    <TextView
+                        android:id="@+id/infocommuneID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:layout_marginTop="15dp"
+                        android:ems="10"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linInfoLayout1"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    />
-            </LinearLayout>
+                    android:layout_below="@id/linChangeComLayout1"
+                    android:background="#fff"
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/linInfoLayout1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/linChangeComLayout1"
-                android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/infoPW"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="WG-Passwort:" />
 
-                <TextView
-                    android:id="@+id/infoPW"
-                    android:layout_width="100dp"
+                    <EditText
+                        android:id="@+id/infoPWText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linInfoLayout2"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="WG-Passwort:" />
+                    android:layout_below="@+id/linInfoLayout1"
+                    android:background="#fff"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/infoPWText"
-                    android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/infoAddress"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="Adresse:" />
+
+                    <EditText
+                        android:id="@+id/infoAddressText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linInfoLayout3"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:enabled="false"
-                    android:text="" />
-            </LinearLayout>
+                    android:layout_below="@+id/linInfoLayout2"
+                    android:background="#fff"
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/linInfoLayout2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linInfoLayout1"
-                android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/infoZIP"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="Postleitzahl:" />
 
-                <TextView
-                    android:id="@+id/infoAddress"
-                    android:layout_width="100dp"
+                    <EditText
+                        android:id="@+id/infoZIPText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linInfoLayout4"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="Adresse:" />
+                    android:layout_below="@+id/linInfoLayout3"
+                    android:background="#fff"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/infoAddressText"
-                    android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/infoCity"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="Stadt:" />
+
+                    <EditText
+                        android:id="@+id/infoCityText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linInfoLayout5"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="" />
-            </LinearLayout>
+                    android:layout_below="@+id/linInfoLayout4"
+                    android:background="#fff"
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/linInfoLayout3"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linInfoLayout2"
-                android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/infoMaxInh"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:ems="10"
+                        android:text="Anzahl der max. Einwohner:" />
 
-                <TextView
-                    android:id="@+id/infoZIP"
-                    android:layout_width="100dp"
+                    <EditText
+                        android:id="@+id/infoMaxInhText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linInfoLayout8"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="Postleitzahl:" />
+                    android:layout_below="@+id/linInfoLayout5"
+                    android:background="#fff"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/infoZIPText"
-                    android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/infoInh"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:ems="10"
+                        android:text="Anzahl aktueller Einwohner:" />
+
+                    <TextView
+                        android:id="@+id/infoInhText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linInfoLayout9"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="" />
-            </LinearLayout>
+                    android:layout_below="@+id/linInfoLayout8"
+                    android:background="#fff"
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/linInfoLayout4"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linInfoLayout3"
-                android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/infoPets"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:ems="10"
+                        android:text="Tiere sind erlaubt:" />
 
-                <TextView
-                    android:id="@+id/infoCity"
-                    android:layout_width="100dp"
+                    <CheckBox
+                        android:id="@+id/infoPetsText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:buttonTint="@android:color/black"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linInfoLayout10"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="Stadt:" />
+                    android:layout_below="@+id/linInfoLayout9"
+                    android:background="#fff"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/infoCityText"
-                    android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/infoSpace"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:ems="10"
+                        android:text="Gesamtfläche:" />
+
+                    <EditText
+                        android:id="@+id/infoSpaceText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="5dp"
+                        android:ems="10"
+                        android:text="" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linInfoLayout11"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="" />
-            </LinearLayout>
+                    android:layout_below="@+id/linInfoLayout10"
+                    android:background="#fff"
+                    android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/linInfoLayout5"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linInfoLayout4"
-                android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/infoRent"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="Kaltmiete:" />
 
-                <TextView
-                    android:id="@+id/infoMaxInh"
-                    android:layout_width="100dp"
+                    <EditText
+                        android:id="@+id/infoRentText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linInfoLayout12"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="Anzahl der max. Einwohner:" />
+                    android:layout_below="@+id/linInfoLayout11"
+                    android:background="#fff"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/infoMaxInhText"
-                    android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/infoAddCost"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="Nebenkosten:" />
+
+                    <EditText
+                        android:id="@+id/infoAddCostText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linInfoLayout13"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/linInfoLayout8"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linInfoLayout5"
-                android:orientation="horizontal">
+                    android:layout_below="@+id/linInfoLayout12"
+                    android:background="#fff"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/infoInh"
-                    android:layout_width="100dp"
+                    <TextView
+                        android:id="@+id/infoOtherCost"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="Zusätziche Kosten:" />
+
+                    <EditText
+                        android:id="@+id/infoOtherCostText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linInfoLayout14"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="Anzahl aktueller Einwohner:" />
+                    android:layout_below="@+id/linInfoLayout13"
+                    android:background="#fff"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/infoInhText"
-                    android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/infoComDesc"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="Beschreibung:" />
+
+                    <EditText
+                        android:id="@+id/infoComDescText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/linInfoLayout9"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linInfoLayout8"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/infoPets"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:ems="10"
-                    android:text="Tiere sind erlaubt:" />
-
-                <CheckBox
-                    android:id="@+id/infoPetsBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:enabled="false"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linInfoLayout10"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linInfoLayout9"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/infoSpace"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="Gesamtfläche:" />
-
-                <TextView
-                    android:id="@+id/infoSpaceText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/linInfoLayout11"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linInfoLayout10"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/infoRent"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="Kaltmiete:" />
-
-                <TextView
-                    android:id="@+id/infoRentText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/linInfoLayout12"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linInfoLayout11"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/infoAddCost"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="Nebenkosten:" />
-
-                <TextView
-                    android:id="@+id/infoAddCostText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/linInfoLayout13"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linInfoLayout12"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/infoOtherCost"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="Zusätziche Kosten:" />
-
-                <TextView
-                    android:id="@+id/infoOtherCostText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/linInfoLayout14"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linInfoLayout13"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/infoComDesc"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="Beschreibung:" />
-
-                <TextView
-                    android:id="@+id/infoComDescText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="15dp"
-                    android:ems="10"
-                    android:text="" />
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/changeComInfoBtn"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/linInfoLayout14"
-                android:layout_marginTop="15dp"
-                android:background="@android:color/holo_green_dark"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="INFORMATIONEN BEARBEITEN"
-                android:textColor="@color/common_google_signin_btn_text_dark_default"
-                android:enabled="false"/>
-        </RelativeLayout>
-    </android.support.v4.widget.NestedScrollView>
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_below="@+id/linInfoLayout14"
+                    android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/comInfo_saveChangesBtn"
+                        style="@style/Widget.AppCompat.Button.Small"
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#00810D"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:text="Änderungen speichern"
+                        android:textColor="#fff" />
+                </LinearLayout>
+            </RelativeLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
