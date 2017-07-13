@@ -1,6 +1,5 @@
 package de.commune.organizer.communeorganizer;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -39,11 +38,11 @@ public class enter_commune extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View v) {
                 //fetch data from url
-                task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=enterCommune&CommuneID=" + communeID.getText() + "&communePassword=" + communePwText.getText() + "&Email=" + globalUserEmail);
+                task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=enterCommune&CommuneID=" + communeID.getText()
+                        + "&communePassword=" + communePwText.getText() + "&Email=" + globalUserEmail);
             }
         });
     }
-
 
     private void setLayout(){
 
@@ -51,9 +50,6 @@ public class enter_commune extends AppCompatActivity implements AsyncResponse {
             enter_communeID.setHintTextColor(Color.WHITE);
             TextView enter_communePW = (TextView) findViewById(R.id.enter_communePwText);
             enter_communePW.setHintTextColor(Color.WHITE);
-
-
-
     }
 
     @Override
@@ -75,7 +71,6 @@ public class enter_commune extends AppCompatActivity implements AsyncResponse {
                 Lib.showMessage("WG Passwort ist falsch!",this);
                 break;
         }
-
         task = new PostResponseAsyncTask(this);
     }
 }

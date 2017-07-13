@@ -43,9 +43,6 @@ public class login extends AppCompatActivity implements AsyncResponse {
         styleTextInput(PassTest);
     }
 
-
-
-
     public void init(){
         Lib = new my_Library();
 
@@ -91,7 +88,6 @@ public class login extends AppCompatActivity implements AsyncResponse {
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
                 break;
             case "wrongPassword":
-
                 Lib.showMessage("Falsches Passwort!",controller);
                 break;
             case "userDoesNotExist":
@@ -100,7 +96,6 @@ public class login extends AppCompatActivity implements AsyncResponse {
         }
         task = new PostResponseAsyncTask(this);
     }
-
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
@@ -142,5 +137,4 @@ public class login extends AppCompatActivity implements AsyncResponse {
             }
         });
     }
-
 }

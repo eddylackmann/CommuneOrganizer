@@ -31,7 +31,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         setContentView(R.layout.activity_home);
         setLayout();
         init();
-
     }
 
 
@@ -46,9 +45,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        
-
     }
 
 
@@ -97,14 +93,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             builder.create();
             builder.show();
         }
-
-
-
         // Create the AlertDialog object and return it
-
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -171,7 +161,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private void Logout(){
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.AlertDialogCustom));
-        builder.setMessage("Möchtest Sie sich abmelden? ")
+        builder.setMessage("Möchten Sie sich abmelden? ")
                 .setPositiveButton("JA", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent intent = new Intent(Home.this, MainActivity.class);
