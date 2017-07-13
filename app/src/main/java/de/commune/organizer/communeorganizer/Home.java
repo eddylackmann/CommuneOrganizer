@@ -13,6 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.content.DialogInterface;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.kosalgeek.asynctask.AsyncResponse;
@@ -31,6 +33,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         setContentView(R.layout.activity_home);
         setLayout();
         init();
+
     }
 
 
@@ -49,7 +52,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
 
     public void setHomeLayoutInformation() {
-
         TextView userDetailsHome = (TextView) findViewById(R.id.userHomeDescrition);
         TextView homeCommuneCash = (TextView) findViewById(R.id.home_communeCash);
         TextView addressHome = (TextView) findViewById(R.id.addressHomeDescrition);
@@ -60,6 +62,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 ((MyApplication) this.getApplication()).getInformation("City"));
     }
 
+
     public void init() {
         task = new PostResponseAsyncTask(this);
         try {
@@ -67,6 +70,22 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        final Button shoppingBtn = (Button)findViewById(R.id.homeShoopingList);
+        final Button activityBtn = (Button)findViewById(R.id.homeActivity);
+
+
+        shoppingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            Intent intent = new Intent(Home.this, purchasePlan.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
     }
 
     @Override

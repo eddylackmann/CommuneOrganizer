@@ -76,7 +76,7 @@
             android:layout_below="@+id/homeTask"
             android:layout_alignParentStart="true" />
         <Button
-            android:id="@+id/homeAct"
+            android:id="@+id/homeActivity"
             style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="match_parent"
             android:layout_height="50dp"
