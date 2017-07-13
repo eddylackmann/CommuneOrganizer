@@ -10,6 +10,7 @@ public class commune_info extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commune_info);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         init();
     }
 
@@ -27,4 +28,11 @@ public class commune_info extends AppCompatActivity {
         infoZIPText.setText(((MyApplication) this.getApplication()).getInformation("PostCode"));
 
     }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
 }

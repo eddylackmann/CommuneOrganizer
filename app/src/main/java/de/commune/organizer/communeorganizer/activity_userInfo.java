@@ -40,11 +40,13 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
         init();
+
         setLayout();
     }
 
-    private void setLayout(){
 
+    private void setLayout(){
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
@@ -82,7 +84,7 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
         final String CommuneID =((MyApplication) this.getApplication()).getInformation("CommuneID");
         final String Email =((MyApplication) this.getApplication()).getInformation("Email");
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.AlertDialogCustom));
-        builder.setMessage("Möchtest Sie die WG verlassen? ")
+        builder.setMessage("Möchten Sie die WG verlassen? ")
                 .setPositiveButton("JA", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         task = new PostResponseAsyncTask(c);
@@ -117,5 +119,12 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
         task = new PostResponseAsyncTask(c);
 
     }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
 
 }

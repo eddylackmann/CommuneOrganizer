@@ -28,6 +28,7 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cleaning_roster);
         controller = this;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         init();
     }
 
@@ -67,4 +68,10 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
         }
         task = new PostResponseAsyncTask(this);
     }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
 }

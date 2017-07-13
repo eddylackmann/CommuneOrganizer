@@ -41,7 +41,14 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase_plan);
         controller = this;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         init();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
     public void init(){
