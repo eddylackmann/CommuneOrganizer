@@ -1,6 +1,7 @@
 package de.commune.organizer.communeorganizer;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -52,11 +53,14 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
 
     public void setHomeLayoutInformation() {
+
+        Typeface.defaultFromStyle(Typeface.BOLD);
         TextView userDetailsHome = (TextView) findViewById(R.id.userHomeDescrition);
         TextView homeCommuneCash = (TextView) findViewById(R.id.home_communeCash);
         TextView addressHome = (TextView) findViewById(R.id.addressHomeDescrition);
         userDetailsHome.setText(((MyApplication) this.getApplication()).getInformation("Firstname") + " " + ((MyApplication) this.getApplication()).getInformation("Lastname"));
-        homeCommuneCash.setText("Kasse: " + ((MyApplication) this.getApplication()).getInformation("CommuneCashbox") + " €");
+        homeCommuneCash.setText("" + ((MyApplication) this.getApplication()).getInformation("CommuneCashbox") + " €");
+        homeCommuneCash.setTypeface(null, Typeface.BOLD);
         addressHome.setText(((MyApplication) this.getApplication()).getInformation("Address") + ", " +
                 ((MyApplication) this.getApplication()).getInformation("PostCode") + " " +
                 ((MyApplication) this.getApplication()).getInformation("City"));
@@ -73,7 +77,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         final Button shoppingBtn = (Button)findViewById(R.id.homeShoopingList);
         final Button activityBtn = (Button)findViewById(R.id.homeActivity);
-
+        final Button userBtn = (Button)findViewById(R.id.homeUser);
+        final Button cleaningBtn = (Button)findViewById(R.id.homeTask);
 
         shoppingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +92,22 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home.this, activities.class);
+                startActivity(intent);
+            }
+        });
+
+        userBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, activity_userInfo.class);
+                startActivity(intent);
+            }
+        });
+
+        cleaningBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, cleaningRoster.class);
                 startActivity(intent);
             }
         });
