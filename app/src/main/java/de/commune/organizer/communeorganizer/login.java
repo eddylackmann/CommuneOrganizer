@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
@@ -32,6 +35,12 @@ public class login extends AppCompatActivity implements AsyncResponse {
         emailHint.setHintTextColor(Color.WHITE);
         TextView passHint = (TextView) findViewById(R.id.uPasswordText);
         passHint.setHintTextColor(Color.WHITE);
+
+        final EditText EmailTest = (EditText) findViewById(R.id.uEmailText);
+        final EditText PassTest = (EditText) findViewById(R.id.uPasswordText);
+
+        styleTextInput(EmailTest);
+        styleTextInput(PassTest);
     }
 
 
@@ -107,4 +116,31 @@ public class login extends AppCompatActivity implements AsyncResponse {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void styleTextInput(final EditText Edit){
+        Edit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(s.length() != 0){
+                    Edit.setBackgroundColor(Color.WHITE);
+                     Edit.setTextColor(Color.BLACK);}
+                else{
+                    Edit.setBackgroundColor(0);
+                    Edit.setHintTextColor(Color.WHITE);
+
+                }
+            }
+        });
+    }
+
 }

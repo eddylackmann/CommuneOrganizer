@@ -136,14 +136,29 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
         purchPlan_finishPurch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try
-                {
-                    asyncTaskMethod = "deleteAllPurchasePlanEntries";
-                    task.execute("http://eddy-home.ddns.net/wg-app/purchasePlans.php?Method=" + asyncTaskMethod +"&CommuneID=" + communeID);
-                } catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
+                final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(controller,R.style.AlertDialogCustom));
+                builder.setMessage("Möchten Sie die Liste abschliessen? Alle Einträge werden gelöscht!!!")
+                        .setPositiveButton("JA", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                try
+                                {
+                                    asyncTaskMethod = "deleteAllPurchasePlanEntries";
+                                    task.execute("http://eddy-home.ddns.net/wg-app/purchasePlans.php?Method=" + asyncTaskMethod +"&CommuneID=" + communeID);
+                                } catch (Exception e)
+                                {
+                                    e.printStackTrace();
+                                }
+                            }
+                        })
+                        .setNegativeButton("NEIN", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        });
+                builder.create();
+                builder.show();
+
+
             }
         });
 

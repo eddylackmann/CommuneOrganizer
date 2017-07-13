@@ -1,8 +1,12 @@
 package de.commune.organizer.communeorganizer;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.ContextThemeWrapper;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
 import com.kosalgeek.asynctask.AsyncResponse;
@@ -22,6 +26,7 @@ public class my_Library {
         AlertBox.create();
         AlertBox.show();
      }
+
 
 
 

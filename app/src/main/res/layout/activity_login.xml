@@ -7,9 +7,9 @@
 
     android:scaleType="centerCrop" >
     <ImageView
-        android:layout_width="fill_parent" android:layout_height="fill_parent"
-        android:src="@drawable/wg_d"
-        android:scaleType="centerCrop" />
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:src="@drawable/wg_m"
+    android:scaleType="centerCrop" />
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -36,7 +36,6 @@
 
             <EditText
                 android:id="@+id/uEmailText"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/title_text"
