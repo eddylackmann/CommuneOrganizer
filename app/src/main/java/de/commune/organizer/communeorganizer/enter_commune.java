@@ -39,7 +39,7 @@ public class enter_commune extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View v) {
                 //fetch data from url
-                task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=enterCommune&communeID=" + communeID.getText() + "&communePassword=" + communePwText.getText() + "&Email=" + globalUserEmail);
+                task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=enterCommune&CommuneID=" + communeID.getText() + "&communePassword=" + communePwText.getText() + "&Email=" + globalUserEmail);
             }
         });
     }
@@ -70,6 +70,9 @@ public class enter_commune extends AppCompatActivity implements AsyncResponse {
                 break;
             case "communeDoesNotExist":
                 Lib.showMessage("WG existiert nicht!",this);
+                break;
+            case "wrongCommunePassword":
+                Lib.showMessage("WG Passwort ist falsch!",this);
                 break;
         }
 
