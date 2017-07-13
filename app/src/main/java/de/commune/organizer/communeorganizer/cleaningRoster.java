@@ -1,7 +1,10 @@
 package de.commune.organizer.communeorganizer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 
 import com.kosalgeek.asynctask.AsyncResponse;
@@ -17,11 +20,12 @@ import java.util.ArrayList;
  */
 
 public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
-    public PostResponseAsyncTask task;
-    public my_Library Lib;
-    GridView simpleList;
-    ArrayList<Item> animalList=new ArrayList<>();
-    public AppCompatActivity controller;
+    private PostResponseAsyncTask task;
+    private my_Library Lib;
+    GridView cleaningPlanGridView;
+    ArrayList<Item> cleaningPlanList=new ArrayList<>();
+    private AppCompatActivity controller;
+    private String communeID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,32 +39,40 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
     public void init(){
         Lib = new my_Library();
         task = new PostResponseAsyncTask(this);
-
+        communeID = ((MyApplication) this.getApplication()).getInformation("CommuneID");
         String userEmail = ((MyApplication) getApplication()).getUserEmail();
-
-        simpleList = (GridView) findViewById(R.id.simpleGridView);
-
+        cleaningPlanGridView = (GridView) findViewById(R.id.cleaningPlanGridView);
         try
         {
-            task.execute("http://eddy-home.ddns.net/wg-app/cleaningRoster.php?Method=getAllUserCleaningRosters&Email=" + userEmail);
+            task.execute("http://eddy-home.ddns.net/wg-app/cleaningPlan.php?Method=getAllCleaningPlansForUser&CommuneID="
+                            + communeID + "&Email=" + userEmail);
         } catch (Exception e)
         {
             e.printStackTrace();
         }
+
+        Button cleaningRosterAddBtn = (Button) findViewById(R.id.cleaningRosterAddBtn);
+        cleaningRosterAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent = new Intent(cleaningRoster.this, createCleaningPlan.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     public void processFinish(String s) {
-
         try
         {
             JSONArray array = new JSONArray(s);
             for (int i = 0; i < array.length(); i++) {
                 JSONObject row = array.getJSONObject(i);
-                animalList.add(new Item(row.getString("FromDate") +" - " + row.getString("ToDate"),row.getString("Description")));
+                cleaningPlanList.add(new Item(row.getString("FromDate") +" - " + row.getString("ToDate"),row.getString("Description")));
             }
-            MyAdapter myAdapter=new MyAdapter(this,R.layout.grid_view_items,animalList);
-            simpleList.setAdapter(myAdapter);
+            MyAdapter myAdapter=new MyAdapter(this,R.layout.grid_view_items,cleaningPlanList);
+            cleaningPlanGridView.setAdapter(myAdapter);
         }
         catch (Exception e)
         {

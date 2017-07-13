@@ -50,8 +50,6 @@ public class create_commune extends AppCompatActivity implements AsyncResponse {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-
-
                 }
                 else
                 {

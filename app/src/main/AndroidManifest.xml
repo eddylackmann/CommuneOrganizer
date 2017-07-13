@@ -35,5 +35,6 @@
         <activity android:name=".purchasePlan" android:label="Einkaufsliste"/>
         <activity android:name=".activities" android:label="Aktivitäten"/>
         <activity android:name=".createActivity" android:label="Aktivität hinzufügen"/>
+        <activity android:name=".createCleaningPlan" android:label="Putzplan Eintrag hinzufügen"/>;
     </application>
 </manifest>
