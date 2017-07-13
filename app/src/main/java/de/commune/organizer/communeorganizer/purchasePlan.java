@@ -113,7 +113,7 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                             {
                                 asyncTaskMethod = "createPurchasePlanEntry";
                                 task.execute("http://eddy-home.ddns.net/wg-app/purchasePlans.php?Method=" + asyncTaskMethod +"&CommuneID="
-                                        + communeID + "&Description=" + PurchaseText);
+                                        + communeID + "&Description=" + PurchaseText+"&Firstname="+ ((MyApplication) controller.getApplication()).getInformation("Firstname"));
                             } catch (Exception e)
                             {
                                 e.printStackTrace();

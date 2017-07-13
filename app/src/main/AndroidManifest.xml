@@ -12,6 +12,7 @@
         android:parentActivityName="de.commune.organizer.communeorganizer.login"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:hardwareAccelerated="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".screenSplash"
@@ -34,7 +35,8 @@
         <activity
             android:name=".Home"
             android:label="DASHBOARD"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:hardwareAccelerated="true"/>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.commune.organizer.communeorganizer.Home" />
