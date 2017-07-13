@@ -12,16 +12,14 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:src="@drawable/wg_f"
-
+            android:src="@drawable/wg_i"
             android:scaleType="centerCrop" />
         <TextView
             android:id="@+id/puchaseText"
-            android:layout_width="180dp"
+            android:layout_width="250dp"
             android:layout_height="50dp"
-
             android:gravity="center_vertical|center_horizontal"
-            android:text="Einkaufsliste"
+            android:text="Geplante Aktivitäten"
             android:background="#000"
             android:textColor="#fff"
             android:textSize="25sp"
@@ -43,21 +41,9 @@
             android:gravity="center_vertical|center_horizontal"
             android:layout_below="@+id/linInfoLayout8"
             android:orientation="horizontal">
-            <Button
-                android:id="@+id/purchPlan_finishPurch"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="180dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/linInfoLayout8"
-                android:layout_marginTop="10dp"
-                android:background="#000"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="Einkauf abschließen"
-                android:textColor="#fff" />
 
             <Button
-                android:id="@+id/purchPlan_AddBtn"
+                android:id="@+id/activities_AddBtn"
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="180dp"
                 android:layout_height="50dp"
@@ -77,7 +63,7 @@
         android:layout_below="@+id/section_1"
         android:layout_marginTop="15dp">
         <GridView
-            android:id="@+id/purchPlan_GridView"
+            android:id="@+id/activities_GridView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:numColumns="1"
