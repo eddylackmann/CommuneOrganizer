@@ -53,7 +53,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
 
     public void setHomeLayoutInformation() {
-
         Typeface.defaultFromStyle(Typeface.BOLD);
         TextView userDetailsHome = (TextView) findViewById(R.id.userHomeDescrition);
         TextView homeCommuneCash = (TextView) findViewById(R.id.home_communeCash);
