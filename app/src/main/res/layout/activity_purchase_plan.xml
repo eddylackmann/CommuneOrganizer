@@ -66,7 +66,7 @@
                 android:layout_marginRight="10dp"
                 android:background="#00810D"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="Neue Eintrag"
+                android:text="Neuer Eintrag"
                 android:textColor="#fff" />
 
 

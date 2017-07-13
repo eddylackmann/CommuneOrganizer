@@ -10,25 +10,32 @@
         android:layout_width="fill_parent" android:layout_height="fill_parent"
         android:src="@drawable/wg_d"
         android:scaleType="centerCrop" />
-
-
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context="de.commune.organizer.communeorganizer.login">
-
             <TextView
-                android:id="@+id/title_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:background="@color/common_google_signin_btn_text_light_default"
+                android:background="@color/common_google_signin_btn_text_light_default"/>
+            <TextView
+                android:id="@+id/infoTextLbl1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="Commune Organizer V0.1 Beta. Wurde von Tom, Eddy, Kati,Kevin Programiert"
+                android:text="Commune Organizer V0.1 Beta"
                 android:textColor="#FFF"
                 android:textSize="15sp" />
-
+            <TextView
+                android:id="@+id/infoTextLbl2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/infoTextLbl1"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Copyright © Tom, Eddy, Kati, Kevin"
+                android:textColor="#FFF"
+                android:textSize="15sp" />
   </RelativeLayout>
 </FrameLayout>

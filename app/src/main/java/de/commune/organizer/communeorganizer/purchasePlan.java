@@ -60,9 +60,9 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
         purchPlanList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 final Item currEntry = (Item) purchPlanList.getItemAtPosition(position);
-            final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(controller,R.style.AlertDialogCustom));
-            builder.setMessage("Eintrag löschen? ")
-                    .setPositiveButton("JA", new DialogInterface.OnClickListener() {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(controller,R.style.AlertDialogCustom));
+                builder.setMessage("Eintrag löschen?")
+                        .setPositiveButton("JA", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             try
                             {
@@ -101,7 +101,7 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
             public void onClick(View v) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(new ContextThemeWrapper(controller,R.style.AlertDialogCustom));
                 final EditText edittext = new EditText(controller);
-                alert.setMessage("Neue Eintrag");
+                alert.setMessage("Neuer Eintrag");
                 alert.setTitle("Einkaufliste");
                 edittext.setTextColor(Color.WHITE);
                 alert.setView(edittext);
@@ -144,7 +144,7 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View v) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(controller,R.style.AlertDialogCustom));
-                builder.setMessage("Möchten Sie die Liste abschliessen? Alle Einträge werden gelöscht!!!")
+                builder.setMessage("Möchten Sie die Liste abschliessen? Alle Einträge werden gelöscht!")
                         .setPositiveButton("JA", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 try
