@@ -122,7 +122,6 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                         {
                             Lib.showMessage("Bitte geben Sie eine Beschreibung ein!", controller);
                         }
-
                     }
                 });
 
@@ -162,11 +161,8 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                         });
                 builder.create();
                 builder.show();
-
-
             }
         });
-
     }
 
     @Override
@@ -179,7 +175,7 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                     JSONArray array = new JSONArray(s);
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject row = array.getJSONObject(i);
-                        purchPlanListEntries.add(new Item(row.getString("User_Firstname"),row.getString("Description"),row.getString("LineNo")));
+                        purchPlanListEntries.add(new Item(row.getString("User_Firstname"),row.getString("Description"),row.getString("LineNo"),""));
                     }
                     MyAdapter myAdapter=new MyAdapter(this,R.layout.grid_view_items,purchPlanListEntries);
                     purchPlanList.setAdapter(myAdapter);

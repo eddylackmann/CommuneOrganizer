@@ -113,7 +113,7 @@ public class activities extends AppCompatActivity implements AsyncResponse {
                     JSONArray array = new JSONArray(s);
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject row = array.getJSONObject(i);
-                        activitiesListEntries.add(new Item(row.getString("Date") + " | " + row.getString("Time"),row.getString("Description"),row.getString("LineNo")));
+                        activitiesListEntries.add(new Item(row.getString("Date") + " | " + row.getString("Time"),row.getString("Description"),row.getString("LineNo"),""));
                     }
                     MyAdapter myAdapter=new MyAdapter(this,R.layout.grid_view_items,activitiesListEntries);
                     activitiesList.setAdapter(myAdapter);

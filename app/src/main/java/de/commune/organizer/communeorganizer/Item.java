@@ -5,12 +5,14 @@ public class Item {
     String text;
     String text2;
     String lineNo;
+    String userEmail;
 
-    public Item(String text,String text2, String lineNo)
+    public Item(String text,String text2, String lineNo, String userEmail)
     {
         this.text = text;
         this.text2 = text2;
         this.lineNo = lineNo;
+        this.userEmail = userEmail;
     }
     public String getText1()
     {
@@ -22,5 +24,8 @@ public class Item {
     }
     public String getLineNo(){
         return lineNo;
+    }
+    public String getUserEmail(){
+        return userEmail;
     }
 }
