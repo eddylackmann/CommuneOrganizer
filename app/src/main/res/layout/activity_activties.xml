@@ -12,7 +12,7 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:src="@drawable/wg_i"
+            android:src="@drawable/wg_e"
             android:scaleType="centerCrop" />
         <TextView
             android:id="@+id/puchaseText"
