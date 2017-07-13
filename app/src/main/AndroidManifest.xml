@@ -53,6 +53,7 @@
         <activity android:name=".app_info"  android:label="App Info"></activity>
 
         <activity android:name=".purchasePlan" android:label="Einkaufsliste"/>
+        <activity android:name=".activities" android:label="Aktivitäten"/>
     </application>
 
 </manifest>

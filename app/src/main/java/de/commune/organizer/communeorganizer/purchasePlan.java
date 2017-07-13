@@ -61,7 +61,7 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 final Item currEntry = (Item) purchPlanList.getItemAtPosition(position);
                 final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(controller,R.style.AlertDialogCustom));
-                builder.setMessage("Eintrag löschen?")
+                builder.setMessage(currEntry.getText2() + " löschen?")
                         .setPositiveButton("JA", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             try
@@ -181,7 +181,8 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                     JSONArray array = new JSONArray(s);
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject row = array.getJSONObject(i);
-                        purchPlanListEntries.add(new Item(row.getString("User_Firstname"),(row.getString("Description"))));
+                        purchPlanListEntries.add(new Item(row.getString("LineNo"),( "[" + row.getString("User_Firstname") + "]    " + row.getString("Description") )));
+
                     }
                     MyAdapter myAdapter=new MyAdapter(this,R.layout.grid_view_items,purchPlanListEntries);
                     purchPlanList.setAdapter(myAdapter);

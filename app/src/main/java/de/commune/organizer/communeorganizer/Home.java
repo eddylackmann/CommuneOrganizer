@@ -83,6 +83,14 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
+        activityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, activities.class);
+                startActivity(intent);
+            }
+        });
+
 
 
 
@@ -157,6 +165,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             startActivity(intent);
         }else if (id == R.id.nav_edit_users) {
             Intent intent = new Intent(Home.this, activity_userInfo.class);
+            startActivity(intent);
+        }else if (id == R.id.nav_activityTask) {
+            Intent intent = new Intent(Home.this, activities.class);
             startActivity(intent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
