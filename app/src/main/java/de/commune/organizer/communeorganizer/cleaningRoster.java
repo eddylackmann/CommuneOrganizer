@@ -63,7 +63,6 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
                     })
                     .setNegativeButton("NEIN", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-
                         }
                     });
             builder.create();
@@ -134,5 +133,4 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
         finish();
         return true;
     }
-
 }
