@@ -14,46 +14,26 @@
         android:supportsRtl="true"
         android:hardwareAccelerated="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".screenSplash"
-            android:theme="@style/SplashTheme">
+        <activity android:name=".screenSplash" android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".login"
-            android:theme="@style/SplashTheme" />
-        <activity
-            android:name=".create_commune"
-            android:theme="@style/SplashTheme" />
-        <activity
-            android:name=".registration"
-            android:theme="@style/SplashTheme" />
-        <activity
-            android:name=".Home"
-            android:label="DASHBOARD"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:hardwareAccelerated="true"/>
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.commune.organizer.communeorganizer.Home" />
+        <activity android:name=".login" android:theme="@style/SplashTheme" />
+        <activity android:name=".create_commune" android:theme="@style/SplashTheme" />
+        <activity android:name=".registration" android:theme="@style/SplashTheme" />
+        <activity android:name=".Home" android:label="DASHBOARD" android:theme="@style/AppTheme.NoActionBar" android:hardwareAccelerated="true"/>
+        <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="de.commune.organizer.communeorganizer.Home" />
         <activity android:name=".createOrJoinCommune" android:theme="@style/SplashTheme" />
-        <activity
-            android:name=".enter_commune"
-            android:theme="@style/SplashTheme" />
+        <activity android:name=".enter_commune" android:theme="@style/SplashTheme" />
         <activity android:name=".cleaningRoster" android:label="Putzplan" />
         <activity android:name=".activity_userInfo"  android:label="Benutzer Infos"/>
         <activity android:name=".commune_info" android:label="WG Infos" />
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/SplashTheme"></activity>
-        <activity android:name=".app_info"  android:label="App Info"></activity>
-
+        <activity android:name=".MainActivity" android:theme="@style/SplashTheme"/>
+        <activity android:name=".app_info"  android:label="App Info"/>
         <activity android:name=".purchasePlan" android:label="Einkaufsliste"/>
         <activity android:name=".activities" android:label="Aktivitäten"/>
+        <activity android:name=".createActivity" android:label="Aktivität hinzufügen"/>
     </application>
-
 </manifest>

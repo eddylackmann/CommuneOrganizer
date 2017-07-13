@@ -96,34 +96,9 @@ public class activities extends AppCompatActivity implements AsyncResponse {
         activities_AddBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(new ContextThemeWrapper(controller,R.style.AlertDialogCustom));
-                final EditText edittext = new EditText(controller);
-                alert.setMessage("Neuer Eintrag");
-                alert.setTitle("Aktivität hinzufügen");
-                edittext.setTextColor(Color.WHITE);
-                alert.setView(edittext);
-                alert.setPositiveButton("Hinzufügen", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        String activityText = edittext.getText().toString();
-                        if (!activityText.equals("")){
-                            try
-                            {
-                                asyncTaskMethod = "createActivityEntry";
-                                task.execute("http://eddy-home.ddns.net/wg-app/activities.php?Method=" + asyncTaskMethod +"&CommuneID="
-                                        + communeID + "&Description=" + activityText +"&Date="+ "2017-07-13" + "&Time=00-00-00");
-                            } catch (Exception e)
-                            {
-                                e.printStackTrace();
-                            }
-                        }
-                        else
-                        {
-                            Lib.showMessage("Bitte geben Sie eine Beschreibung ein!", controller);
-                        }
-                    }
-                });
-                alert.show();
-
+                finish();
+                Intent intent = new Intent(activities.this, createActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -149,19 +124,6 @@ public class activities extends AppCompatActivity implements AsyncResponse {
                     e.printStackTrace();
                 }
                 break;
-
-            case "createActivityEntry":
-                if (s.equals("entryCreated")){
-                    finish();
-                    intent = new Intent(activities.this, activities.class);
-                    startActivity(intent);
-                    Lib.showMessage("Eintrag angelegt!",controller);
-                }
-                else {
-                    Lib.showMessage("Anlegen fehlgeschlagen!",controller);
-                }
-                break;
-
             case "deleteActivityEntry":
                 if (s.equals("entryDeleted")){
                     finish();
