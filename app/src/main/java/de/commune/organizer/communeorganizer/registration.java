@@ -1,10 +1,14 @@
 package de.commune.organizer.communeorganizer;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.kosalgeek.asynctask.AsyncResponse;
@@ -27,11 +31,17 @@ public class registration extends AppCompatActivity implements AsyncResponse {
         Lib = new my_Library();
         task = new PostResponseAsyncTask(this);
 
-        final TextView MailText = (TextView) findViewById(R.id.MailText);
-        final TextView uPwText = (TextView) findViewById(R.id.uPwText);
-        final TextView uPwRepeatText = (TextView) findViewById(R.id.uPwRepeatText);
-        final TextView uFirstname = (TextView) findViewById(R.id.uFirstname);
-        final TextView uLastname = (TextView) findViewById(R.id.uLastname);
+        final EditText MailText =    (EditText) findViewById(R.id.MailText);
+        final EditText uPwText =     (EditText) findViewById(R.id.uPwText);
+        final EditText uPwRepeatText = (EditText) findViewById(R.id.uPwRepeatText);
+        final EditText uFirstname = (EditText) findViewById(R.id.uFirstname);
+        final EditText uLastname = (EditText) findViewById(R.id.uLastname);
+
+        styleTextInput(MailText);
+        styleTextInput(uPwText);
+        styleTextInput(uFirstname);
+        styleTextInput(uLastname);
+        styleTextInput(uPwRepeatText);
 
         Button regBtn = (Button)findViewById(R.id.regBtn);
         regBtn.setOnClickListener(new View.OnClickListener() {
@@ -90,5 +100,31 @@ public class registration extends AppCompatActivity implements AsyncResponse {
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    public void styleTextInput(final EditText Edit){
+        Edit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(s.length() != 0){
+                    Edit.setBackgroundColor(Color.WHITE);
+                    Edit.setTextColor(Color.BLACK);}
+                else{
+                    Edit.setBackgroundColor(0);
+                    Edit.setHintTextColor(Color.WHITE);
+
+                }
+            }
+        });
     }
 }

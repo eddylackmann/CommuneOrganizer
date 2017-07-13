@@ -39,13 +39,19 @@ public class create_commune extends AppCompatActivity implements AsyncResponse {
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (comPW1.getText().toString().equals(comPW2.getText().toString()))
                 {
-                    //fetch data from url
-                    task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=registerCommune&communePassword="
-                            + comPW1.getText() + "&address=" + comAddressText.getText() + "&postCode=" + comZipText.getText()
-                            + "&city=" + comCityText.getText() + "&Email=" + globalUserEmail);
+
+                    try {
+                        task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=registerCommune&communePassword="
+                                + comPW1.getText() + "&address=" + comAddressText.getText() + "&postCode=" + comZipText.getText()
+                                + "&city=" + comCityText.getText() + "&Email=" + globalUserEmail);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
                 }
                 else
                 {
@@ -61,8 +67,9 @@ public class create_commune extends AppCompatActivity implements AsyncResponse {
         {
             case "communeCreationSuccessful":
                 Intent intent = new Intent(create_commune.this, Home.class);
-                startActivity(intent);
                 Lib.showMessage("Erstellen der WG erfolgreich.",controller);
+                startActivity(intent);
+                finish();
                 break;
             case "communeCreationFailed":
                 Lib.showMessage("Erstellen der WG fehlgeschlagen! Bitte versuchen Sie es erneut.",controller);

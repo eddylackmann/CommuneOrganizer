@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
     <ImageView
         android:layout_width="fill_parent" android:layout_height="fill_parent"
-        android:src="@drawable/wg_a"
+        android:src="@drawable/wg_b"
         android:scaleType="centerCrop" />
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_alignParentStart="true"
-
+                android:textColor="#000000"
                 android:layout_marginTop="20dp"
                 android:background="#ffff"
                 android:text="WG GRÜNDEN"

@@ -57,7 +57,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         TextView userDetailsHome = (TextView) findViewById(R.id.userHomeDescrition);
         TextView homeCommuneCash = (TextView) findViewById(R.id.home_communeCash);
         TextView addressHome = (TextView) findViewById(R.id.addressHomeDescrition);
-
         userDetailsHome.setText(((MyApplication) this.getApplication()).getInformation("Firstname") + " " + ((MyApplication) this.getApplication()).getInformation("Lastname"));
         homeCommuneCash.setText("Kasse: " + ((MyApplication) this.getApplication()).getInformation("CommuneCashbox") + " €");
         addressHome.setText(((MyApplication) this.getApplication()).getInformation("Address") + ", " +
@@ -118,8 +117,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_logout) {
+            Logout();
+        }else if(id == R.id.action_info){
+            Intent intent = new Intent(Home.this, app_info.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
