@@ -69,7 +69,7 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
             JSONArray array = new JSONArray(s);
             for (int i = 0; i < array.length(); i++) {
                 JSONObject row = array.getJSONObject(i);
-                cleaningPlanList.add(new Item(row.getString("FromDate") +" - " + row.getString("ToDate"),row.getString("Description")));
+                cleaningPlanList.add(new Item(row.getString("FromDate") +" - " + row.getString("ToDate"),row.getString("Description"),row.getString("LineNo")));
             }
             MyAdapter myAdapter=new MyAdapter(this,R.layout.grid_view_items,cleaningPlanList);
             cleaningPlanGridView.setAdapter(myAdapter);

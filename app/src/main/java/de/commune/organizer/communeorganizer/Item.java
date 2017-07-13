@@ -4,11 +4,13 @@ public class Item {
 
     String text;
     String text2;
+    String lineNo;
 
-    public Item(String text,String text2)
+    public Item(String text,String text2, String lineNo)
     {
         this.text = text;
         this.text2 = text2;
+        this.lineNo = lineNo;
     }
     public String getText1()
     {
@@ -17,5 +19,8 @@ public class Item {
     public String getText2()
     {
         return text2;
+    }
+    public String getLineNo(){
+        return lineNo;
     }
 }

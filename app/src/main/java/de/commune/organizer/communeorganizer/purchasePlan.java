@@ -67,7 +67,7 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                             try
                             {
                                 asyncTaskMethod = "deletePurchasePlanEntry";
-                                task.execute("http://eddy-home.ddns.net/wg-app/purchasePlans.php?Method=" + asyncTaskMethod +"&CommuneID=" + communeID + "&LineNo=" + currEntry.getText1());
+                                task.execute("http://eddy-home.ddns.net/wg-app/purchasePlans.php?Method=" + asyncTaskMethod +"&CommuneID=" + communeID + "&LineNo=" + currEntry.getLineNo());
                             } catch (Exception e)
                             {
                                 e.printStackTrace();
@@ -179,8 +179,7 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                     JSONArray array = new JSONArray(s);
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject row = array.getJSONObject(i);
-                        purchPlanListEntries.add(new Item(row.getString("LineNo"),( "[" + row.getString("User_Firstname") + "]    " + row.getString("Description") )));
-
+                        purchPlanListEntries.add(new Item(row.getString("User_Firstname"),row.getString("Description"),row.getString("LineNo")));
                     }
                     MyAdapter myAdapter=new MyAdapter(this,R.layout.grid_view_items,purchPlanListEntries);
                     purchPlanList.setAdapter(myAdapter);
