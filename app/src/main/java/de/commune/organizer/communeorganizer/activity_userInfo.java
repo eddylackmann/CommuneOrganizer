@@ -46,11 +46,13 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
         final TextView infoLastnameTextInfo = (TextView) findViewById(R.id.infoLastnameTextInfo);
         final TextView infoBirthdayTextInfo = (TextView) findViewById(R.id.infoBirthdayTextInfo);
 
+
+
         infoemailText.setText(((MyApplication) this.getApplication()).getInformation("Email"));
         infoPWTextInfo.setText(((MyApplication) this.getApplication()).getInformation("Password"));
         infoFirstnameTextInfo.setText(((MyApplication) this.getApplication()).getInformation("Firstname"));
         infoLastnameTextInfo.setText(((MyApplication) this.getApplication()).getInformation("Lastname"));
-        infoBirthdayTextInfo.setText(((MyApplication) this.getApplication()).getInformation("Birthday"));
+        infoBirthdayTextInfo.setText(((MyApplication) this.getApplication()).getInformation("formatted_date"));
 
         final Button changeInfoBtn = (Button)findViewById(R.id.changeInfoBtn);
         changeInfoBtn.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +76,7 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
         final TextView infoFirstnameTextInfo = (TextView) findViewById(R.id.infoFirstnameTextInfo);
         final TextView infoLastnameTextInfo = (TextView) findViewById(R.id.infoLastnameTextInfo);
         final TextView infoBirthdayTextInfo = (TextView) findViewById(R.id.infoBirthdayTextInfo);
+
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(c,R.style.AlertDialogCustom));
         builder.setMessage("Benutzerinformationen speichern? ")
