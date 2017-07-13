@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
 
+import static de.commune.organizer.communeorganizer.R.color.common_google_signin_btn_text_light_default;
+
 public class registration extends AppCompatActivity implements AsyncResponse {
     public PostResponseAsyncTask task;
     public my_Library Lib;
