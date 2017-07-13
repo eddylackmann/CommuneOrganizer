@@ -62,7 +62,7 @@ public class inhabitant_list extends AppCompatActivity implements AsyncResponse 
             JSONArray array = new JSONArray(s);
             for (int i = 0; i < array.length(); i++) {
                 JSONObject row = array.getJSONObject(i);
-                inhabitantListEntries.add(new Item(row.getString("Firstname") + " | " + row.getString("Lastname"),row.getString("Email"),"",""));
+                inhabitantListEntries.add(new Item(row.getString("Firstname") + " " + row.getString("Lastname"),row.getString("Email"),"",""));
             }
             MyAdapter myAdapter=new MyAdapter(this,R.layout.grid_view_items,inhabitantListEntries);
             inhabitantList.setAdapter(myAdapter);
