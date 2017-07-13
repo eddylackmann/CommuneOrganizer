@@ -10,12 +10,13 @@
         android:id="@+id/header_text">
 
         <ImageView
-            android:layout_width="fill_parent" android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:src="@drawable/wg_f"
 
             android:scaleType="centerCrop" />
         <TextView
-            android:id="@+id/cleaningText"
+            android:id="@+id/puchaseText"
             android:layout_width="180dp"
             android:layout_height="50dp"
 
@@ -68,13 +69,8 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:text="Neuer Eintrag"
                 android:textColor="#fff" />
-
-
         </LinearLayout>
-
-
     </RelativeLayout>
-
 
     <RelativeLayout
         android:layout_width="match_parent"

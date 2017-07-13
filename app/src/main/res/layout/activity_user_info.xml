@@ -2,13 +2,12 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
     <ImageView
         android:layout_width="fill_parent" android:layout_height="fill_parent"
         android:src="@drawable/wg_i"
         android:scaleType="centerCrop" />
-
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -17,10 +16,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-
-
+            android:layout_height="match_parent" >
 
             <TextView
                 android:id="@+id/title_text"
@@ -33,7 +29,6 @@
                 android:text="BENUTZER INFOS"
                 android:textColor="#FFF"
                 android:textSize="25sp" />
-
 
             <LinearLayout
                 android:layout_marginTop="15dp"
@@ -56,7 +51,7 @@
                     android:ems="10"
                     android:text="Email:" />
 
-                <TextView
+                <EditText
                     android:id="@+id/infoEmailTextInfo"
                     android:layout_width="match_parent"
                     android:background="#fff"
@@ -88,7 +83,7 @@
                     android:ems="10"
                     android:text="Passwort:" />
 
-                <TextView
+                <EditText
                     android:id="@+id/infoPWTextInfo"
                     android:layout_width="match_parent"
                     android:background="#fff"
@@ -122,7 +117,7 @@
                     android:ems="10"
                     android:text="Vorname:" />
 
-                <TextView
+                <EditText
                     android:id="@+id/infoFirstnameTextInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -154,7 +149,7 @@
                     android:ems="10"
                     android:text="Nachname:" />
 
-                <TextView
+                <EditText
                     android:id="@+id/infoLastnameTextInfo"
                     android:layout_width="match_parent"
                     android:background="#fff"
@@ -186,7 +181,7 @@
                     android:ems="10"
                     android:text="Geburtsdatum:" />
 
-                <TextView
+                <EditText
                     android:id="@+id/infoBirthdayTextInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -235,7 +230,7 @@
                     android:background="#000"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="INFOS BEARBEITEN"
+                    android:text="Änderungen speichern"
                     android:textColor="#fff" />
 
                 <Button
@@ -252,10 +247,7 @@
                     android:text="WG VERLASSEN"
                     android:textColor="#fff" />
 
-
             </LinearLayout>
-
-
 
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
