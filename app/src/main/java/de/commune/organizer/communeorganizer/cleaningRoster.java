@@ -91,6 +91,22 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
                 startActivity(intent);
             }
         });
+
+        Button cleaningRosterChangeViewBtn = (Button) findViewById(R.id.cleaningRosterChangeViewBtn);
+        cleaningRosterChangeViewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try
+                {
+                    asyncTaskMethod = "getAllCleaningPlans";
+                    task.execute("http://eddy-home.ddns.net/wg-app/cleaningPlan.php?Method=" + asyncTaskMethod + "&CommuneID=" + communeID);
+                } catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     @Override
@@ -98,6 +114,8 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
         Intent intent;
         switch (asyncTaskMethod){
             case "getAllCleaningPlansForUser":
+                cleaningPlanList.clear();
+                task = new PostResponseAsyncTask(this);
                 try
                 {
                     JSONArray array = new JSONArray(s);
@@ -123,6 +141,24 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
                 else
                 {
                     Lib.showMessage("Eintrag löschen fehlgeschlagen!",controller);
+                }
+                break;
+            case "getAllCleaningPlans":
+                cleaningPlanList.clear();
+                task = new PostResponseAsyncTask(this);
+                try
+                {
+                    JSONArray array = new JSONArray(s);
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject row = array.getJSONObject(i);
+                        cleaningPlanList.add(new Item(row.getString("FromDate") +" - " + row.getString("ToDate"),row.getString("Description"),row.getString("LineNo"),row.getString("UserEmail")));
+                    }
+                    MyAdapter myAdapter=new MyAdapter(this,R.layout.grid_view_items,cleaningPlanList);
+                    cleaningPlanGridView.setAdapter(myAdapter);
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
                 }
                 break;
         }
