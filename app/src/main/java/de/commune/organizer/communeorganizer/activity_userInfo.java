@@ -41,15 +41,13 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
 
     private  void  init(){
         final TextView infoemailText = (TextView) findViewById(R.id.infoEmailTextInfo);
-        final TextView infoPWTextInfo = (TextView) findViewById(R.id.infoPWTextInfo);
+        //final TextView infoPWTextInfo = (TextView) findViewById(R.id.infoPWTextInfo);
         final TextView infoFirstnameTextInfo = (TextView) findViewById(R.id.infoFirstnameTextInfo);
         final TextView infoLastnameTextInfo = (TextView) findViewById(R.id.infoLastnameTextInfo);
         final TextView infoBirthdayTextInfo = (TextView) findViewById(R.id.infoBirthdayTextInfo);
 
-
-
         infoemailText.setText(((MyApplication) this.getApplication()).getInformation("Email"));
-        infoPWTextInfo.setText(((MyApplication) this.getApplication()).getInformation("Password"));
+        //infoPWTextInfo.setText(((MyApplication) this.getApplication()).getInformation("Password"));
         infoFirstnameTextInfo.setText(((MyApplication) this.getApplication()).getInformation("Firstname"));
         infoLastnameTextInfo.setText(((MyApplication) this.getApplication()).getInformation("Lastname"));
         infoBirthdayTextInfo.setText(((MyApplication) this.getApplication()).getInformation("formatted_date"));
