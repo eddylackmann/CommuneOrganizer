@@ -130,31 +130,14 @@ public class commune_info extends AppCompatActivity implements AsyncResponse {
 
     @Override
     public void processFinish(String s){
-        Intent intent;
         switch (asyncTaskMethod){
-            case "getInformation":
-                try{
-                    ((MyApplication) this.getApplication()).setInformationArray(new JSONArray(s));
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
-                finish();
-                intent = new Intent(commune_info.this, commune_info.class);
-                startActivity(intent);
-                break;
             case "updateCommune":
                 switch (s)
                 {
                     case "communeUpdated":
-                        task = new PostResponseAsyncTask(this);
-                        try {
-                            asyncTaskMethod = "getInformation";
-                            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+asyncTaskMethod+
-                                    "&Email=" + ((MyApplication) this.getApplication()).getUserEmail());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                        finish();
+                        Intent intent = new Intent(commune_info.this, Home.class);
+                        startActivity(intent);
                         break;
                 }
                 break;

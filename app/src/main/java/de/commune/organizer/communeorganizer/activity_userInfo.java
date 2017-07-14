@@ -74,7 +74,7 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
         final TextView infoFirstnameTextInfo = (TextView) findViewById(R.id.infoFirstnameTextInfo);
         final TextView infoLastnameTextInfo = (TextView) findViewById(R.id.infoLastnameTextInfo);
         final TextView infoBirthdayTextInfo = (TextView) findViewById(R.id.infoBirthdayTextInfo);
-
+        final String oldPW = ((MyApplication) this.getApplication()).getInformation("Password");
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(c,R.style.AlertDialogCustom));
         builder.setMessage("Benutzerinformationen speichern? ")
@@ -88,7 +88,8 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
                                     +"&Password="+infoPWTextInfo.getText()
                                     +"&Firstname="+infoFirstnameTextInfo.getText()
                                     +"&Lastname="+infoLastnameTextInfo.getText()
-                                    +"&Birthday="+infoBirthdayTextInfo.getText());
+                                    +"&Birthday="+infoBirthdayTextInfo.getText()
+                                    +"&oldPW=" + oldPW);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
