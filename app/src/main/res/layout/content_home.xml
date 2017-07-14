@@ -46,7 +46,7 @@
                 android:id="@+id/home_communeCash"
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:background="#000"
                 android:textSize="20dp"
                 android:gravity="center_vertical|center_horizontal"
@@ -67,32 +67,6 @@
             android:layout_below="@+id/cashlayout"
             android:weightSum="1.0"
             >
-            <Button
-                android:id="@+id/homeTask"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dip"
-                android:layout_height="50dp"
-                android:background="@android:color/white"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="Putzplan"
-                android:layout_marginRight="5dp"
-                android:textColor="#000"
-                android:layout_weight=".5"
-                android:layout_alignParentStart="true" />
-            <Button
-                android:id="@+id/homeShoopingList"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dip"
-                android:layout_height="50dp"
-                android:background="@android:color/white"
-                android:layout_weight=".5"
-                android:layout_marginLeft="5dp"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="Einkaufliste"
-                android:textColor="#000"
-                android:layout_below="@+id/homeTask"
-                android:layout_alignParentStart="true" />
-
 
 
         </LinearLayout>
@@ -106,41 +80,12 @@
             android:layout_marginTop="10dp"
             >
 
-            <Button
-                android:id="@+id/homeActivity"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_weight=".5"
-                android:layout_width="0dip"
-                android:layout_height="50dp"
-                android:background="@android:color/white"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="Nächste Aktivitäten"
-                android:layout_marginRight="5dp"
-                android:textColor="#000"
-                android:layout_below="@+id/homeShoopingList"
-                android:layout_alignParentStart="true" />
-
-            <Button
-                android:id="@+id/homeUser"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="0dip"
-                android:layout_height="50dp"
-                android:background="@android:color/white"
-                android:layout_weight=".5"
-                android:layout_marginLeft="5dp"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="Mein Profil"
-                android:textColor="#000"
-
-                android:layout_alignParentStart="true" />
-
-
 
         </LinearLayout>
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/line2"
+            android:layout_below="@+id/homeFirst"
             android:layout_alignParentStart="true">
 
             <Button

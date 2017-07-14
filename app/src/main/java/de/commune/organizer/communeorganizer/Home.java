@@ -75,7 +75,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     public void init() {
-
         asyncTaskMethod="getInformation";
         task = new PostResponseAsyncTask(this);
         try {
@@ -84,48 +83,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             e.printStackTrace();
         }
 
-        final Button shoppingBtn = (Button)findViewById(R.id.homeShoopingList);
-        final Button activityBtn = (Button)findViewById(R.id.homeActivity);
-        final Button userBtn = (Button)findViewById(R.id.homeUser);
-        final Button cleaningBtn = (Button)findViewById(R.id.homeTask);
         final Button cashBtn = (Button)findViewById(R.id.home_cashBtn);
-        final TextView communeCurrentCash = (TextView) findViewById(R.id.home_communeCash);
-
-        shoppingBtn.setVisibility(View.GONE);
-        shoppingBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            Intent intent = new Intent(Home.this, purchasePlan.class);
-                startActivity(intent);
-            }
-        });
-
-        activityBtn.setVisibility(View.GONE);
-        activityBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Home.this, activities.class);
-                startActivity(intent);
-            }
-        });
-        cleaningBtn.setVisibility(View.GONE);
-        cleaningBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Home.this, cleaningRoster.class);
-                startActivity(intent);
-            }
-        });
-        userBtn.setVisibility(View.GONE);
-        userBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Home.this, activity_userInfo.class);
-                startActivity(intent);
-            }
-        });
-
-
         cashBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -181,9 +139,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-
-
-
         alert.show();
     }
 
@@ -211,7 +166,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             builder.create();
             builder.show();
         }
-        // Create the AlertDialog object and return it
+
     }
 
     @Override
