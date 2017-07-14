@@ -33,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:text="Username"
+        android:layout_marginTop="85dp"
         android:layout_below="@+id/appBarLayout"
         android:layout_alignParentStart="true" />
     <TextView
@@ -43,8 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:text="Adress"
-        android:layout_marginTop="81dp"
-        android:layout_below="@+id/userHomeDescrition"
-        android:layout_alignParentStart="true" />
+        android:layout_alignTop="@+id/userHomeDescrition"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="49dp" />
 
 </RelativeLayout>

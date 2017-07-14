@@ -129,6 +129,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:inputType="number"
                         android:ems="10"
                         android:text="" />
                 </LinearLayout>
@@ -169,6 +170,7 @@
                     <TextView
                         android:id="@+id/infoMaxInh"
                         android:layout_width="100dp"
+
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:ems="10"
@@ -176,6 +178,7 @@
 
                     <EditText
                         android:id="@+id/infoMaxInhText"
+                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -203,6 +206,7 @@
                         android:id="@+id/infoInhText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="number"
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="10dp"
                         android:ems="10"
@@ -258,6 +262,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
+                        android:inputType="numberDecimal"
                         android:layout_marginTop="5dp"
                         android:ems="10"
                         android:text="" />
@@ -283,6 +288,7 @@
                         android:id="@+id/infoRentText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="10dp"
                         android:ems="10"
@@ -310,6 +316,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
+                        android:inputType="numberDecimal"
                         android:layout_marginTop="10dp"
                         android:ems="10"
                         android:text="" />
@@ -335,6 +342,7 @@
                         android:id="@+id/infoOtherCostText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="10dp"
                         android:ems="10"

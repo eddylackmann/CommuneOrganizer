@@ -1,6 +1,7 @@
 package de.commune.organizer.communeorganizer;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -12,28 +13,37 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
 import android.content.DialogInterface;
+import java.math.BigDecimal;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
 
 import org.json.JSONArray;
+import org.w3c.dom.Text;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AsyncResponse {
 
     private PostResponseAsyncTask task;
     private my_Library Lib = new my_Library();
+    private AppCompatActivity c = this;
+    private String asyncTaskMethod;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         setLayout();
+
         init();
+
 
     }
 
@@ -69,6 +79,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public void init() {
         task = new PostResponseAsyncTask(this);
         try {
+            asyncTaskMethod="getInformation";
             task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=getInformation&Email=" + ((MyApplication) this.getApplication()).getUserEmail());
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,7 +89,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         final Button activityBtn = (Button)findViewById(R.id.homeActivity);
         final Button userBtn = (Button)findViewById(R.id.homeUser);
         final Button cleaningBtn = (Button)findViewById(R.id.homeTask);
+        final Button cashBtn = (Button)findViewById(R.id.home_cashBtn);
+        final TextView communeCurrentCash = (TextView) findViewById(R.id.home_communeCash);
 
+        shoppingBtn.setVisibility(View.GONE);
         shoppingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +101,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
+        activityBtn.setVisibility(View.GONE);
         activityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +109,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 startActivity(intent);
             }
         });
-
+        cleaningBtn.setVisibility(View.GONE);
+        cleaningBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, cleaningRoster.class);
+                startActivity(intent);
+            }
+        });
+        userBtn.setVisibility(View.GONE);
         userBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,17 +126,53 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-        cleaningBtn.setOnClickListener(new View.OnClickListener() {
+
+        cashBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Home.this, cleaningRoster.class);
-                startActivity(intent);
+                cashManagement();
             }
         });
 
 
 
 
+    }
+
+    private void cashManagement(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(new ContextThemeWrapper(c,R.style.AlertDialogCustom));
+        final EditText edittext = new EditText(c);
+        edittext.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
+        alert.setMessage("WG Kasse");
+        alert.setTitle("Einzahlung");
+        edittext.setTextColor(Color.WHITE);
+        alert.setView(edittext);
+        alert.setPositiveButton("Einzahlen", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String CashText = edittext.getText().toString();
+                if (!CashText.equals("")){
+
+                    asyncTaskMethod="addCash";
+                    task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=addCashToCommune&CommuneID="
+                            +((MyApplication) c.getApplication()).getInformation("CommuneID")
+                            + "&CurrentCash="+((MyApplication) c.getApplication()).getInformation("CommuneCashbox")
+                            +"&Cash="+CashText);
+                    Lib.showMessage(CashText + " wurde erfolreich eingezahlt",c);
+                }
+                else
+                {
+                    Lib.showMessage("Betrag eintragen!", c);
+                }
+            }
+        });
+
+        alert.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // what ever you want to do with No option.
+            }
+        });
+
+        alert.show();
     }
 
     @Override
@@ -200,14 +259,24 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     @Override
     public void processFinish(String s){
-        try{
-            ((MyApplication) this.getApplication()).setInformationArray(new JSONArray(s));
+
+        switch (asyncTaskMethod) {
+            case"getInformation":
+                try {
+                    ((MyApplication) this.getApplication()).setInformationArray(new JSONArray(s));
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                setHomeLayoutInformation();
+                break;
+            case "addCash":
+
+                break;
+
         }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-        task = new PostResponseAsyncTask(this);
         setHomeLayoutInformation();
+        task = new PostResponseAsyncTask(this);
 
     }
 

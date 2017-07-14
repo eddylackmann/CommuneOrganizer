@@ -71,7 +71,7 @@
                 android:id="@+id/homeTask"
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="0dip"
-                android:layout_height="70dp"
+                android:layout_height="50dp"
                 android:background="@android:color/white"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="Putzplan"
@@ -83,7 +83,7 @@
                 android:id="@+id/homeShoopingList"
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="0dip"
-                android:layout_height="70dp"
+                android:layout_height="50dp"
                 android:background="@android:color/white"
                 android:layout_weight=".5"
                 android:layout_marginLeft="5dp"
@@ -111,7 +111,7 @@
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_weight=".5"
                 android:layout_width="0dip"
-                android:layout_height="70dp"
+                android:layout_height="50dp"
                 android:background="@android:color/white"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="Nächste Aktivitäten"
@@ -124,13 +124,36 @@
                 android:id="@+id/homeUser"
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="0dip"
-                android:layout_height="70dp"
+                android:layout_height="50dp"
                 android:background="@android:color/white"
                 android:layout_weight=".5"
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="Mein Profil"
                 android:textColor="#000"
+
+                android:layout_alignParentStart="true" />
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/line2"
+            android:layout_alignParentStart="true">
+
+            <Button
+                android:id="@+id/home_cashBtn"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="0dip"
+                android:layout_height="50dp"
+                android:background="#00810D"
+                android:layout_weight=".5"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Einzahlung"
+                android:textColor="#fff"
 
                 android:layout_alignParentStart="true" />
 
