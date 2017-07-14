@@ -143,6 +143,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         alert.setTitle("Einzahlung");
         edittext.setTextColor(Color.WHITE);
         alert.setView(edittext);
+
         alert.setPositiveButton("Einzahlen", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String CashText = edittext.getText().toString();
@@ -152,22 +153,36 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                     task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=addCashToCommune&CommuneID="
                             +((MyApplication) c.getApplication()).getInformation("CommuneID")
                             + "&CurrentCash="+((MyApplication) c.getApplication()).getInformation("CommuneCashbox")
-                            +"&Cash="+CashText);
-                    Lib.showMessage(CashText + " wurde erfolreich eingezahlt",c);
+                            +"&Cash="+CashText+"&CashType=sum");
                     UpdateApp();
                 }
                 else
                 {
-                    Lib.showMessage("Betrag eintragen!", c);
+
                 }
             }
         });
 
-        alert.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+        alert.setNegativeButton("Abziehen", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                // what ever you want to do with No option.
+                String CashText = edittext.getText().toString();
+                if (!CashText.equals("")){
+                asyncTaskMethod="addCash";
+                task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=addCashToCommune&CommuneID="
+                        +((MyApplication) c.getApplication()).getInformation("CommuneID")
+                        + "&CurrentCash="+((MyApplication) c.getApplication()).getInformation("CommuneCashbox")
+                        +"&Cash="+CashText+"&CashType=sub");
+                UpdateApp();
+                }
+                else
+                {
+
+                }
             }
         });
+
+
+
 
         alert.show();
     }
