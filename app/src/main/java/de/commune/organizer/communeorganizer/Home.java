@@ -51,12 +51,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public void setLayout(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -73,13 +71,14 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         addressHome.setText(((MyApplication) this.getApplication()).getInformation("Address") + ", " +
                 ((MyApplication) this.getApplication()).getInformation("PostCode") + " " +
                 ((MyApplication) this.getApplication()).getInformation("City"));
+
     }
 
-
     public void init() {
+
+        asyncTaskMethod="getInformation";
         task = new PostResponseAsyncTask(this);
         try {
-            asyncTaskMethod="getInformation";
             task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=getInformation&Email=" + ((MyApplication) this.getApplication()).getUserEmail());
         } catch (Exception e) {
             e.printStackTrace();
@@ -134,9 +133,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
-
-
-
     }
 
     private void cashManagement(){
@@ -158,6 +154,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                             + "&CurrentCash="+((MyApplication) c.getApplication()).getInformation("CommuneCashbox")
                             +"&Cash="+CashText);
                     Lib.showMessage(CashText + " wurde erfolreich eingezahlt",c);
+                    UpdateApp();
                 }
                 else
                 {
@@ -259,7 +256,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     @Override
     public void processFinish(String s){
-
         switch (asyncTaskMethod) {
             case"getInformation":
                 try {
@@ -268,15 +264,19 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                setHomeLayoutInformation();
                 break;
             case "addCash":
 
                 break;
-
         }
-        setHomeLayoutInformation();
+
         task = new PostResponseAsyncTask(this);
+        setHomeLayoutInformation();
+    }
+
+    private void UpdateApp(){
+        finish();
+        startActivity(getIntent());
 
     }
 
