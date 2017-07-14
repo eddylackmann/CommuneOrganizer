@@ -53,7 +53,6 @@ public class login extends AppCompatActivity implements AsyncResponse {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(userEmail.getText().toString().equals("")) {
                     userEmail.setError("Bitte tragen Sie Ihre Email ein!");
                 }
@@ -94,10 +93,10 @@ public class login extends AppCompatActivity implements AsyncResponse {
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
                 break;
             case "wrongPassword":
-                Lib.showMessage("Falsches Passwort!",controller);
+                userPassword.setError("Falsches Passwort!");
                 break;
             case "userDoesNotExist":
-                Lib.showMessage("Benutzer existiert nicht!",controller);
+                userEmail.setError("Benutzer existiert nicht!");
                 break;
         }
         task = new PostResponseAsyncTask(this);

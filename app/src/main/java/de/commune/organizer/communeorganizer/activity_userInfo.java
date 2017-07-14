@@ -141,7 +141,7 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
                     e.printStackTrace();
                 }
                 finish();
-                intent = new Intent(activity_userInfo.this, activity_userInfo.class);
+                intent = new Intent(activity_userInfo.this, Home.class);
                 startActivity(intent);
                 break;
             case "updateUser":
@@ -153,9 +153,14 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
                             asyncTaskMethod = "getInformation";
                             task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+asyncTaskMethod+
                                     "&Email=" + ((MyApplication) this.getApplication()).getUserEmail());
+                                    finish();
+                                    intent = new Intent(activity_userInfo.this, Home.class);
+                                    startActivity(intent);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+
+
                         break;
                 }
                 break;
