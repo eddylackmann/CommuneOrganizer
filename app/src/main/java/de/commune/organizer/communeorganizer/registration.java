@@ -85,9 +85,9 @@ public class registration extends AppCompatActivity implements AsyncResponse {
         switch (s)
         {
             case "registrationSuccessful":
+                finish();
                 Intent intent = new Intent(registration.this, createOrJoinCommune.class);
                 startActivity(intent);
-
                 ((MyApplication) this.getApplication()).setUserEmail(MailText.getText().toString());
                 ((MyApplication) this.getApplication()).setUserLoggedIn(true);
                 break;

@@ -39,15 +39,26 @@
             android:id="@+id/linInfoLayout9"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:weightSum="1.0"
             android:gravity="center_vertical|center_horizontal"
             android:layout_below="@+id/linInfoLayout8"
             android:orientation="horizontal">
+            <Button
+                android:id="@+id/cleaningRosterChangeViewBtn"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight=".5"
+                android:background="#000"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Alle anzeigen"
+                android:textColor="#fff" />
             <Button
                 android:id="@+id/cleaningRosterAddBtn"
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_below="@+id/changeInfoBtn"
+                android:layout_weight=".5"
                 android:background="#00810D"
                 android:gravity="center_vertical|center_horizontal"
                 android:text=" Neuer Eintrag"
