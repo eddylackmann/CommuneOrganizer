@@ -131,34 +131,13 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
     public void processFinish(String s) {
         Intent intent;
         switch (asyncTaskMethod){
-            case "getInformation":
-                try{
-                    ((MyApplication) this.getApplication()).setInformationArray(new JSONArray(s));
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
-                finish();
-                intent = new Intent(activity_userInfo.this, Home.class);
-                startActivity(intent);
-                break;
             case "updateUser":
                 switch (s)
                 {
                     case "userUpdated":
-                        task = new PostResponseAsyncTask(c);
-                        try {
-                            asyncTaskMethod = "getInformation";
-                            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+asyncTaskMethod+
-                                    "&Email=" + ((MyApplication) this.getApplication()).getUserEmail());
-                                    finish();
-                                    intent = new Intent(activity_userInfo.this, Home.class);
-                                    startActivity(intent);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
-
+                        finish();
+                        intent = new Intent(activity_userInfo.this, Home.class);
+                        startActivity(intent);
                         break;
                 }
                 break;
