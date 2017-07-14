@@ -54,10 +54,16 @@ public class login extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View v) {
 
-                if(userEmail.getText().toString().trim().equals("")| userPassword.getText().toString().trim().equals("")){
+                if(userEmail.getText().toString().equals("")) {
                     userEmail.setError("Bitte tragen Sie Ihre Email ein!");
-                }else {
-                    //fetch data from url
+                }
+
+                if(userPassword.getText().toString().equals("")) {
+                    userPassword.setError("Bitte tragen Sie Ihr Passwort ein!");
+                }
+
+                //fetch data from url
+                if (!userEmail.getText().toString().equals("") & !userPassword.getText().toString().equals("")){
                     try {
                         task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=loginUser&Email=" + userEmail.getText() + "&Password=" + userPassword.getText());
                     } catch (Exception e) {

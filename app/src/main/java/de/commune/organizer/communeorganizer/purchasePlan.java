@@ -191,7 +191,6 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                     finish();
                     intent = new Intent(purchasePlan.this, purchasePlan.class);
                     startActivity(intent);
-                    Lib.showMessage("Eintrag angelegt!",controller);
                 }
                 else {
                     Lib.showMessage("Anlegen fehlgeschlagen!",controller);
@@ -203,7 +202,6 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                     finish();
                     intent = new Intent(purchasePlan.this, purchasePlan.class);
                     startActivity(intent);
-                    Lib.showMessage("Eintrag gelöscht!",controller);
                 }
                 else {
                     Lib.showMessage("Eintrag löschen fehlgeschlagen!",controller);
@@ -215,9 +213,9 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                     finish();
                     intent = new Intent(purchasePlan.this, purchasePlan.class);
                     startActivity(intent);
-                    Lib.showMessage("Einkauf abgeschlossen!",controller);
                 }
-                else{
+                else
+                {
                     Lib.showMessage("Abschließen fehlgeschlagen!",controller);
                 }
                 break;
