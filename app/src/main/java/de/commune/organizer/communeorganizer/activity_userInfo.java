@@ -105,6 +105,7 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
     }
 
     private void LeaveCommune(){
+        final String CommuneID =((MyApplication) this.getApplication()).getInformation("CommuneID");
         final String Email =((MyApplication) this.getApplication()).getInformation("Email");
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(c,R.style.AlertDialogCustom));
         builder.setMessage("Möchten Sie die WG verlassen? ")
@@ -113,7 +114,7 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
                         task = new PostResponseAsyncTask(c);
                         try {
                             asyncTaskMethod ="exitCommune";
-                            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+ asyncTaskMethod +"&Email="+Email);
+                            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+ asyncTaskMethod + "&CommuneID=" + CommuneID + "&Email=" +Email);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
