@@ -101,7 +101,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         alert.setTitle("Einzahlung");
         edittext.setTextColor(Color.WHITE);
         alert.setView(edittext);
-
         alert.setPositiveButton("Einzahlen", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String CashText = edittext.getText().toString();
