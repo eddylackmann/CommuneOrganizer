@@ -394,25 +394,37 @@
                           android:ems="10"
                           android:text="" />
                   </LinearLayout>
-
               </RelativeLayout>
             <RelativeLayout
                 android:layout_below="@id/info_comm_section2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/info_comm_section3"
-                >
+                android:id="@+id/info_comm_section3">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="1.0">
                     <Button
-                        android:id="@+id/comInfo_saveChangesBtn"
-                        style="@style/Widget.AppCompat.Button.Small"
+                        android:id="@+id/comInfo_saveChangesBtn" style="@style/Widget.AppCompat.Button.Small"
                         android:layout_width="match_parent"
-                        android:layout_height="70dp"
-
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:background="#00810D"
                         android:gravity="center_vertical|center_horizontal"
+                        android:layout_weight=".5"
                         android:text="Änderungen speichern"
                         android:textColor="#fff" />
+                    <Button
+                        android:id="@+id/comInfo_deleteCommune" style="@style/Widget.AppCompat.Button.Small"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:background="#b00000"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_weight=".5"
+                        android:text="WG löschen"
+                        android:textColor="#fff" />
+                </LinearLayout>
             </RelativeLayout>
 
             </RelativeLayout>
