@@ -408,7 +408,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
 
-                        android:layout_marginRight="10dp"
                         android:layout_marginBottom="10dp"
                         android:background="#00810D"
                         android:gravity="center_vertical|center_horizontal"
