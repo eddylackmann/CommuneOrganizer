@@ -200,16 +200,19 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
                         finish();
                         intent = new Intent(activity_userInfo.this, MainActivity.class);
                         startActivity(intent);
+                        Lib.showMessage("Benutzeraccount gelöscht.",this);
                         break;
                     case "exitSuccessfuluserDeleted":
                         finish();
                         intent = new Intent(activity_userInfo.this, MainActivity.class);
                         startActivity(intent);
+                        Lib.showMessage("WG verlassen und Benutzeraccount gelöscht.",this);
                         break;
                     case "communeDeletedexitSuccessfuluserDeleted":
                         finish();
                         intent = new Intent(activity_userInfo.this, MainActivity.class);
                         startActivity(intent);
+                        Lib.showMessage("WG verlassen, gelöscht und Benutzeraccount gelöscht.",this);
                         break;
                 }
         }
