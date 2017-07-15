@@ -33,6 +33,10 @@ public class commune_info extends AppCompatActivity implements AsyncResponse {
     }
 
     private void init(){
+
+        Intent intent = new Intent(commune_info.this, RefreshAppGlobalInformation.class);
+        startActivity(intent);
+
         Lib = new my_Library();
 
         final TextView infocommuneID = (TextView) findViewById(R.id.infocommuneID);

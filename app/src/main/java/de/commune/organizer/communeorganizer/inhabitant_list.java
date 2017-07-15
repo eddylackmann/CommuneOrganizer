@@ -47,6 +47,10 @@ public class inhabitant_list extends AppCompatActivity implements AsyncResponse 
     }
 
     public void init(){
+
+        Intent intent = new Intent(inhabitant_list.this, RefreshAppGlobalInformation.class);
+        startActivity(intent);
+
         Lib = new my_Library();
         communeID = ((MyApplication) this.getApplication()).getInformation("CommuneID");
         currUserEmail = ((MyApplication) this.getApplication()).getInformation("Email");

@@ -24,6 +24,10 @@ public class create_commune extends AppCompatActivity implements AsyncResponse {
         init();
     }
     public void init(){
+
+        Intent intent = new Intent(create_commune.this, RefreshAppGlobalInformation.class);
+        startActivity(intent);
+
         Lib = new my_Library();
         task = new PostResponseAsyncTask(this);
         controller = this;

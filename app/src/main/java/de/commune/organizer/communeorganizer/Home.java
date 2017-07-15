@@ -14,6 +14,9 @@ import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
 import android.content.DialogInterface;
 import java.math.BigDecimal;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,18 +36,17 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private PostResponseAsyncTask task;
     private my_Library Lib = new my_Library();
     private AppCompatActivity c = this;
+    private AsyncResponse controller;
     private String asyncTaskMethod;
-
+    private Timer updateTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         setLayout();
-
+        controller = this;
         init();
-
-
     }
 
 
@@ -89,7 +91,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 cashManagement();
             }
         });
-
     }
 
     private void cashManagement(){
@@ -104,17 +105,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             public void onClick(DialogInterface dialog, int whichButton) {
                 String CashText = edittext.getText().toString();
                 if (!CashText.equals("")){
-
+                    task = new PostResponseAsyncTask(controller);
                     asyncTaskMethod="addCash";
                     task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=addCashToCommune&CommuneID="
                             +((MyApplication) c.getApplication()).getInformation("CommuneID")
                             + "&CurrentCash="+((MyApplication) c.getApplication()).getInformation("CommuneCashbox")
                             +"&Cash="+CashText+"&CashType=sum");
-                    UpdateApp();
-                }
-                else
-                {
-
                 }
             }
         });
@@ -123,20 +119,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             public void onClick(DialogInterface dialog, int whichButton) {
                 String CashText = edittext.getText().toString();
                 if (!CashText.equals("")){
-                asyncTaskMethod="addCash";
-                task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=addCashToCommune&CommuneID="
-                        +((MyApplication) c.getApplication()).getInformation("CommuneID")
-                        + "&CurrentCash="+((MyApplication) c.getApplication()).getInformation("CommuneCashbox")
-                        +"&Cash="+CashText+"&CashType=sub");
-                UpdateApp();
-                }
-                else
-                {
-
+                    task = new PostResponseAsyncTask(controller);
+                    asyncTaskMethod="addCash";
+                    task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=addCashToCommune&CommuneID="
+                            +((MyApplication) c.getApplication()).getInformation("CommuneID")
+                            + "&CurrentCash="+((MyApplication) c.getApplication()).getInformation("CommuneCashbox")
+                            +"&Cash="+CashText+"&CashType=sub");
                 }
             }
         });
-
         alert.show();
     }
 
@@ -146,7 +137,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-
             final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.AlertDialogCustom));
             builder.setMessage("Möchtest Sie die App schliessen? ")
                     .setPositiveButton("JA", new DialogInterface.OnClickListener() {
@@ -164,7 +154,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             builder.create();
             builder.show();
         }
-
     }
 
     @Override
@@ -225,19 +214,27 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void processFinish(String s){
         switch (asyncTaskMethod) {
-            case"getInformation":
-                try {
-                    ((MyApplication) this.getApplication()).setInformationArray(new JSONArray(s));
+            case "getInformation":
+                if (s.equals("null")){
+                    finish();
+                    Intent intent = new Intent(Home.this, MainActivity.class);
+                    startActivity(intent);
+                    Lib.showMessage("Der Administrator hat Sie aus der WG entfernt.",this);
+                }
+                else
+                {
+                    try {
+                        ((MyApplication) this.getApplication()).setInformationArray(new JSONArray(s));
 
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
             case "addCash":
-
+                UpdateApp();
                 break;
         }
-
         task = new PostResponseAsyncTask(this);
         setHomeLayoutInformation();
     }
@@ -245,11 +242,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private void UpdateApp(){
         finish();
         startActivity(getIntent());
-
     }
 
     private void Logout(){
-
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.AlertDialogCustom));
         builder.setMessage("Möchten Sie sich abmelden? ")
                 .setPositiveButton("JA", new DialogInterface.OnClickListener() {

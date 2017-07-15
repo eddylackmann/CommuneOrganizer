@@ -39,6 +39,9 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
     }
 
     public void init(){
+        Intent intent = new Intent(cleaningRoster.this, RefreshAppGlobalInformation.class);
+        startActivity(intent);
+
         Lib = new my_Library();
         task = new PostResponseAsyncTask(this);
         communeID = ((MyApplication) this.getApplication()).getInformation("CommuneID");

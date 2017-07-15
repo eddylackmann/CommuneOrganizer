@@ -37,5 +37,6 @@
         <activity android:name=".createActivity" android:label="Aktivität hinzufügen"/>
         <activity android:name=".createCleaningPlan" android:label="Putzplan Eintrag hinzufügen"/>
         <activity android:name=".inhabitant_list" android:label="Mitbewohner"/>
+        <activity android:name=".RefreshAppGlobalInformation"/>
     </application>
 </manifest>

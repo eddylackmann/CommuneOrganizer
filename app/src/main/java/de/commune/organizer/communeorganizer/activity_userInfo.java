@@ -40,6 +40,10 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
     }
 
     private  void  init(){
+
+        Intent intent = new Intent(activity_userInfo.this, RefreshAppGlobalInformation.class);
+        startActivity(intent);
+
         final TextView infoemailText = (TextView) findViewById(R.id.infoEmailTextInfo);
         //final TextView infoPWTextInfo = (TextView) findViewById(R.id.infoPWTextInfo);
         final TextView infoFirstnameTextInfo = (TextView) findViewById(R.id.infoFirstnameTextInfo);
