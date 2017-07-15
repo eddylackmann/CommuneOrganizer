@@ -194,12 +194,24 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
                 }
                 break;
             case "deleteUser":
-                if (s.equals("userDeleted")){
-                    finish();
-                    intent = new Intent(activity_userInfo.this, registration.class);
-                    startActivity(intent);
+                switch (s)
+                {
+                    case "userDeleted":
+                        finish();
+                        intent = new Intent(activity_userInfo.this, registration.class);
+                        startActivity(intent);
+                        break;
+                    case "exitSuccessfuluserDeleted":
+                        finish();
+                        intent = new Intent(activity_userInfo.this, registration.class);
+                        startActivity(intent);
+                        break;
+                    case "communeDeletedexitSuccessfuluserDeleted":
+                        finish();
+                        intent = new Intent(activity_userInfo.this, registration.class);
+                        startActivity(intent);
+                        break;
                 }
-                break;
         }
         task = new PostResponseAsyncTask(c);
     }
