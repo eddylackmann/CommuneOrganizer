@@ -59,7 +59,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-
     public void setHomeLayoutInformation() {
         Typeface.defaultFromStyle(Typeface.BOLD);
         TextView userDetailsHome = (TextView) findViewById(R.id.userHomeDescrition);

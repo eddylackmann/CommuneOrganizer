@@ -136,6 +136,7 @@ public class login extends AppCompatActivity implements AsyncResponse {
                      Edit.setTextColor(Color.BLACK);}
                 else{
                     Edit.setBackgroundColor(0);
+                    Edit.setLinkTextColor(Color.WHITE);
                     Edit.setHintTextColor(Color.WHITE);
 
                 }

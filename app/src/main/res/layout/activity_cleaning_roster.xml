@@ -18,7 +18,6 @@
             android:id="@+id/cleaningText"
             android:layout_width="180dp"
             android:layout_height="50dp"
-
             android:gravity="center_vertical|center_horizontal"
             android:text="Putzplan"
             android:background="#000"

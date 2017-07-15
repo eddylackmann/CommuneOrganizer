@@ -40,13 +40,15 @@
             android:id="@+id/linInfoLayout9"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:weightSum="1.0"
             android:gravity="center_vertical|center_horizontal"
             android:layout_below="@+id/linInfoLayout8"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/purchPlan_finishPurch"
                 style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="180dp"
+                android:layout_width="match_parent"
+                android:layout_weight=".5"
                 android:layout_height="50dp"
                 android:layout_below="@+id/linInfoLayout8"
                 android:background="#000"
@@ -57,7 +59,8 @@
             <Button
                 android:id="@+id/purchPlan_AddBtn"
                 style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="180dp"
+                android:layout_width="match_parent"
+                android:layout_weight=".5"
                 android:layout_height="50dp"
                 android:background="#00810D"
                 android:gravity="center_vertical|center_horizontal"

@@ -6,10 +6,11 @@
     android:layout_height="match_parent">
     <ImageView
         android:layout_width="fill_parent" android:layout_height="fill_parent"
-        android:src="@drawable/wg_d"
+        android:src="@drawable/wg_n"
         android:scaleType="centerCrop" />
     <RelativeLayout
         android:layout_width="match_parent"
+        android:background="@color/common_google_signin_btn_text_light_default"
         android:layout_height="match_parent"
        >
 
@@ -33,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:textColor="#fff"
-
+                android:textColorHint="#fff"
                 android:layout_below="@+id/title_text"
                 android:layout_marginTop="19dp"
                 android:ems="10"
@@ -46,6 +47,7 @@
                 android:textColor="#fff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColorHint="#fff"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/enter_communeID"
@@ -57,10 +59,10 @@
                 android:id="@+id/enter_joinBtn"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:background="#000"
+                android:background="#fff"
                 android:text="Beitreten"
 
-                android:textColor="@color/common_google_signin_btn_text_dark_default"
+                android:textColor="#000"
                 android:layout_below="@+id/enter_communePwText"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="30dp" />

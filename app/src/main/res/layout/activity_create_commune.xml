@@ -6,16 +6,18 @@
     android:layout_height="match_parent">
     <ImageView
         android:layout_width="fill_parent" android:layout_height="fill_parent"
-        android:src="@drawable/wg_b"
+        android:src="@drawable/wg_h"
         android:scaleType="centerCrop" />
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/common_google_signin_btn_text_light_default"
         app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/title_text"
                 android:layout_width="match_parent"
@@ -33,6 +35,7 @@
                 android:layout_below="@id/title_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="#fff"
                 android:hint="WG-Adresse"
                 android:layout_marginTop="12dp"
 
@@ -43,6 +46,7 @@
             <EditText
                 android:id="@+id/comZipText"
                 android:layout_width="match_parent"
+                android:textColorHint="#fff"
                 android:layout_height="wrap_content"
                 android:hint="PLZ"
                 android:layout_below="@+id/comAddressText"
@@ -52,6 +56,7 @@
 
             <EditText
                 android:id="@+id/comCityText"
+                android:textColorHint="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ort"
@@ -63,6 +68,7 @@
 
             <EditText
                 android:id="@+id/comPW1"
+                android:textColorHint="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="WG-Passwort"
@@ -74,6 +80,7 @@
 
             <EditText
                 android:id="@+id/comPW2"
+                android:textColorHint="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="11dp"
