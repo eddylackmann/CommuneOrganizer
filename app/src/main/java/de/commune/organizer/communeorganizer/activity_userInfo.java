@@ -66,6 +66,15 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
                LeaveCommune();
             }
         });
+
+        final Button deleteBtn = (Button) findViewById(R.id.user_info_deleteBtn);
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DeleteUser();
+            }
+        });
+
     }
 
     private void ChangeUserInformation(){
@@ -108,13 +117,37 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
         final String CommuneID =((MyApplication) this.getApplication()).getInformation("CommuneID");
         final String Email =((MyApplication) this.getApplication()).getInformation("Email");
         final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(c,R.style.AlertDialogCustom));
-        builder.setMessage("Möchten Sie die WG verlassen? ")
+        builder.setMessage("Möchten Sie die WG verlassen?")
                 .setPositiveButton("JA", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         task = new PostResponseAsyncTask(c);
                         try {
                             asyncTaskMethod ="exitCommune";
                             task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+ asyncTaskMethod + "&CommuneID=" + CommuneID + "&Email=" +Email);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                })
+                .setNegativeButton("NEIN", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+        builder.create();
+        builder.show();
+    }
+
+    private void DeleteUser(){
+        final String Email =((MyApplication) this.getApplication()).getInformation("Email");
+        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(c,R.style.AlertDialogCustom));
+        builder.setMessage("Möchten Sie Ihren Account löschen?")
+                .setPositiveButton("JA", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        task = new PostResponseAsyncTask(c);
+                        try {
+                            asyncTaskMethod ="deleteUser";
+                            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=" + asyncTaskMethod + "&Email=" +Email);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -150,7 +183,21 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
                         finish();
                         intent = new Intent(activity_userInfo.this, createOrJoinCommune.class);
                         startActivity(intent);
+                        Lib.showMessage("WG erfolgreich verlassen.",this);
                         break;
+                    case "communeDeletedexitSuccessful":
+                        finish();
+                        intent = new Intent(activity_userInfo.this, createOrJoinCommune.class);
+                        startActivity(intent);
+                        Lib.showMessage("WG erfolgreich verlassen. Die WG wurde gelöscht.",this);
+                        break;
+                }
+                break;
+            case "deleteUser":
+                if (s.equals("userDeleted")){
+                    finish();
+                    intent = new Intent(activity_userInfo.this, registration.class);
+                    startActivity(intent);
                 }
                 break;
         }

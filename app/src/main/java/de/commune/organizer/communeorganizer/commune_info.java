@@ -75,6 +75,14 @@ public class commune_info extends AppCompatActivity implements AsyncResponse {
                 changeCommuneInformation();
             }
         });
+
+        final Button comInfo_deleteCommune = (Button) findViewById(R.id.comInfo_deleteCommune);
+        comInfo_deleteCommune.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteCommue();
+            }
+        });
     }
 
     public void changeCommuneInformation(){
@@ -90,36 +98,78 @@ public class commune_info extends AppCompatActivity implements AsyncResponse {
         final TextView infoOtherCostsText = (TextView) findViewById(R.id.infoOtherCostText);
         final TextView infoDescText = (TextView) findViewById(R.id.infoComDescText);
         final String CommuneID = (((MyApplication) this.getApplication()).getInformation("CommuneID"));
+        final String IsAdmin = (((MyApplication) this.getApplication()).getInformation("CommuneAdmin"));
 
-        task = new PostResponseAsyncTask(this);
-        final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.AlertDialogCustom));
-        builder.setMessage("WG-Informationen speichern? ")
-                .setPositiveButton("JA", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        String pedsAllowedValue = "0";
-                        if (infoPetsText.isChecked()){
-                            pedsAllowedValue = "1";
+        if (IsAdmin.equals("1")){
+            task = new PostResponseAsyncTask(this);
+            final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.AlertDialogCustom));
+            builder.setMessage("WG-Informationen speichern? ")
+                    .setPositiveButton("JA", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            String pedsAllowedValue = "0";
+                            if (infoPetsText.isChecked()){
+                                pedsAllowedValue = "1";
+                            }
+
+                            try {
+                                asyncTaskMethod = "updateCommune";
+                                task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+ asyncTaskMethod +"&CommuneID=" + CommuneID + "&CommunePassword=" +
+                                        infoPWText.getText() + "&Address=" + infoAddressText.getText() + "&PostCode=" + infoZIPText.getText()+ "&City=" + infoCityText.getText()
+                                        + "&NumberOfMaxInhabitants=" + infoMaxInhText.getText() +"&PetsAllowed=" + pedsAllowedValue + "&LivingSpace=" +
+                                        infoSpaceText.getText() + "&ColdRent=" + infoRentText.getText() + "&AdditionalCosts=" + infoAddCostsText.getText() +
+                                        "&OtherCosts=" + infoOtherCostsText.getText() + "&Description=" + infoDescText.getText());
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
+                    })
+                    .setNegativeButton("NEIN", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
 
-                        try {
-                            asyncTaskMethod = "updateCommune";
-                            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+ asyncTaskMethod +"&CommuneID=" + CommuneID + "&CommunePassword=" +
-                                    infoPWText.getText() + "&Address=" + infoAddressText.getText() + "&PostCode=" + infoZIPText.getText()+ "&City=" + infoCityText.getText()
-                                    + "&NumberOfMaxInhabitants=" + infoMaxInhText.getText() +"&PetsAllowed=" + pedsAllowedValue + "&LivingSpace=" +
-                                    infoSpaceText.getText() + "&ColdRent=" + infoRentText.getText() + "&AdditionalCosts=" + infoAddCostsText.getText() +
-                                    "&OtherCosts=" + infoOtherCostsText.getText() + "&Description=" + infoDescText.getText());
-                        } catch (Exception e) {
-                            e.printStackTrace();
                         }
-                    }
-                })
-                .setNegativeButton("NEIN", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+                    });
+            builder.create();
+            builder.show();
+        }
+        else
+        {
+            Lib.showMessage("Sie sind nicht berechtigt.",controller);
+        }
+    }
 
-                    }
-                });
-        builder.create();
-        builder.show();
+    public void deleteCommue(){
+        final String CommuneID = (((MyApplication) this.getApplication()).getInformation("CommuneID"));
+        final String IsAdmin = (((MyApplication) this.getApplication()).getInformation("CommuneAdmin"));
+
+        if (IsAdmin.equals("1")){
+            task = new PostResponseAsyncTask(this);
+            final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.AlertDialogCustom));
+            builder.setMessage("WG löschen?")
+                    .setPositiveButton("JA", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            try
+                            {
+                                asyncTaskMethod = "deleteCommune";
+                                task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+ asyncTaskMethod +"&CommuneID=" + CommuneID);
+                            }
+                            catch (Exception e)
+                            {
+                                e.printStackTrace();
+                            }
+                        }
+                    })
+                    .setNegativeButton("NEIN", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    });
+            builder.create();
+            builder.show();
+        }
+        else
+        {
+            Lib.showMessage("Sie sind nicht berechtigt.",controller);
+        }
     }
 
     @Override
@@ -137,6 +187,16 @@ public class commune_info extends AppCompatActivity implements AsyncResponse {
                     case "communeUpdated":
                         finish();
                         Intent intent = new Intent(commune_info.this, Home.class);
+                        startActivity(intent);
+                        break;
+                }
+                break;
+            case "deleteCommune":
+                switch (s)
+                {
+                    case "communeDeleted":
+                        finish();
+                        Intent intent = new Intent(commune_info.this, createOrJoinCommune.class);
                         startActivity(intent);
                         break;
                 }
