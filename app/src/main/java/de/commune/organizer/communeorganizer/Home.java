@@ -49,7 +49,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         init();
     }
 
-
     public void setLayout(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

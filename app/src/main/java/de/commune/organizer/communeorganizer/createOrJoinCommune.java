@@ -26,10 +26,6 @@ public class createOrJoinCommune extends AppCompatActivity implements AsyncRespo
     }
 
     public void init(){
-
-        Intent intent = new Intent(createOrJoinCommune.this, RefreshAppGlobalInformation.class);
-        startActivity(intent);
-
         controller = this;
         Button enterComBtn = (Button) findViewById(R.id.enterComBtn);
         Button createBtn = (Button) findViewById(R.id.createBtn);
