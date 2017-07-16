@@ -32,6 +32,7 @@ public class create_commune extends AppCompatActivity implements AsyncResponse {
         final TextView comAddressText = (TextView)findViewById(R.id.comAddressText);
         final TextView comZipText = (TextView)findViewById(R.id.comZipText);
         final TextView comCityText = (TextView)findViewById(R.id.comCityText);
+        final TextView comNumberOfMaxInhabitants = (TextView)findViewById(R.id.comNumberOfMaxInhabitants);
         final TextView comPW1 = (TextView)findViewById(R.id.comPW1);
         final TextView comPW2 = (TextView)findViewById(R.id.comPW2);
         Button createBtn = (Button) findViewById(R.id.createBtn);
@@ -46,7 +47,7 @@ public class create_commune extends AppCompatActivity implements AsyncResponse {
                     try {
                         task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=registerCommune&communePassword="
                                 + comPW1.getText() + "&address=" + comAddressText.getText() + "&postCode=" + comZipText.getText()
-                                + "&city=" + comCityText.getText() + "&Email=" + globalUserEmail);
+                                + "&city=" + comCityText.getText() + "&Email=" + globalUserEmail +"&NumberOfMaxInhabitants=" + comNumberOfMaxInhabitants.getText());
 
                     } catch (Exception e) {
                         e.printStackTrace();

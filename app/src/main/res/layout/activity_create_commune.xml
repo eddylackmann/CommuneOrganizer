@@ -67,12 +67,23 @@
                 />
 
             <EditText
+                android:id="@+id/comNumberOfMaxInhabitants"
+                android:layout_width="match_parent"
+                android:textColorHint="#fff"
+                android:layout_height="wrap_content"
+                android:hint="Anzahl maximaler Einwohner"
+                android:layout_below="@+id/comCityText"
+                android:ems="10"
+                android:inputType="number"
+                />
+
+            <EditText
                 android:id="@+id/comPW1"
                 android:textColorHint="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="WG-Passwort"
-                android:layout_below="@+id/comCityText"
+                android:layout_below="@+id/comNumberOfMaxInhabitants"
                 android:layout_marginTop="16dp"
                 android:ems="10"
                 android:inputType="textPassword"
