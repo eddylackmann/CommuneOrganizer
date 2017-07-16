@@ -33,8 +33,7 @@ public class RefreshAppGlobalInformation extends AppCompatActivity implements As
     }
 
     private void init(){
-        task = new PostResponseAsyncTask(asyncResponse);
-
+        task = new PostResponseAsyncTask(this,false,asyncResponse);
         try {
             task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=getInformation&Email=" + ((MyApplication) this.getApplication()).getUserEmail());
         } catch (Exception e) {
