@@ -13,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
 import android.content.DialogInterface;
+import java.math.BigDecimal;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.text.InputType;
 import android.view.Menu;
@@ -25,11 +28,17 @@ import android.widget.TextView;
 import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
 
+import org.json.JSONArray;
+import org.w3c.dom.Text;
+
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AsyncResponse {
+
     private PostResponseAsyncTask task;
+    private my_Library Lib = new my_Library();
     private AppCompatActivity c = this;
     private AsyncResponse controller;
     private String asyncTaskMethod;
+    private Timer updateTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +75,13 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     public void init() {
-        Intent intent = new Intent(Home.this, RefreshAppGlobalInformation.class);
-        startActivity(intent);
+        asyncTaskMethod="getInformation";
+        task = new PostResponseAsyncTask(this);
+        try {
+            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=getInformation&Email=" + ((MyApplication) this.getApplication()).getUserEmail());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         final Button cashBtn = (Button)findViewById(R.id.home_cashBtn);
         cashBtn.setOnClickListener(new View.OnClickListener() {
@@ -166,6 +180,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+
         if (id == R.id.nav_shoppingTask) {
             Intent intent = new Intent(Home.this, purchasePlan.class);
             startActivity(intent);
@@ -198,6 +213,23 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void processFinish(String s){
         switch (asyncTaskMethod) {
+            case "getInformation":
+                if (s.equals("null")){
+                    finish();
+                    Intent intent = new Intent(Home.this, MainActivity.class);
+                    startActivity(intent);
+                    Lib.showMessage("Der Administrator hat Sie aus der WG entfernt.",this);
+                }
+                else
+                {
+                    try {
+                        ((MyApplication) this.getApplication()).setInformationArray(new JSONArray(s));
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
             case "addCash":
                 UpdateApp();
                 break;
