@@ -31,14 +31,22 @@
                     android:textSize="25sp" />
             </android.support.design.widget.AppBarLayout>
 
-            <EditText
+           <TextView
+               android:padding="10dp"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/appbar"
+               android:id="@+id/cr_cleaning_respLBL"
+               android:text="Verantwortliche"/>
+            <Spinner
                 android:id="@+id/respCleanPlan"
+                android:spinnerMode="dropdown"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/appbar"
+                android:layout_below="@+id/cr_cleaning_respLBL"
                 android:layout_marginTop="15dp"
                 android:inputType="textEmailAddress"
-                android:hint="Verantwortlicher" />
+                />
 
             <EditText
                 android:id="@+id/dateFromClean"
