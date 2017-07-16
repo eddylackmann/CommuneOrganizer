@@ -101,39 +101,49 @@ public class commune_info extends AppCompatActivity implements AsyncResponse {
         final TextView infoAddCostsText = (TextView) findViewById(R.id.infoAddCostText);
         final TextView infoOtherCostsText = (TextView) findViewById(R.id.infoOtherCostText);
         final TextView infoDescText = (TextView) findViewById(R.id.infoComDescText);
+        final TextView infoInhText = (TextView) findViewById(R.id.infoInhText);
         final String CommuneID = (((MyApplication) this.getApplication()).getInformation("CommuneID"));
         final String IsAdmin = (((MyApplication) this.getApplication()).getInformation("CommuneAdmin"));
 
         if (IsAdmin.equals("1")){
-            task = new PostResponseAsyncTask(this);
-            final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.AlertDialogCustom));
-            builder.setMessage("WG-Informationen speichern? ")
-                    .setPositiveButton("JA", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            String pedsAllowedValue = "0";
-                            if (infoPetsText.isChecked()){
-                                pedsAllowedValue = "1";
-                            }
+            if (Integer.parseInt(infoMaxInhText.getText().toString()) >= Integer.parseInt(infoInhText.getText().toString()))
+            {
+                task = new PostResponseAsyncTask(this);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.AlertDialogCustom));
+                builder.setMessage("WG-Informationen speichern? ")
+                        .setPositiveButton("JA", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                String pedsAllowedValue = "0";
+                                if (infoPetsText.isChecked()){
+                                    pedsAllowedValue = "1";
+                                }
 
-                            try {
-                                asyncTaskMethod = "updateCommune";
-                                task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+ asyncTaskMethod +"&CommuneID=" + CommuneID + "&CommunePassword=" +
-                                        infoPWText.getText() + "&Address=" + infoAddressText.getText() + "&PostCode=" + infoZIPText.getText()+ "&City=" + infoCityText.getText()
-                                        + "&NumberOfMaxInhabitants=" + infoMaxInhText.getText() +"&PetsAllowed=" + pedsAllowedValue + "&LivingSpace=" +
-                                        infoSpaceText.getText() + "&ColdRent=" + infoRentText.getText() + "&AdditionalCosts=" + infoAddCostsText.getText() +
-                                        "&OtherCosts=" + infoOtherCostsText.getText() + "&Description=" + infoDescText.getText());
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                                try {
+                                    asyncTaskMethod = "updateCommune";
+                                    task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method="+ asyncTaskMethod +"&CommuneID=" + CommuneID + "&CommunePassword=" +
+                                            infoPWText.getText() + "&Address=" + infoAddressText.getText() + "&PostCode=" + infoZIPText.getText()+ "&City=" + infoCityText.getText()
+                                            + "&NumberOfMaxInhabitants=" + infoMaxInhText.getText() +"&PetsAllowed=" + pedsAllowedValue + "&LivingSpace=" +
+                                            infoSpaceText.getText() + "&ColdRent=" + infoRentText.getText() + "&AdditionalCosts=" + infoAddCostsText.getText() +
+                                            "&OtherCosts=" + infoOtherCostsText.getText() + "&Description=" + infoDescText.getText());
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
                             }
-                        }
-                    })
-                    .setNegativeButton("NEIN", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
+                        })
+                        .setNegativeButton("NEIN", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
 
-                        }
-                    });
-            builder.create();
-            builder.show();
+                            }
+                        });
+                builder.create();
+                builder.show();
+            }
+            else
+            {
+                Lib.showMessage("Die Anzahl der maximalen Mitbewohner muss größer oder gleich der Anzahl aktueller Mitbewohner sein.",controller);
+                infoMaxInhText.setText(infoInhText.getText());
+            }
+
         }
         else
         {

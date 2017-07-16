@@ -38,7 +38,6 @@
                 android:textColorHint="#fff"
                 android:hint="WG-Adresse"
                 android:layout_marginTop="12dp"
-
                 android:ems="10"
                 android:inputType="textPersonName"
                 />
@@ -61,7 +60,6 @@
                 android:layout_height="wrap_content"
                 android:hint="Ort"
                 android:layout_below="@+id/comZipText"
-                android:layout_marginTop="14dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 />
