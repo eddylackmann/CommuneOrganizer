@@ -16,6 +16,8 @@ import com.kosalgeek.asynctask.PostResponseAsyncTask;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * Created by tka on 13.07.2017.
  */
@@ -27,6 +29,7 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
     public AppCompatActivity controller;
     private String communeID;
     private Spinner respList ;
+    private ArrayList<String> respListItems = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +78,7 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
         addCleanPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                asyncTaskMethod="createCleaningTast";
+                asyncTaskMethod="createCleaningTask";
                 try
                 {
                     task.execute("http://eddy-home.ddns.net/wg-app/cleaningPlan.php?Method=createCleaningPlanEntry&CommuneID="
@@ -87,15 +90,13 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
                 }
             }
         });
-
-
     }
 
     @Override
     public void processFinish(String s) {
 
         switch (asyncTaskMethod) {
-            case "createCleaningTast":
+            case "createCleaningTask":
 
                 if (s.equals("entryCreated")){
                     finish();
@@ -109,28 +110,21 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
 
                 try
                 {
-                    int n = Integer.parseInt( communeID = ((MyApplication) this.getApplication()).getInformation("NumberOfInhabitants"));
-                    final String[] items = new String[n];
+                    respListItems.clear();
                     JSONArray array = new JSONArray(s);
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject row = array.getJSONObject(i);
-                        items[i] = row.getString("Email");
+                        respListItems.add(row.getString("Email"));
                     }
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, respListItems);
                     respList.setAdapter(adapter);
                 }
                 catch (Exception e)
                 {
                     e.printStackTrace();
                 }
-
-
                 break;
         }
-
-
-
-
         task = new PostResponseAsyncTask(this);
     }
 }
