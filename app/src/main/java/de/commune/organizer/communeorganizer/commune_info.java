@@ -143,7 +143,6 @@ public class commune_info extends AppCompatActivity implements AsyncResponse {
                 Lib.showMessage("Die Anzahl der maximalen Mitbewohner muss größer oder gleich der Anzahl aktueller Mitbewohner sein.",controller);
                 infoMaxInhText.setText(infoInhText.getText());
             }
-
         }
         else
         {

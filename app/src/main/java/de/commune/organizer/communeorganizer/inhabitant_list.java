@@ -12,10 +12,8 @@ import android.support.v7.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-
 import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -109,7 +107,12 @@ public class inhabitant_list extends AppCompatActivity implements AsyncResponse 
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject row = array.getJSONObject(i);
                         if (!currUserEmail.equals(row.getString("Email"))){
-                            inhabitantListEntries.add(new Item(row.getString("Firstname") + " " + row.getString("Lastname"),row.getString("Email"),"",row.getString("Email")));
+                            if (row.getString("CommuneAdmin").equals("1")){
+                                inhabitantListEntries.add(new Item(row.getString("Firstname") + " " + row.getString("Lastname") + " (Admin)",row.getString("Email"),"",row.getString("Email")));
+                            }
+                            else{
+                                inhabitantListEntries.add(new Item(row.getString("Firstname") + " " + row.getString("Lastname"),row.getString("Email"),"",row.getString("Email")));
+                            }
                         }
                     }
                     MyAdapter myAdapter=new MyAdapter(this,R.layout.grid_view_items,inhabitantListEntries);
