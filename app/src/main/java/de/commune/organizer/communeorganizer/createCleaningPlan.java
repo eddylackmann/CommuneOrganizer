@@ -177,6 +177,7 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
     private String formatDate(int day, int month, int year){
         String sMonth;
         String sDay;
+        month++;
 
         if (day < 10)
         {
@@ -184,7 +185,7 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
         }
         else
         {
-            sDay = "" + day;
+            sDay = Integer.toString(day);
         }
 
         if (month < 10)
@@ -193,13 +194,12 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
         }
         else
         {
-            sMonth = "" + month;
+            sMonth = Integer.toString(month);
         }
         return sDay + "." + sMonth + "." + year;
     }
 
     private boolean checkDates (String fromDate, String toDate) {
-        String dateString = "03/26/2012 11:49:00 AM";
         SimpleDateFormat fromDateFormat = new SimpleDateFormat("dd.MM.yyyy");
         Date fromDateconverted = new Date();
 

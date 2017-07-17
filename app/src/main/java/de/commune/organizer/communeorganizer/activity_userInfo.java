@@ -254,6 +254,7 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
     private String formatDate(int day, int month, int year){
         String sMonth;
         String sDay;
+        month++;
 
         if (day < 10)
         {
@@ -261,7 +262,7 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
         }
         else
         {
-            sDay = "" + day;
+            sDay = Integer.toString(day);
         }
 
         if (month < 10)
@@ -270,7 +271,7 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
         }
         else
         {
-            sMonth = "" + month;
+            sMonth = Integer.toString(month);
         }
         return sDay + "." + sMonth + "." + year;
     }

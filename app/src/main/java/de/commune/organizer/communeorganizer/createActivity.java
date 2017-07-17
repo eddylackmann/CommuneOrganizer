@@ -92,6 +92,7 @@ public class createActivity extends AppCompatActivity implements AsyncResponse, 
     private String formatDate(int day, int month, int year){
         String sMonth;
         String sDay;
+        month++;
 
         if (day < 10)
         {
@@ -99,7 +100,7 @@ public class createActivity extends AppCompatActivity implements AsyncResponse, 
         }
         else
         {
-            sDay = "" + day;
+            sDay = Integer.toString(day);
         }
 
         if (month < 10)
@@ -108,7 +109,7 @@ public class createActivity extends AppCompatActivity implements AsyncResponse, 
         }
         else
         {
-            sMonth = "" + month;
+            sMonth = Integer.toString(month);
         }
         return sDay + "." + sMonth + "." + year;
     }
