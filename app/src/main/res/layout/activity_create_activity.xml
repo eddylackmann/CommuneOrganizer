@@ -13,53 +13,71 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.design.widget.AppBarLayout
-                android:id="@+id/appbar"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="144dp"
-                app:contentScrim="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-                app:toolbarId="@+id/toolbar">
+                android:layout_height="180dp"
+                android:id="@+id/act_section1">
 
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:src="@drawable/wg_e"
+                    android:scaleType="centerCrop" />
                 <TextView
-                    android:id="@+id/ActivityText"
+                    android:id="@+id/comInfo_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="#fff"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text=" AKTIVITÄT ERSTELLEN "
+                    android:textColor="#000"
+                    android:textSize="25sp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_below="@id/act_section1"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/dateActivity"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="AKTIVITÄT ERSTELLEN"
-                    android:textColor="#FFFF"
-                    android:textSize="25sp" />
-            </android.support.design.widget.AppBarLayout>
+                    android:hint="Datum" />
 
-           <EditText
-                android:id="@+id/dateActivity"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/appbar"
-                android:hint="Datum" />
+                <EditText
+                    android:id="@+id/timeActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/dateActivity"
+                    android:hint="Uhrzeit" />
 
-            <EditText
-                android:id="@+id/timeActivity"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/dateActivity"
-                android:hint="Uhrzeit" />
+                <EditText
+                    android:id="@+id/descActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/timeActivity"
+                    android:hint="Beschreibung" />
 
-            <EditText
-                android:id="@+id/descActivity"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/timeActivity"
-                android:hint="Beschreibung" />
+                <Button
+                    android:id="@+id/addActivity"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/descActivity"
+                    android:background="#00810D"
+                    android:text="Aktivität hinzufügen"
+                    android:textColor="#FFFF" />
 
-            <Button
-                android:id="@+id/addActivity"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/descActivity"
-                android:background="@android:color/holo_green_dark"
-                android:text="Aktivität hinzufügen"
-                android:textColor="#FFFF" />
+
+
+
+
+            </RelativeLayout>
+
 
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>

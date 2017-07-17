@@ -24,20 +24,19 @@
 
                     <ImageView
                         android:layout_width="fill_parent" android:layout_height="fill_parent"
-                        android:src="@drawable/wg_b"
+                        android:src="@drawable/wg_h"
                         android:scaleType="centerCrop" />
                     <TextView
                         android:id="@+id/comInfo_title_text"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="50dp"
-                        android:background="#000"
-
+                        android:background="#fff"
                         android:gravity="center_vertical|center_horizontal"
-                        android:text="WG INFOS"
-                        android:textColor="#FFF"
+                        android:text=" WG INFOS "
+                        android:textColor="#000"
                         android:textSize="25sp"
                         android:layout_centerVertical="true"
-                        android:layout_alignParentStart="true" />
+                        android:layout_centerHorizontal="true" />
 
 
                 </RelativeLayout>
@@ -407,7 +406,7 @@
                     <Button
                         android:id="@+id/comInfo_saveChangesBtn" style="@style/Widget.AppCompat.Button.Small"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_marginBottom="10dp"
                         android:background="#00810D"
                         android:gravity="center_vertical|center_horizontal"
@@ -417,7 +416,7 @@
                     <Button
                         android:id="@+id/comInfo_deleteCommune" style="@style/Widget.AppCompat.Button.Small"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_marginBottom="10dp"
                         android:background="#b00000"
                         android:gravity="center_vertical|center_horizontal"

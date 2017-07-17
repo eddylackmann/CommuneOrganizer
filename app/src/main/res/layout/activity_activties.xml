@@ -16,12 +16,12 @@
             android:scaleType="centerCrop" />
         <TextView
             android:id="@+id/puchaseText"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:gravity="center_vertical|center_horizontal"
-            android:text="Geplante Aktivitäten"
-            android:background="#000"
-            android:textColor="#fff"
+            android:text=" Geplante Aktivitäten "
+            android:background="#fff"
+            android:textColor="#000"
             android:textSize="25sp"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
