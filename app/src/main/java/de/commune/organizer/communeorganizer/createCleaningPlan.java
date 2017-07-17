@@ -1,12 +1,15 @@
 package de.commune.organizer.communeorganizer;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -22,7 +25,7 @@ import java.util.ArrayList;
  * Created by tka on 13.07.2017.
  */
 
-public class createCleaningPlan extends AppCompatActivity implements AsyncResponse {
+public class createCleaningPlan extends AppCompatActivity implements AsyncResponse, DatePickerDialog.OnDateSetListener {
     public PostResponseAsyncTask task;
     public my_Library Lib;
     private String asyncTaskMethod;
@@ -30,6 +33,7 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
     private String communeID;
     private Spinner respList ;
     private ArrayList<String> respListItems = new ArrayList<String>();
+    private String datePickerDialogField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +68,8 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
         Intent intent = new Intent(createCleaningPlan.this, RefreshAppGlobalInformation.class);
         startActivity(intent);
 
+        final DatePickerDialog datePickerDialog = new DatePickerDialog(this, android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, createCleaningPlan.this,2017,5,9);
+
         Lib = new my_Library();
         task = new PostResponseAsyncTask(this);
         communeID = ((MyApplication) this.getApplication()).getInformation("CommuneID");
@@ -71,7 +77,21 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
 
         final Spinner respCleanPlan = (Spinner) findViewById(R.id.respCleanPlan);
         final EditText dateFromClean = (EditText) findViewById(R.id.dateFromClean);
+        dateFromClean.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datePickerDialogField ="dateFromClean";
+                datePickerDialog.show();
+            }
+        });
         final EditText dateToClean = (EditText) findViewById(R.id.dateToClean);
+        dateToClean.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datePickerDialogField ="dateToClean";
+                datePickerDialog.show();
+            }
+        });
         final EditText descCleanPlan = (EditText) findViewById(R.id.descCleanPlan);
 
         Button addCleanPlan = (Button) findViewById(R.id.addCleanPlan);
@@ -126,5 +146,19 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
                 break;
         }
         task = new PostResponseAsyncTask(this);
+    }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+        switch (datePickerDialogField){
+            case "dateFromClean":
+                final EditText dateFromClean = (EditText) findViewById(R.id.dateFromClean);
+                dateFromClean.setText(i2+ "." +i1 +"." +i);
+                break;
+            case "dateToClean":
+                final EditText dateToClean = (EditText) findViewById(R.id.dateToClean);
+                dateToClean.setText(i2+ "." +i1 +"." +i);
+                break;
+        }
     }
 }

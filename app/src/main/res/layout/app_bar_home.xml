@@ -22,7 +22,9 @@
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_home"
-        android:id="@+id/include" />
+        android:id="@+id/include"
+
+       />
 
     <TextView
         android:id="@+id/userHomeDescrition"
@@ -31,21 +33,32 @@
         android:textSize="30dp"
         android:background="@color/common_google_signin_btn_text_light_default"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
+        android:layout_height="wrap_content"
         android:text=""
         android:layout_marginTop="85dp"
-        android:layout_below="@+id/appBarLayout"
+        android:layout_below="@id/appBarLayout"
         android:layout_alignParentStart="true" />
     <TextView
         android:id="@+id/addressHomeDescrition"
         android:gravity="center_vertical|center_horizontal"
         android:textColor="#ffff"
-        android:textSize="12dp"
+        android:textSize="16dp"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
-        android:text=""
-        android:layout_alignTop="@+id/userHomeDescrition"
+        android:layout_height="wrap_content"
+        android:text="a"
+        android:layout_alignTop="@id/userHomeDescrition"
         android:layout_alignParentStart="true"
         android:layout_marginTop="49dp" />
+    <TextView
+        android:id="@+id/communeHomeDescrition"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="#ffff"
+        android:textSize="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="b"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/addressHomeDescrition"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
