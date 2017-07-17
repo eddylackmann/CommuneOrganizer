@@ -82,6 +82,7 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
         respList= (Spinner) findViewById(R.id.respCleanPlan);
 
         final Spinner respCleanPlan = (Spinner) findViewById(R.id.respCleanPlan);
+
         final EditText dateFromClean = (EditText) findViewById(R.id.dateFromClean);
         dateFromClean.setOnClickListener(new View.OnClickListener() {
             @Override

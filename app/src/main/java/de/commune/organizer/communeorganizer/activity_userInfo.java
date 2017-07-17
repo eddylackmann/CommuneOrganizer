@@ -4,20 +4,26 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
 import android.text.format.Time;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.kosalgeek.asynctask.AsyncResponse;
 import com.kosalgeek.asynctask.PostResponseAsyncTask;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * Created by Tom on 11.07.2017.
@@ -27,8 +33,13 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
     private my_Library Lib = new my_Library();
     private String test = new String();
     private activity_userInfo c;
+    public AppCompatActivity controller;
+    private Spinner respList;
+    private ArrayList<String> respListItems = new ArrayList<String>();
     private String asyncTaskMethod ="";
     public PostResponseAsyncTask task;
+    private String communeID;
+    private String CommuneAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +48,19 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
         c = this;
         init();
         setLayout();
+        getUserList();
+    }
+
+    private void getUserList(){
+        task = new PostResponseAsyncTask(c);
+        try
+        {
+            asyncTaskMethod = "getCommuneInhabitants";
+            task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=" + asyncTaskMethod +"&CommuneID=" + communeID);
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     private void setLayout(){
@@ -52,8 +76,12 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
         //final TextView infoPWTextInfo = (TextView) findViewById(R.id.infoPWTextInfo);
         final TextView infoFirstnameTextInfo = (TextView) findViewById(R.id.infoFirstnameTextInfo);
         final TextView infoLastnameTextInfo = (TextView) findViewById(R.id.infoLastnameTextInfo);
-
         final TextView infoBirthdayTextInfo = (TextView) findViewById(R.id.infoBirthdayTextInfo);
+
+        communeID = ((MyApplication) this.getApplication()).getInformation("CommuneID");
+        CommuneAdmin = ((MyApplication) this.getApplication()).getInformation("CommuneAdmin");
+        respList= (Spinner) findViewById(R.id.newAdmin);
+        final Spinner newAdminValue = (Spinner) findViewById(R.id.newAdmin);
 
         Time today = new Time(Time.getCurrentTimezone());
         today.setToNow();
@@ -71,6 +99,7 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
         infoFirstnameTextInfo.setText(((MyApplication) this.getApplication()).getInformation("Firstname"));
         infoLastnameTextInfo.setText(((MyApplication) this.getApplication()).getInformation("Lastname"));
         infoBirthdayTextInfo.setText(((MyApplication) this.getApplication()).getInformation("formatted_date"));
+
 
         final Button changeInfoBtn = (Button)findViewById(R.id.changeInfoBtn);
         changeInfoBtn.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +124,30 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
             }
         });
 
+        Button  TransferAdminStatus = (Button) findViewById(R.id.user_info_transferAdminStatusBtn);
+        TransferAdminStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (CommuneAdmin.equals("1"))
+                {
+                    task = new PostResponseAsyncTask(c);
+                    try
+                    {
+                        asyncTaskMethod = "transferAdminStatus";
+                        task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=" + asyncTaskMethod + "&FromEmail=" + infoemailText.getText() +
+                                "&ToEmail=" + newAdminValue.getSelectedItem().toString());
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+                else
+                {
+                    Lib.showMessage("Sie sind nicht berechtigt.", controller);
+                }
+            }
+        });
     }
 
     private void ChangeUserInformation(){
@@ -235,6 +288,30 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
                         Lib.showMessage("WG verlassen, gelöscht und Benutzeraccount gelöscht.",this);
                         break;
                 }
+            case "getCommuneInhabitants":
+                try
+                {
+                    respListItems.clear();
+                    JSONArray array = new JSONArray(s);
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject row = array.getJSONObject(i);
+                        respListItems.add(row.getString("Email"));
+                    }
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, respListItems);
+                    respList.setAdapter(adapter);
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+                break;
+            case "transferAdminStatus":
+                if (s.equals("adminStatusTransfered")){
+                    finish();
+                    intent = new Intent(activity_userInfo.this, Home.class);
+                    startActivity(intent);
+                }
+                break;
         }
         task = new PostResponseAsyncTask(c);
     }
