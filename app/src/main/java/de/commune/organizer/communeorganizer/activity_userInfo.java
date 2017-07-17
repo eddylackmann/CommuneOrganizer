@@ -310,7 +310,6 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
             case "transferAdminStatus":
                 if (s.equals("adminStatusTransfered")){
                     finish();
-                    Lib.showMessage("Der Adminstatus wurde erfolgreich übertragen.", c);
                     intent = new Intent(activity_userInfo.this, Home.class);
                     startActivity(intent);
                 }
