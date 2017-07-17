@@ -35,7 +35,6 @@
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
 
-
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -46,6 +45,7 @@
                     android:id="@+id/dateActivity"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:editable="false"
                     android:hint="Datum" />
 
                 <EditText
