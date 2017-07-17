@@ -29,7 +29,7 @@
                 android:layout_alignParentTop="true"
                 android:background="@color/common_google_signin_btn_text_light_default"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="BEITRETEN | GRÜNDEN"
+                android:text="Beitreten | Gründen"
                 android:textColor="#FFF"
                 android:textSize="25sp" />
 

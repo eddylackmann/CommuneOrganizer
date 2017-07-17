@@ -106,7 +106,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         final EditText edittext = new EditText(c);
         edittext.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
         alert.setMessage("WG Kasse");
-        alert.setTitle("Einzahlung");
+        alert.setTitle("Zahlung erfassen");
         edittext.setTextColor(Color.WHITE);
         alert.setView(edittext);
         alert.setPositiveButton("Einzahlen", new DialogInterface.OnClickListener() {

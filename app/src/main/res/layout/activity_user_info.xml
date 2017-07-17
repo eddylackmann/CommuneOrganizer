@@ -29,7 +29,7 @@
                     android:layout_height="50dp"
                     android:background="#fff"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text=" BENUTZER INFOS "
+                    android:text=" Benutzer Infos "
                     android:textColor="#000"
                     android:textSize="25sp"
                     android:layout_centerVertical="true"
