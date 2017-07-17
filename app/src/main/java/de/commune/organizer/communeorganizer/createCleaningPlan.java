@@ -19,7 +19,10 @@ import com.kosalgeek.asynctask.PostResponseAsyncTask;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by tka on 13.07.2017.
@@ -98,16 +101,22 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
         addCleanPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                asyncTaskMethod="createCleaningTask";
-                try
-                {
-                    task.execute("http://eddy-home.ddns.net/wg-app/cleaningPlan.php?Method=createCleaningPlanEntry&CommuneID="
-                            + communeID + "&Email=" + respCleanPlan.getSelectedItem().toString() +"&FromDate="+ dateFromClean.getText() + "&ToDate="
-                            + dateToClean.getText() + "&Description=" + descCleanPlan.getText());
-                } catch (Exception e)
-                {
-                    e.printStackTrace();
+                if (checkDates(dateFromClean.getText().toString(),dateToClean.getText().toString())){
+                    asyncTaskMethod="createCleaningTask";
+                    try
+                    {
+                        task.execute("http://eddy-home.ddns.net/wg-app/cleaningPlan.php?Method=createCleaningPlanEntry&CommuneID="
+                                + communeID + "&Email=" + respCleanPlan.getSelectedItem().toString() +"&FromDate="+ dateFromClean.getText() + "&ToDate="
+                                + dateToClean.getText() + "&Description=" + descCleanPlan.getText());
+                    } catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
                 }
+                else{
+                    Lib.showMessage("Das 'Von Datum' darf nicht kleiner sein als das 'Bis Datum'.",controller);
+                }
+
             }
         });
     }
@@ -153,12 +162,54 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
         switch (datePickerDialogField){
             case "dateFromClean":
                 final EditText dateFromClean = (EditText) findViewById(R.id.dateFromClean);
-                dateFromClean.setText(i2+ "." +i1 +"." +i);
+                dateFromClean.setText(formatDate(i2,i1,i));
                 break;
             case "dateToClean":
                 final EditText dateToClean = (EditText) findViewById(R.id.dateToClean);
-                dateToClean.setText(i2+ "." +i1 +"." +i);
+                dateToClean.setText(formatDate(i2,i1,i));
                 break;
         }
+    }
+
+    private String formatDate(int day, int month, int year){
+        String sMonth;
+        String sDay;
+
+        if (day < 10)
+        {
+            sDay = "0" + day;
+        }
+        else
+        {
+            sDay = "" + day;
+        }
+
+        if (month < 10)
+        {
+            sMonth = "0" + month;
+        }
+        else
+        {
+            sMonth = "" + month;
+        }
+        return sDay + "." + sMonth + "." + year;
+    }
+
+    private boolean checkDates (String fromDate, String toDate) {
+        String dateString = "03/26/2012 11:49:00 AM";
+        SimpleDateFormat fromDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        Date fromDateconverted = new Date();
+
+        SimpleDateFormat toDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        Date toDateconverted = new Date();
+
+        try {
+            fromDateconverted = fromDateFormat.parse(fromDate);
+            toDateconverted = toDateFormat.parse(toDate);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return !toDateconverted.before(fromDateconverted);
     }
 }
