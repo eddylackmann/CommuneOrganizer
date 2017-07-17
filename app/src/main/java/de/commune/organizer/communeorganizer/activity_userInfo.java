@@ -31,13 +31,11 @@ import java.util.ArrayList;
 
 public class activity_userInfo extends AppCompatActivity implements AsyncResponse, DatePickerDialog.OnDateSetListener {
     private my_Library Lib = new my_Library();
-    private String test = new String();
     private activity_userInfo c;
-    public AppCompatActivity controller;
     private Spinner respList;
     private ArrayList<String> respListItems = new ArrayList<String>();
     private String asyncTaskMethod ="";
-    public PostResponseAsyncTask task;
+    private PostResponseAsyncTask task;
     private String communeID;
     private String CommuneAdmin;
 
@@ -144,7 +142,7 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
                 }
                 else
                 {
-                    Lib.showMessage("Sie sind nicht berechtigt.", controller);
+                    Lib.showMessage("Sie sind nicht berechtigt.", c);
                 }
             }
         });
