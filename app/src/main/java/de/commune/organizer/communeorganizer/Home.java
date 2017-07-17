@@ -1,5 +1,6 @@
 package de.commune.organizer.communeorganizer;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -18,6 +19,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.text.InputType;
+import android.text.format.Time;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -74,7 +76,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 ((MyApplication) this.getApplication()).getInformation("City"));
         communeHomeDescrition.setText(((MyApplication) this.getApplication()).getInformation("Description"));
 
+        Time today = new Time(Time.getCurrentTimezone());
+        today.setToNow();
 
+        final TextView home_DateDisplay = (TextView) findViewById(R.id.home_DateDisplay);
+        home_DateDisplay.setText(formatDate(today.monthDay,today.month,today.year));
     }
 
     public void init() {
@@ -262,5 +268,30 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 });
         builder.create();
         builder.show();
+    }
+
+    private String formatDate(int day, int month, int year){
+        String sMonth;
+        String sDay;
+        month++;
+
+        if (day < 10)
+        {
+            sDay = "0" + day;
+        }
+        else
+        {
+            sDay = Integer.toString(day);
+        }
+
+        if (month < 10)
+        {
+            sMonth = "0" + month;
+        }
+        else
+        {
+            sMonth = Integer.toString(month);
+        }
+        return sDay + "." + sMonth + "." + year;
     }
 }

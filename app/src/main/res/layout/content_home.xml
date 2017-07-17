@@ -8,8 +8,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:orientation="vertical"
         android:id="@+id/fixedlayout"
         android:scaleType="centerCrop">
@@ -25,39 +23,99 @@
             android:layout_height="match_parent"
             android:background="#fff"
             app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:background="#fff"
             android:layout_below="@+id/fixedlayout"
             android:layout_centerHorizontal="true"
             android:orientation="vertical"
             android:id="@+id/fluidlayout">
+
+            <RelativeLayout
+                android:id="@+id/clockLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/home_communeTimeSeparatorLineTop"
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:background="#000"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    android:id="@+id/home_DateDisplay"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:background="#fff"
+                    android:textSize="30dp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:layout_below="@+id/home_communeTimeSeparatorLineTop"
+                    android:text="Datum"
+                    android:textColor="#000" />
+                <TextClock
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/home_DateDisplay"
+                    android:background="#fff"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/home_communeCashSeparatorLineTop"
+                android:layout_width="match_parent"
+                android:layout_height="2.5dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_below="@+id/clockLinearLayout"
+                android:layout_marginBottom="10dp"
+                android:background="#000"
+                android:layout_marginTop="10dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/cashlayout">
-                <Button
+                android:id="@+id/cashlayout"
+                android:layout_below="@+id/home_communeCashSeparatorLineTop"
+                android:orientation="horizontal"
+                android:weightSum="1.0">
+                <TextView
+                    android:id="@+id/home_communeCashLabel"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="20dp"
+                    android:textColor="#000"
+                    android:text="WG Kasse:"
+                    android:layout_weight="0.5" />
+                <TextView
                     android:id="@+id/home_communeCash"
-                    style="@style/Widget.AppCompat.Button.Small"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
                     android:background="#fff"
                     android:textSize="20dp"
                     android:gravity="center_vertical|center_horizontal"
+                    android:layout_marginBottom="10dp"
                     android:text="Kasse"
                     android:textColor="#00810D"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_weight="0.5"/>
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/addsection"
                 android:layout_below="@id/cashlayout"
                 android:layout_alignParentStart="true">
+
                 <Button
                     android:id="@+id/home_cashBtn"
                     style="@style/Widget.AppCompat.Button.Small"
@@ -68,16 +126,17 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="Einzahlung"
                     android:textColor="#fff" />
-            </LinearLayout>
-            <TextClock
-                android:layout_width="match_parent"
-                android:gravity="center_vertical|center_horizontal"
-                android:textSize="40dp"
-                android:background="#fff"
-                android:layout_height="70dp"
-                android:textColor="#000"
-                android:layout_below="@+id/addsection"
-                android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:id="@+id/home_communeCashSeparatorLineBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:layout_below="@+id/home_cashBtn"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:background="#000"
+                    android:layout_marginTop="10dp" />
+            </RelativeLayout>
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>
