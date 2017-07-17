@@ -28,6 +28,8 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
     private AppCompatActivity controller;
     private String communeID;
     private String asyncTaskMethod;
+    String userEmail;
+    private boolean showAllEntries = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
         Lib = new my_Library();
         task = new PostResponseAsyncTask(this);
         communeID = ((MyApplication) this.getApplication()).getInformation("CommuneID");
-        String userEmail = ((MyApplication) getApplication()).getUserEmail();
+        userEmail = ((MyApplication) getApplication()).getUserEmail();
         cleaningPlanGridView = (GridView) findViewById(R.id.cleaningPlanGridView);
         cleaningPlanGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
@@ -74,7 +76,6 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
             }
         });
 
-
         try
         {
             asyncTaskMethod = "getAllCleaningPlansForUser";
@@ -99,13 +100,29 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
         cleaningRosterChangeViewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try
+                if (showAllEntries){
+                    try
+                    {
+                        asyncTaskMethod = "getAllCleaningPlansForUser";
+                        task.execute("http://eddy-home.ddns.net/wg-app/cleaningPlan.php?Method=" + asyncTaskMethod + "&CommuneID="
+                                + communeID + "&Email=" + userEmail);
+                        showAllEntries = false;
+                    } catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+                else
                 {
-                    asyncTaskMethod = "getAllCleaningPlans";
-                    task.execute("http://eddy-home.ddns.net/wg-app/cleaningPlan.php?Method=" + asyncTaskMethod + "&CommuneID=" + communeID);
-                } catch (Exception e)
-                {
-                    e.printStackTrace();
+                    try
+                    {
+                        asyncTaskMethod = "getAllCleaningPlans";
+                        task.execute("http://eddy-home.ddns.net/wg-app/cleaningPlan.php?Method=" + asyncTaskMethod + "&CommuneID=" + communeID);
+                        showAllEntries = true;
+                    } catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
@@ -128,6 +145,8 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
                     }
                     MyAdapter myAdapter=new MyAdapter(this,R.layout.grid_view_items,cleaningPlanList);
                     cleaningPlanGridView.setAdapter(myAdapter);
+                    Button cleaningRosterChangeViewBtn = (Button) findViewById(R.id.cleaningRosterChangeViewBtn);
+                    cleaningRosterChangeViewBtn.setText("Alle anzeigen");
                 }
                 catch (Exception e)
                 {
@@ -154,10 +173,12 @@ public class cleaningRoster extends AppCompatActivity implements AsyncResponse {
                     JSONArray array = new JSONArray(s);
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject row = array.getJSONObject(i);
-                        cleaningPlanList.add(new Item(row.getString("FromDate") +" - " + row.getString("ToDate"),row.getString("Description"),row.getString("LineNo"),row.getString("UserEmail")));
+                        cleaningPlanList.add(new Item(row.getString("FromDate") +" - " + row.getString("ToDate"),"[" + row.getString("UserFirstname") +"] " + row.getString("Description"),row.getString("LineNo"),row.getString("UserEmail")));
                     }
                     MyAdapter myAdapter=new MyAdapter(this,R.layout.grid_view_items,cleaningPlanList);
                     cleaningPlanGridView.setAdapter(myAdapter);
+                    Button cleaningRosterChangeViewBtn = (Button) findViewById(R.id.cleaningRosterChangeViewBtn);
+                    cleaningRosterChangeViewBtn.setText("Meine anzeigen");
                 }
                 catch (Exception e)
                 {
