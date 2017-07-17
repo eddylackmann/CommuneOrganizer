@@ -289,11 +289,15 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
             case "getCommuneInhabitants":
                 try
                 {
+                    String email = ((MyApplication) this.getApplication()).getInformation("Email");
                     respListItems.clear();
                     JSONArray array = new JSONArray(s);
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject row = array.getJSONObject(i);
-                        respListItems.add(row.getString("Email"));
+                        if(!row.getString("Email").equals(email)){
+                            respListItems.add(row.getString("Email"));
+                        }
+
                     }
                     ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, respListItems);
                     respList.setAdapter(adapter);
@@ -306,6 +310,7 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
             case "transferAdminStatus":
                 if (s.equals("adminStatusTransfered")){
                     finish();
+                    Lib.showMessage("Der Adminstatus wurde erfolgreich übertragen.", c);
                     intent = new Intent(activity_userInfo.this, Home.class);
                     startActivity(intent);
                 }
