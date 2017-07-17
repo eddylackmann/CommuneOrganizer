@@ -1,13 +1,17 @@
 package de.commune.organizer.communeorganizer;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
+import android.text.format.Time;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.kosalgeek.asynctask.AsyncResponse;
@@ -19,7 +23,7 @@ import org.json.JSONArray;
  * Created by Tom on 11.07.2017.
  */
 
-public class activity_userInfo extends AppCompatActivity implements AsyncResponse {
+public class activity_userInfo extends AppCompatActivity implements AsyncResponse, DatePickerDialog.OnDateSetListener {
     private my_Library Lib = new my_Library();
     private String test = new String();
     private activity_userInfo c;
@@ -48,7 +52,19 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
         //final TextView infoPWTextInfo = (TextView) findViewById(R.id.infoPWTextInfo);
         final TextView infoFirstnameTextInfo = (TextView) findViewById(R.id.infoFirstnameTextInfo);
         final TextView infoLastnameTextInfo = (TextView) findViewById(R.id.infoLastnameTextInfo);
+
         final TextView infoBirthdayTextInfo = (TextView) findViewById(R.id.infoBirthdayTextInfo);
+
+        Time today = new Time(Time.getCurrentTimezone());
+        today.setToNow();
+        final DatePickerDialog datePickerDialog = new DatePickerDialog(this, android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, activity_userInfo.this,today.year,today.month,today.monthDay);
+
+        infoBirthdayTextInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datePickerDialog.show();
+            }
+        });
 
         infoemailText.setText(((MyApplication) this.getApplication()).getInformation("Email"));
         //infoPWTextInfo.setText(((MyApplication) this.getApplication()).getInformation("Password"));
@@ -227,5 +243,35 @@ public class activity_userInfo extends AppCompatActivity implements AsyncRespons
     public boolean onSupportNavigateUp(){
         finish();
         return true;
+    }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+        final TextView infoBirthdayTextInfo = (TextView) findViewById(R.id.infoBirthdayTextInfo);
+        infoBirthdayTextInfo.setText(formatDate(i2,i1,i));
+    }
+
+    private String formatDate(int day, int month, int year){
+        String sMonth;
+        String sDay;
+
+        if (day < 10)
+        {
+            sDay = "0" + day;
+        }
+        else
+        {
+            sDay = "" + day;
+        }
+
+        if (month < 10)
+        {
+            sMonth = "0" + month;
+        }
+        else
+        {
+            sMonth = "" + month;
+        }
+        return sDay + "." + sMonth + "." + year;
     }
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.Time;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -71,7 +72,9 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
         Intent intent = new Intent(createCleaningPlan.this, RefreshAppGlobalInformation.class);
         startActivity(intent);
 
-        final DatePickerDialog datePickerDialog = new DatePickerDialog(this, android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, createCleaningPlan.this,2017,5,9);
+        Time today = new Time(Time.getCurrentTimezone());
+        today.setToNow();
+        final DatePickerDialog datePickerDialog = new DatePickerDialog(this, android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, createCleaningPlan.this,today.year,today.month,today.monthDay);
 
         Lib = new my_Library();
         task = new PostResponseAsyncTask(this);
