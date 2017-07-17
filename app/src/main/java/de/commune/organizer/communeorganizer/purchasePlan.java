@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
+import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -35,6 +36,7 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
     public AppCompatActivity controller;
     private String asyncTaskMethod = "";
     private String communeID;
+    String CashText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,10 +146,18 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
         purchPlan_finishPurch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(controller,R.style.AlertDialogCustom));
-                builder.setMessage("Möchten Sie die Liste abschliessen? Alle Einträge werden gelöscht!")
-                        .setPositiveButton("JA", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
+                if (!purchPlanListEntries.isEmpty()){
+                    AlertDialog.Builder alert = new AlertDialog.Builder(new ContextThemeWrapper(controller,R.style.AlertDialogCustom));
+                    final EditText edittext = new EditText(controller);
+                    edittext.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
+                    alert.setMessage("Bitte geben Sie die Kosten ein.");
+                    alert.setTitle("Einkauf abschließen? Dies wird alle Einträge löschen.");
+                    edittext.setTextColor(Color.WHITE);
+                    alert.setView(edittext);
+                    alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            CashText = edittext.getText().toString();
+                            if (!CashText.equals("")){
                                 try
                                 {
                                     asyncTaskMethod = "deleteAllPurchasePlanEntries";
@@ -157,14 +167,24 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
                                     e.printStackTrace();
                                 }
                             }
-                        })
-                        .setNegativeButton("NEIN", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
+                            else
+                            {
+                                Lib.showMessage("Keine Kosten angegeben. Abbruch.",controller);
                             }
-                        });
-                builder.create();
-                builder.show();
+                        }
+
+                    });
+
+                    alert.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                        }
+                    });
+                    alert.show();
+                }
+                else
+                {
+                    Lib.showMessage("Welchen Einkauf wollen Sie abschließen? Hier sind keine Einträge vorhanden.",controller);
+                }
             }
         });
     }
@@ -214,13 +234,21 @@ public class purchasePlan extends AppCompatActivity implements AsyncResponse {
 
             case "deleteAllPurchasePlanEntries":
                 if (s.equals("allEntriesDeleted")){
-                    finish();
-                    intent = new Intent(purchasePlan.this, purchasePlan.class);
-                    startActivity(intent);
+                    task = new PostResponseAsyncTask(this);
+                    asyncTaskMethod = "addCash";
+                    task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=addCashToCommune&CommuneID=" +((MyApplication) controller.getApplication()).getInformation("CommuneID")
+                            + "&CurrentCash="+((MyApplication) controller.getApplication()).getInformation("CommuneCashbox") +"&Cash="+ CashText +"&CashType=sub");
                 }
                 else
                 {
                     Lib.showMessage("Abschließen fehlgeschlagen!",controller);
+                }
+                break;
+            case "addCash":
+                if (s.equals("cashUpdated")){
+                    finish();
+                    intent = new Intent(purchasePlan.this, Home.class);
+                    startActivity(intent);
                 }
                 break;
         }
