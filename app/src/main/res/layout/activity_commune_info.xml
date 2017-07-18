@@ -221,12 +221,11 @@
                           android:ems="10"
                           android:text="Anzahl aktueller Einwohner:" />
 
-                      <TextView
+                      <EditText
                           android:id="@+id/infoInhText"
+                          android:inputType="none"
                           android:layout_width="match_parent"
                           android:layout_height="wrap_content"
-                          android:inputType="number"
-                          android:layout_alignParentStart="true"
                           android:layout_marginTop="10dp"
                           android:ems="10"
                           android:text="" />
