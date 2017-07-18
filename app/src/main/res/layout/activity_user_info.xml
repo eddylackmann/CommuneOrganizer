@@ -252,18 +252,27 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/userInfo_LineSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:background="#000"
+                    android:layout_below="@+id/linInfoLayout9"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
                     android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/new_Admin_LBL"
                     android:text="Neuer Admin"
-                    android:layout_marginTop="15dp"
-                    android:layout_below="@+id/linInfoLayout9" />
+                    android:layout_below="@+id/userInfo_LineSeparator" />
                 <Spinner
                     android:id="@+id/newAdmin"
                     android:spinnerMode="dropdown"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/new_Admin_LBL"
                     android:inputType="textEmailAddress"
                     />
@@ -272,17 +281,14 @@
                     android:id="@+id/user_info_transferAdminStatusBtn"
                     style="@style/Widget.AppCompat.Button.Small"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:background="#FF3F51B5"
                     android:layout_below="@+id/newAdmin"
                     android:gravity="center_vertical|center_horizontal"
                     android:text="Adminstatus übertragen"
                     android:layout_marginTop="25dp"
                     android:textColor="#fff" />
-
             </RelativeLayout>
-
-
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>
