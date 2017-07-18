@@ -71,7 +71,7 @@ public class commune_info extends AppCompatActivity implements AsyncResponse {
         infoAddCostsText.setText(((MyApplication) this.getApplication()).getInformation("AdditionalCosts").replace(".",","));
         infoOtherCostsText.setText(((MyApplication) this.getApplication()).getInformation("OtherCosts").replace(".",","));
         infoDescText.setText(((MyApplication) this.getApplication()).getInformation("Description"));
-
+        infoInhText.setEnabled(false);
         final Button comInfo_saveChangesBtn = (Button)findViewById(R.id.comInfo_saveChangesBtn);
         comInfo_saveChangesBtn.setOnClickListener(new View.OnClickListener() {
             @Override

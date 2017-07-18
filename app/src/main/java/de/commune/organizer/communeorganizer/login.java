@@ -53,12 +53,19 @@ public class login extends AppCompatActivity implements AsyncResponse {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 if(userEmail.getText().toString().equals("")) {
                     userEmail.setError("Bitte tragen Sie Ihre Email ein!");
                 }
 
                 if(userPassword.getText().toString().equals("")) {
                     userPassword.setError("Bitte tragen Sie Ihr Passwort ein!");
+                }
+
+                if(Lib.validate_Email(userEmail.getText().toString())){
+
                 }
 
                 //fetch data from url
