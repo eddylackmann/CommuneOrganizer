@@ -70,7 +70,7 @@ public class Activities_Activity extends AppCompatActivity implements AsyncRespo
                             public void onClick(DialogInterface dialog, int id) {
                                 try {
                                     asyncTaskMethod = "deleteActivityEntry";
-                                    task.execute("http://eddy-home.ddns.net/wg-app/Activities_Activity.php?Method=" + asyncTaskMethod + "&CommuneID=" + communeID + "&LineNo=" + currEntry.getLineNo());
+                                    task.execute("http://eddy-home.ddns.net/wg-app/activities.php?Method=" + asyncTaskMethod + "&CommuneID=" + communeID + "&LineNo=" + currEntry.getLineNo());
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -89,7 +89,7 @@ public class Activities_Activity extends AppCompatActivity implements AsyncRespo
 
         try {
             asyncTaskMethod = "getAllActivityEntries";
-            task.execute("http://eddy-home.ddns.net/wg-app/Activities_Activity.php?Method=" + asyncTaskMethod + "&CommuneID=" + communeID);
+            task.execute("http://eddy-home.ddns.net/wg-app/activities.php?Method=" + asyncTaskMethod + "&CommuneID=" + communeID);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -73,7 +73,7 @@ public class CreateActivities_Activity extends AppCompatActivity implements Asyn
                         ) {
 
                     try {
-                        task.execute("http://eddy-home.ddns.net/wg-app/Activities_Activity.php?Method=createActivityEntry&CommuneID="
+                        task.execute("http://eddy-home.ddns.net/wg-app/activities.php?Method=createActivityEntry&CommuneID="
                                 + communeID + "&Description=" + descActivity.getText() + "&Date=" + dateActivity.getText() + "&Time=" + timeActivity.getText());
                     } catch (Exception e) {
                         e.printStackTrace();
