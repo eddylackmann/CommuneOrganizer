@@ -66,10 +66,10 @@ public class commune_info extends AppCompatActivity implements AsyncResponse {
         else{
             infoPetsText.setChecked(false);
         }
-        infoSpaceText.setText(((MyApplication) this.getApplication()).getInformation("LivingSpace"));
-        infoRentText.setText(((MyApplication) this.getApplication()).getInformation("ColdRent"));
-        infoAddCostsText.setText(((MyApplication) this.getApplication()).getInformation("AdditionalCosts"));
-        infoOtherCostsText.setText(((MyApplication) this.getApplication()).getInformation("OtherCosts"));
+        infoSpaceText.setText(((MyApplication) this.getApplication()).getInformation("LivingSpace").replace(".",","));
+        infoRentText.setText(((MyApplication) this.getApplication()).getInformation("ColdRent").replace(".",","));
+        infoAddCostsText.setText(((MyApplication) this.getApplication()).getInformation("AdditionalCosts").replace(".",","));
+        infoOtherCostsText.setText(((MyApplication) this.getApplication()).getInformation("OtherCosts").replace(".",","));
         infoDescText.setText(((MyApplication) this.getApplication()).getInformation("Description"));
 
         final Button comInfo_saveChangesBtn = (Button)findViewById(R.id.comInfo_saveChangesBtn);

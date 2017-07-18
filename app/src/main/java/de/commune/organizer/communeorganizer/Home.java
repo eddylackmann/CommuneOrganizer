@@ -69,7 +69,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         TextView addressHome = (TextView) findViewById(R.id.addressHomeDescrition);
         TextView communeHomeDescrition = (TextView) findViewById(R.id.communeHomeDescrition);
         userDetailsHome.setText(((MyApplication) this.getApplication()).getInformation("Firstname") + " " + ((MyApplication) this.getApplication()).getInformation("Lastname"));
-        homeCommuneCash.setText("" + ((MyApplication) this.getApplication()).getInformation("CommuneCashbox") + " €");
+        homeCommuneCash.setText(("" + ((MyApplication) this.getApplication()).getInformation("CommuneCashbox") + " €").replace(".",","));
         homeCommuneCash.setTypeface(null, Typeface.BOLD);
         addressHome.setText(((MyApplication) this.getApplication()).getInformation("Address") + ", " +
                 ((MyApplication) this.getApplication()).getInformation("PostCode") + " " +

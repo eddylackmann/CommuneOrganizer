@@ -274,8 +274,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/new_Admin_LBL"
-                    android:inputType="textEmailAddress"
-                    />
+                    android:inputType="textEmailAddress" />
 
                 <Button
                     android:id="@+id/user_info_transferAdminStatusBtn"
