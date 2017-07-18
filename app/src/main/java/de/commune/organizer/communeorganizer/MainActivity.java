@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
 
             final AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.AlertDialogCustom));
-            builder.setMessage("Möchtest Sie die App schliessen? ")
+            builder.setMessage("Möchten Sie die App schließen? ")
                     .setPositiveButton("JA", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             moveTaskToBack(true);
