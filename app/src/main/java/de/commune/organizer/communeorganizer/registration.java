@@ -48,29 +48,28 @@ public class registration extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View v) {
                 //fetch data from url
-                if(Lib.validate_Email(MailText.getText().toString())){
-                    MailText.setError("Keine gültige Email Adresse!");
-                }
-                if(MailText.getText().toString().trim().equals("")| uPwText.getText().toString().trim().equals("")
-                   | uFirstname.getText().toString().trim().equals("") | uLastname.getText().toString().trim().equals("")
-                        ){
-                    MailText.setError("Erforderlich !");
-                    uPwText.setError("Erforderlich !");
-                    uFirstname.setError("Erforderlich !");
-                    uLastname.setError("Erforderlich !");
-                }else {
-                    if (uPwText.getText().toString().equals(uPwRepeatText.getText().toString())) {
 
+                if (uPwText.getText().toString().equals(uPwRepeatText.getText().toString())&
+                        Lib.checkField(MailText,"Erforderlich !")&
+                        Lib.checkField(uFirstname,"Erforderlich !")&
+                        Lib.checkField(uLastname,"Erforderlich !")&
+                        Lib.checkField(uPwText,"Erforderlich !")&
+                        Lib.checkField(uPwText,"Erforderlich !")
+                        ) {
+                    if( Lib.validate_Email(MailText.getText().toString())) {
                         try {
                             task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=registerUser&Email=" + MailText.getText() + "&Password=" + uPwText.getText() + "&Firstname=" + uFirstname.getText() + "&Lastname=" + uLastname.getText());
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    } else {
-                        uPwText.setError("Passwörter stimmen nicht überein!");
-                        uPwRepeatText.setError("Passwörter stimmen nicht überein!");
+                    }else{
+                        MailText.setError("Keine gültige Email Adresse!");
                     }
+                } else {
+                    uPwText.setError("Passwörter stimmen nicht überein!");
+                    uPwRepeatText.setError("Passwörter stimmen nicht überein!");
                 }
+
             }
         });
     }

@@ -67,7 +67,7 @@ public class login extends AppCompatActivity implements AsyncResponse {
                 }
 
                 //fetch data from url
-                if (!userEmail.getText().toString().equals("") & !userPassword.getText().toString().equals("")){
+                if (!userEmail.getText().toString().equals("") & !userPassword.getText().toString().equals("") & Lib.validate_Email(userEmail.getText().toString())){
                     try {
                         task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=loginUser&Email=" + userEmail.getText() + "&Password=" + userPassword.getText());
                     } catch (Exception e) {
