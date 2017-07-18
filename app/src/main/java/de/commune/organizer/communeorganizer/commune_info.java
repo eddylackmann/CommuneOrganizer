@@ -2,6 +2,7 @@ package de.commune.organizer.communeorganizer;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -71,7 +72,10 @@ public class commune_info extends AppCompatActivity implements AsyncResponse {
         infoAddCostsText.setText(((MyApplication) this.getApplication()).getInformation("AdditionalCosts").replace(".",","));
         infoOtherCostsText.setText(((MyApplication) this.getApplication()).getInformation("OtherCosts").replace(".",","));
         infoDescText.setText(((MyApplication) this.getApplication()).getInformation("Description"));
+
         infoInhText.setEnabled(false);
+        infoInhText.setTextColor(Color.BLACK);
+
         final Button comInfo_saveChangesBtn = (Button)findViewById(R.id.comInfo_saveChangesBtn);
         comInfo_saveChangesBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -271,9 +271,9 @@
                           android:id="@+id/infoSpace"
                           android:layout_width="100dp"
                           android:layout_height="wrap_content"
-                          android:layout_marginTop="5dp"
+                          android:layout_marginTop="0dp"
                           android:ems="10"
-                          android:text="Gesamtfläche:" />
+                          android:text="Gesamtfläche (m²):" />
 
                       <EditText
                           android:id="@+id/infoSpaceText"
@@ -300,7 +300,7 @@
                           android:layout_height="wrap_content"
                           android:layout_marginTop="10dp"
                           android:ems="10"
-                          android:text="Kaltmiete:" />
+                          android:text="Kaltmiete (€):" />
 
                       <EditText
                           android:id="@+id/infoRentText"
@@ -325,9 +325,9 @@
                           android:id="@+id/infoAddCost"
                           android:layout_width="100dp"
                           android:layout_height="wrap_content"
-                          android:layout_marginTop="10dp"
+                          android:layout_marginTop="0dp"
                           android:ems="10"
-                          android:text="Nebenkosten:" />
+                          android:text="Nebenkosten (€):" />
 
                       <EditText
                           android:id="@+id/infoAddCostText"
@@ -352,9 +352,9 @@
                           android:id="@+id/infoOtherCost"
                           android:layout_width="100dp"
                           android:layout_height="wrap_content"
-                          android:layout_marginTop="10dp"
+                          android:layout_marginTop="0dp"
                           android:ems="10"
-                          android:text="Zusätziche Kosten:" />
+                          android:text="Zusätziche Kosten (€):" />
 
                       <EditText
                           android:id="@+id/infoOtherCostText"
@@ -387,7 +387,6 @@
                           android:id="@+id/infoComDescText"
                           android:layout_width="match_parent"
                           android:layout_height="wrap_content"
-                          android:layout_alignParentStart="true"
                           android:layout_marginTop="10dp"
                           android:ems="10"
                           android:text="" />
