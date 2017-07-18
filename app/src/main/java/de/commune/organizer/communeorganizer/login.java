@@ -54,7 +54,9 @@ public class login extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View v) {
 
-
+                if(Lib.validate_Email(userEmail.getText().toString())){
+                    userEmail.setError("Keine gültige Email Adresse!");
+                }
 
                 if(userEmail.getText().toString().equals("")) {
                     userEmail.setError("Bitte tragen Sie Ihre Email ein!");
@@ -62,10 +64,6 @@ public class login extends AppCompatActivity implements AsyncResponse {
 
                 if(userPassword.getText().toString().equals("")) {
                     userPassword.setError("Bitte tragen Sie Ihr Passwort ein!");
-                }
-
-                if(Lib.validate_Email(userEmail.getText().toString())){
-                    userEmail.setError("Keine gültige Email Adresse!");
                 }
 
                 //fetch data from url
