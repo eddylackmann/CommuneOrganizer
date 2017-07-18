@@ -105,20 +105,33 @@ public class createCleaningPlan extends AppCompatActivity implements AsyncRespon
         addCleanPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkDates(dateFromClean.getText().toString(),dateToClean.getText().toString())){
-                    asyncTaskMethod="createCleaningTask";
-                    try
-                    {
-                        task.execute("http://eddy-home.ddns.net/wg-app/cleaningPlan.php?Method=createCleaningPlanEntry&CommuneID="
-                                + communeID + "&Email=" + respCleanPlan.getSelectedItem().toString() +"&FromDate="+ dateFromClean.getText() + "&ToDate="
-                                + dateToClean.getText() + "&Description=" + descCleanPlan.getText());
-                    } catch (Exception e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-                else{
-                    Lib.showMessage("Das 'Von Datum' darf nicht kleiner sein als das 'Bis Datum'.",controller);
+
+                if(Lib.checkField(dateFromClean,"Feld darf nicht leer sein!")
+
+                   & Lib.checkField(dateToClean,"Feld darf nicht leer sein!")
+
+                   & Lib.checkField(descCleanPlan,"Feld darf nicht leer sein!")
+
+
+                        ){
+
+
+                        if (checkDates(dateFromClean.getText().toString(),dateToClean.getText().toString())){
+                            asyncTaskMethod="createCleaningTask";
+                            try
+                            {
+                                task.execute("http://eddy-home.ddns.net/wg-app/cleaningPlan.php?Method=createCleaningPlanEntry&CommuneID="
+                                        + communeID + "&Email=" + respCleanPlan.getSelectedItem().toString() +"&FromDate="+ dateFromClean.getText() + "&ToDate="
+                                        + dateToClean.getText() + "&Description=" + descCleanPlan.getText());
+                            } catch (Exception e)
+                            {
+                                e.printStackTrace();
+                            }
+                        }
+                        else{
+                            Lib.showMessage("Das 'Von Datum' darf nicht kleiner sein als das 'Bis Datum'.",controller);
+                        }
+
                 }
 
             }

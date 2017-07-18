@@ -68,19 +68,18 @@ public class createActivity extends AppCompatActivity implements AsyncResponse, 
             @Override
             public void onClick(View v) {
                 if(Lib.checkField(descActivity,"Feld darf nicht leer sein!")
-
                    & Lib.checkField(dateActivity,"Feld darf nicht leer sein!")
                    & Lib.checkField(timeActivity,"Feld darf nicht leer sein!")
                         ){
 
-                    try
-                    {
-                        task.execute("http://eddy-home.ddns.net/wg-app/activities.php?Method=createActivityEntry&CommuneID="
-                                + communeID + "&Description=" + descActivity.getText() +"&Date="+ dateActivity.getText() + "&Time=" + timeActivity.getText());
-                    } catch (Exception e)
-                    {
-                        e.printStackTrace();
-                    }
+                        try
+                        {
+                            task.execute("http://eddy-home.ddns.net/wg-app/activities.php?Method=createActivityEntry&CommuneID="
+                                    + communeID + "&Description=" + descActivity.getText() +"&Date="+ dateActivity.getText() + "&Time=" + timeActivity.getText());
+                        } catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
                 }
 
             }
