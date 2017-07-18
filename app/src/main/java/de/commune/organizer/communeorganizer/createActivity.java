@@ -67,14 +67,22 @@ public class createActivity extends AppCompatActivity implements AsyncResponse, 
         addActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try
-                {
-                    task.execute("http://eddy-home.ddns.net/wg-app/activities.php?Method=createActivityEntry&CommuneID="
-                            + communeID + "&Description=" + descActivity.getText() +"&Date="+ dateActivity.getText() + "&Time=" + timeActivity.getText());
-                } catch (Exception e)
-                {
-                    e.printStackTrace();
+                if(Lib.checkField(descActivity,"Feld darf nicht leer sein!")
+
+                   & Lib.checkField(dateActivity,"Feld darf nicht leer sein!")
+                   & Lib.checkField(timeActivity,"Feld darf nicht leer sein!")
+                        ){
+
+                    try
+                    {
+                        task.execute("http://eddy-home.ddns.net/wg-app/activities.php?Method=createActivityEntry&CommuneID="
+                                + communeID + "&Description=" + descActivity.getText() +"&Date="+ dateActivity.getText() + "&Time=" + timeActivity.getText());
+                    } catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
                 }
+
             }
         });
     }
@@ -119,4 +127,6 @@ public class createActivity extends AppCompatActivity implements AsyncResponse, 
         final EditText dateActivity = (EditText) findViewById(R.id.dateActivity);
         dateActivity.setText(formatDate(i2,i1,i));
     }
+
+
 }

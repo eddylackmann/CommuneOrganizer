@@ -30,4 +30,15 @@ public class my_Library {
         AlertBox.create();
         AlertBox.show();
      }
+
+    public boolean checkField(EditText edit, String ErrorText){
+
+        if (edit.getText().toString().equals("")){
+            edit.setError(ErrorText);
+            return false;
+        }else{
+            return true;
+        }
+
+    }
 }
