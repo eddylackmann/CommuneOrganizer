@@ -48,7 +48,9 @@ public class registration extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View v) {
                 //fetch data from url
-
+                if(Lib.validate_Email(MailText.getText().toString())){
+                    MailText.setError("Keine gültige Email Adresse!");
+                }
                 if(MailText.getText().toString().trim().equals("")| uPwText.getText().toString().trim().equals("")
                    | uFirstname.getText().toString().trim().equals("") | uLastname.getText().toString().trim().equals("")
                         ){
