@@ -48,7 +48,7 @@ public class registration extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View v) {
                 //fetch data from url
-                if(Lib.validate_Email(MailText.getText().toString())){
+                if(!Lib.validate_Email(MailText.getText().toString())){
                     MailText.setError("Keine gültige Email Adresse!");
                 }
                 if(MailText.getText().toString().trim().equals("")| uPwText.getText().toString().trim().equals("")
@@ -59,7 +59,7 @@ public class registration extends AppCompatActivity implements AsyncResponse {
                     uFirstname.setError("Erforderlich !");
                     uLastname.setError("Erforderlich !");
                 }else {
-                    if (uPwText.getText().toString().equals(uPwRepeatText.getText().toString())) {
+                    if (uPwText.getText().toString().equals(uPwRepeatText.getText().toString()) & Lib.validate_Email(MailText.getText().toString())) {
 
                         try {
                             task.execute("http://eddy-home.ddns.net/wg-app/loginMgt.php?Method=registerUser&Email=" + MailText.getText() + "&Password=" + uPwText.getText() + "&Firstname=" + uFirstname.getText() + "&Lastname=" + uLastname.getText());
