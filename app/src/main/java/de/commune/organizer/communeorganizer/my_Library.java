@@ -23,7 +23,6 @@ import java.util.Date;
 
 public class my_Library {
 
-
     public void showMessage(String s,  AppCompatActivity a){
         AlertDialog.Builder AlertBox = new AlertDialog.Builder(new ContextThemeWrapper(a,R.style.AlertDialogCustom));
         AlertBox.setTitle("Commune Organizer");
@@ -31,7 +30,4 @@ public class my_Library {
         AlertBox.create();
         AlertBox.show();
      }
-
-
-
 }
