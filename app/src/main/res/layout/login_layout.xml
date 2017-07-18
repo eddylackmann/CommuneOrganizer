@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+    android:scaleType="centerCrop">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/wg_m" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_light_default">
+
+            <RelativeLayout
+                android:id="@+id/login_section1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                tools:context="de.commune.organizer.communeorganizer.Login_Activity">
+
+                <TextView
+                    android:id="@+id/title_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/common_google_signin_btn_text_light_default"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Login"
+                    android:textColor="#fff"
+                    android:textSize="25sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/login_section2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/login_section1">
+
+                <EditText
+                    android:id="@+id/uEmailText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="17dp"
+                    android:ems="10"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#FFF"
+                    android:textColorHint="#fff" />
+
+                <EditText
+                    android:id="@+id/uPasswordText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/uEmailText"
+                    android:layout_marginTop="27dp"
+                    android:ems="10"
+                    android:hint="Passwort"
+                    android:inputType="textPassword"
+                    android:textColor="#FFF"
+                    android:textColorHint="#fff" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/login_section3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_section2">
+
+                <Button
+                    android:id="@+id/signInBtn"
+                    style="@style/Widget.AppCompat.Button.Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="80dp"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="Anmelden"
+                    android:textColor="#000" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+</FrameLayout>

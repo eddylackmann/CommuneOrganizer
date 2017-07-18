@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/header_text"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#000">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+
+            android:src="@drawable/wg_f" />
+
+        <TextView
+            android:id="@+id/puchaseText"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="#fff"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Einkaufsliste"
+            android:textColor="#000"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/section_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_text">
+
+
+        <LinearLayout
+            android:id="@+id/linInfoLayout9"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linInfoLayout8"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="1.0">
+
+            <Button
+                android:id="@+id/purchPlan_finishPurch"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/linInfoLayout8"
+                android:layout_weight=".5"
+                android:background="#000"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Einkauf abschließen"
+                android:textColor="#fff" />
+
+            <Button
+                android:id="@+id/purchPlan_AddBtn"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight=".5"
+                android:background="#00810D"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Neuer Eintrag"
+                android:textColor="#fff" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/section_1"
+        android:layout_marginTop="15dp"
+        android:background="#000">
+
+        <GridView
+            android:id="@+id/purchPlan_GridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
+            android:background="#fff"
+            android:gravity="center_vertical|clip_horizontal"
+            android:horizontalSpacing="10dp"
+            android:numColumns="1" />
+    </RelativeLayout>
+</RelativeLayout>

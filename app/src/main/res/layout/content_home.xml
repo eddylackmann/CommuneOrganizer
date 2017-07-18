@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/fixedlayout"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:orientation="vertical"
-        android:id="@+id/fixedlayout"
         android:scaleType="centerCrop">
+
         <ImageView
-            android:layout_width="fill_parent" android:layout_height="fill_parent"
-            android:src="@drawable/wg_n"
-            android:scaleType="centerCrop" />
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/wg_n" />
     </LinearLayout>
 
     <android.support.v4.widget.NestedScrollView
-           android:layout_below="@+id/fixedlayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#fff"
-            app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/fixedlayout"
+        android:background="#fff"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
         <RelativeLayout
+            android:id="@+id/fluidlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="#fff"
             android:layout_below="@+id/fixedlayout"
             android:layout_centerHorizontal="true"
-            android:orientation="vertical"
-            android:id="@+id/fluidlayout">
+            android:layout_marginBottom="20dp"
+            android:background="#fff"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:id="@+id/clockLinearLayout"
@@ -43,78 +44,81 @@
                     android:id="@+id/home_communeTimeSeparatorLineTop"
                     android:layout_width="match_parent"
                     android:layout_height="2.5dp"
-                    android:gravity="center_vertical|center_horizontal"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:background="#000"
-                    android:layout_marginTop="10dp" />
+                    android:gravity="center_vertical|center_horizontal" />
 
                 <TextView
                     android:id="@+id/home_DateDisplay"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:background="#fff"
-                    android:textSize="30dp"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:layout_marginBottom="10dp"
                     android:layout_below="@+id/home_communeTimeSeparatorLineTop"
-                    android:text="Datum"
-                    android:textColor="#000" />
-                <TextClock
+                    android:layout_marginBottom="10dp"
+                    android:background="#fff"
                     android:gravity="center_vertical|center_horizontal"
-                    android:textSize="30dp"
+                    android:text="Datum"
+                    android:textColor="#000"
+                    android:textSize="30dp" />
+
+                <TextClock
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/home_DateDisplay"
                     android:background="#fff"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000" />
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textColor="#000"
+                    android:textSize="30dp" />
             </RelativeLayout>
 
             <TextView
                 android:id="@+id/home_communeCashSeparatorLineTop"
                 android:layout_width="match_parent"
                 android:layout_height="2.5dp"
-                android:gravity="center_vertical|center_horizontal"
                 android:layout_below="@+id/clockLinearLayout"
                 android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:background="#000"
-                android:layout_marginTop="10dp" />
+                android:gravity="center_vertical|center_horizontal" />
 
             <LinearLayout
+                android:id="@+id/cashlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/cashlayout"
                 android:layout_below="@+id/home_communeCashSeparatorLineTop"
                 android:orientation="horizontal"
                 android:weightSum="1.0">
+
                 <TextView
                     android:id="@+id/home_communeCashLabel"
-                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:textSize="25dp"
-                    android:textColor="#000"
+                    android:layout_weight="0.5"
+                    android:gravity="center_vertical|center_horizontal"
                     android:text="WG Kasse:"
-                    android:layout_weight="0.5" />
+                    android:textColor="#000"
+                    android:textSize="25dp" />
+
                 <TextView
                     android:id="@+id/home_communeCash"
-                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:background="#fff"
-                    android:textSize="25dp"
-                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
+                    android:layout_weight="0.5"
+                    android:background="#fff"
+                    android:gravity="center_vertical|center_horizontal"
                     android:text="Kasse"
                     android:textColor="#000"
-                    android:layout_weight="0.5"/>
+                    android:textSize="25dp" />
             </LinearLayout>
 
             <RelativeLayout
+                android:id="@+id/addsection"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/addsection"
-                android:layout_below="@id/cashlayout"
-                android:layout_alignParentStart="true">
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/cashlayout">
 
                 <Button
                     android:id="@+id/home_cashBtn"
@@ -131,10 +135,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="2.5dp"
                     android:layout_below="@+id/home_cashBtn"
-                    android:gravity="center_vertical|center_horizontal"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:background="#000"
-                    android:layout_marginTop="10dp" />
+                    android:gravity="center_vertical|center_horizontal" />
             </RelativeLayout>
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>

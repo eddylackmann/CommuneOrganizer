@@ -1,5 +1,7 @@
 package de.commune.organizer.communeorganizer;
+
 import android.app.Application;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
