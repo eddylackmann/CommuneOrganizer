@@ -65,7 +65,7 @@ public class login extends AppCompatActivity implements AsyncResponse {
                 }
 
                 if(Lib.validate_Email(userEmail.getText().toString())){
-
+                    userEmail.setError("Keine gültige Email Adresse!");
                 }
 
                 //fetch data from url
